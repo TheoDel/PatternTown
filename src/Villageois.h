@@ -13,7 +13,7 @@ class Villageois
 
     private:
 
-	int m_id
+	int m_id;
     	int m_vie;
     	int m_energie;
 	int m_satisfaction;

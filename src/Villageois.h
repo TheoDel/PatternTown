@@ -9,6 +9,7 @@ class Villageois
 
 	void update();
 	int getId();
+	int get_vie();
 
     private:
 
@@ -19,3 +20,4 @@ class Villageois
 };
 
 #endif
+

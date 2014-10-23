@@ -1,17 +1,21 @@
-#if !define BATIMENT_H
+#ifndef BATIMENT_H
 #define BATIMENT_H
 
 #include <string>
 
 
-class Batiment {	// Classe abstraite
+class Batiment {
 
 	protected :
-		string nom_;
+		int id_;
+		std::string nom_;
 
 	public :
-		Batiment();					//constructeur
-		virtual ~Batiment() = 0 ;	//destructeur virtuel pur
+		Batiment( std::string nom );	
+		~Batiment();
+
+		int get_id();
+		std::string get_Nom();
 
 };
 

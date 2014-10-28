@@ -2,11 +2,10 @@
 #define VILLAGEOIS_H
 
 class Village;
-#include "Village.h"
 #include <string>
 
 
-// Classe ABSTRAITE de villageois
+// Classe abstraite de villageois
 class Villageois {
 
     protected:
@@ -24,7 +23,7 @@ class Villageois {
 
 		//Villageois();
 		Villageois( Village *v );
-		~Villageois();
+		virtual ~Villageois();
 
 		// Getters
 			std::string get_Nom();

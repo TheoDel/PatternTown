@@ -1,15 +1,29 @@
 #include "Batiment.h"
+
 #include <string>
 
 using namespace std;
-static int NEXTID_B = 0;
 
 
 
-Batiment::Batiment( string nom ) : nom_(nom) { ++NEXTID_B; }
+Batiment::Batiment( int id, string nom ) : id_(id), nom_(nom) {}
+
 
 Batiment::~Batiment() {}
 
-int Batiment::get_id(){}
 
-string Batiment::get_Nom(){}
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+int Batiment::get_id(){
+	return id_;
+}
+
+
+string Batiment::get_Nom(){
+	return nom_;
+}

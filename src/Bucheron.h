@@ -8,13 +8,13 @@
 class Bucheron : public Competence {
 
 	public :
+
 		Bucheron( Villageois* v );
 		~Bucheron();
 
 		int recolter_Bois();
 		std::string get_Description();
 		void afficher();
-
 
 };
 

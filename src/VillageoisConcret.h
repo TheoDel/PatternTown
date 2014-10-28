@@ -4,16 +4,13 @@
 #include "Villageois.h"
 
 
-// classe CONCRETE de villageois
+// Classe concrete de villageois
 class VillageoisConcret : public Villageois {
 
-    private:
-
-
-	public :
+    public :
 
 		VillageoisConcret( int id, std::string nom, std::string d, Village* v );
-		~VillageoisConcret();
+		virtual ~VillageoisConcret();
 
 };
 

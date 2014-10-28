@@ -1,4 +1,5 @@
 #include <iostream>
+#include "Village.h"
 #include "VillageoisConcret.h"
 #include "Bucheron.h"
 #include "Competence.h"
@@ -12,8 +13,8 @@ int main()
 
 	Village village;
 
-	village.set_Villageois( new VillageoisConcret(1, "Toto", "villageois content", &village) );
-	village.set_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant", &village) );
+	village.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content", &village) );
+	village.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant", &village) );
 
 	//village.afficher_Villageois();
 	cout << endl;
@@ -27,9 +28,13 @@ int main()
 
 	//village.afficher_Villageois();
 	cout <<endl;
-	village.test();
 
-	//cout << village.get_Villageois(2)->get_Description() << endl;
+
+	cout << village.get_Villageois(2)->get_Description() << endl;
+
+
+
+
 
 
 

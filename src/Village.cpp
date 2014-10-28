@@ -1,6 +1,8 @@
 #include "Village.h"
-#include "VillageoisConcret.h"
-#include "Competence.h"
+
+#include "Villageois.h"
+#include "Batiment.h"
+#include "Ressource.h"
 #include <iostream>
 
 using namespace std;
@@ -13,18 +15,8 @@ Village::Village() : population_(0) {}
 Village::~Village() {
 	for (size_t i=0 ; i<villageois_.size() ; ++i ) {
 			delete villageois_[i];
-	}
+	}		
 }
-
-
-
-void Village::test() {
-	for( Villageois* v : villageois_) {
-		cout << v->recolter_Bois() << endl;
-	}
-}
-
-
 
 
 
@@ -42,7 +34,7 @@ bool Village::existe_Batiment( int id ) {
 		}
 	}
 	return false;
-}
+} 
 
 
 // renvoie vrai si id est present dans le vector de villageois
@@ -53,7 +45,7 @@ bool Village::existe_Villageois( int id ) {
 		}
 	}
 	return false;
-}
+} 
 
 
 
@@ -71,10 +63,11 @@ Villageois* Village::get_Villageois( int id ) {
 			return v;
 		}
 	}
+	return 0;
 }
 
 
-// retourne le batiment correspondant aï¿½id
+// retourne le batiment correspondant a id
 // id doit exister dans le vector !
 Batiment* Village::get_Batiment( int id ) {
 	for ( Batiment* b : batiments_ ) {
@@ -82,25 +75,14 @@ Batiment* Village::get_Batiment( int id ) {
 			return b;
 		}
 	}
+	return 0;
 }
 
 
-// retourne la quantite de la ressource id
+// retourne la quantité de la ressource id
 int Village::get_Ressource( int id ) {
 	return ressources_.get_Ressource(id);
 }
-
-
-/*// retourne le vector de villageois
-std::vector<Villageois*> Village::get_Villageois() {
-	return villageois_;
-}*/
-
-
-/*// retourne le vector de batiments
-std::vector<Batiment*> Village::get_Batiments() {
-	return batiments_;
-}*/
 
 
 
@@ -111,8 +93,8 @@ std::vector<Batiment*> Village::get_Batiments() {
 
 
 // ajoute un villageois
-// si deja present, ne fait rien
-void Village::set_Villageois( Villageois* v ) {
+// si déja present, ne fait rien
+void Village::add_Villageois( Villageois* v ) {
 	if ( !existe_Villageois( v->get_id() ) ) {
 		villageois_.push_back(v);
 		++population_;
@@ -132,8 +114,8 @@ void Village::change_Villageois( Villageois* nv ) {
 
 
 // ajoute un batiment
-// si deja present, ne fait rien
-void Village::set_Batiments( Batiment* b ) {
+// si déja present, ne fait rien
+void Village::add_Batiments( Batiment* b ) {
 	if ( !existe_Batiment( b->get_id() ) ) {
 		batiments_.push_back(b);
 		++constructions_;
@@ -143,11 +125,11 @@ void Village::set_Batiments( Batiment* b ) {
 
 // modifie la quantite de la ressource id
 void Village::change_Ressource( int id, int quantite ) {
-	ressources_.set_Ressource(id,quantite);
+	ressources_.change_Ressource(id,quantite);
 }
 
 
-// supprime le villageois correspondant a id
+// supprime le villageois correspondant à id
 // si absent, ne fait rien
 void Village::remove_Villageois( int id ) {
 	for( size_t i=0 ; i<villageois_.size() ; ++i ) {
@@ -159,7 +141,7 @@ void Village::remove_Villageois( int id ) {
 }
 
 
-// supprime le batiment correspondant a id
+// supprime le batiment correspondant à id
 // si absent, ne fait rien
 void Village::remove_Batiment( int id ) {
 	for( size_t i=0 ; i<batiments_.size() ; ++i ) {

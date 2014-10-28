@@ -5,14 +5,19 @@ class Ressource {
 
 	private :
 
+		int stock_Bois_;
+		int stock_Nourriture_;
+
+
 	public :
+
 		Ressource();
 		~Ressource();
+
 		int get_Ressource( int id );
-		void set_Ressource ( int id, int quantite );
+		void change_Ressource ( int id, int quantite );
 
 
 };
-
 
 #endif

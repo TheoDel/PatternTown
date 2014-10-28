@@ -1,4 +1,5 @@
 #include "Villageois.h"
+
 #include <iostream>
 
 using namespace std;
@@ -6,6 +7,7 @@ using namespace std;
 
 
 Villageois::Villageois( Village* v ) : vie_(100), energie_(5), satisfaction_(0), village_(v) {}
+
 
 Villageois::~Villageois() {}
 

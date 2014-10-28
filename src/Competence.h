@@ -15,12 +15,11 @@ class Competence : public Villageois {
 	public :
 
 		Competence( Village* v );
-		~Competence();
+		virtual ~Competence();
 
 		Villageois* get_Villageois();
-
-		virtual std::string get_Description();
-		virtual void afficher();
+		virtual std::string get_Description() = 0;
+		virtual void afficher() = 0;
 };
 
 #endif

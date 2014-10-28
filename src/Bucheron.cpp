@@ -1,8 +1,10 @@
 #include "Bucheron.h"
+
 #include <string>
 #include <iostream>
 
 using namespace std;
+
 
 
 Bucheron::Bucheron( Villageois* v ) : Competence( v->get_Village() ) {
@@ -10,11 +12,17 @@ Bucheron::Bucheron( Villageois* v ) : Competence( v->get_Village() ) {
 	nom_ = v->get_Nom();
 	description_ = "Bucheron";
 	villageois_ = v;
-	//village_->get_Villageois(id_) = this;		
-	//village_->set_Villageois(this) ;
 }
 
+
 Bucheron::~Bucheron() {}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
 
 
 string Bucheron::get_Description() {
@@ -29,4 +37,3 @@ void Bucheron::afficher() {
 	villageois_->afficher();
 	cout << ", " << description_;
 }
-

@@ -10,4 +10,5 @@ VillageoisConcret::VillageoisConcret( int id, string nom, string d, Village* v )
 	description_ = d;
 }
 
+
 VillageoisConcret::~VillageoisConcret() {}

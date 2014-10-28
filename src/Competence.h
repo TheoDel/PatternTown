@@ -8,13 +8,19 @@
 class Competence : public Villageois { 
 
 	protected :
+
 		Villageois* villageois_;
 	
 
 	public :
-		Competence( Village* v );
-		~Competence();		
 
+		Competence( Village* v );
+		~Competence();
+
+		Villageois* get_Villageois();
+
+		virtual std::string get_Description();
+		virtual void afficher();
 };
 
 #endif

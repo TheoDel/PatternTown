@@ -13,6 +13,8 @@ class Bucheron : public Competence {
 
 		int recolter_Bois();
 		std::string get_Description();
+		void afficher();
+
 
 };
 

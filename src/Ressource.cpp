@@ -1,11 +1,12 @@
 #include "Ressource.h"
 
+#include <iostream>
+
 using namespace std;
 
 
 
 Ressource::Ressource() : stock_Bois_(0), stock_Nourriture_(0) {}
-
 
 Ressource::~Ressource() {}
 
@@ -27,4 +28,9 @@ int Ressource::get_Ressource( int id ){
 void Ressource::change_Ressource ( int id, int quantite ){
 	if ( id == 1 ) { stock_Bois_ += quantite; }
 	if ( id == 2 ) { stock_Nourriture_ += quantite; }
+}
+
+void Ressource::afficher_Ressources(){
+    cout << endl <<"Bois: " << stock_Bois_;
+    cout << endl << "Nourriture: " << stock_Nourriture_;
 }

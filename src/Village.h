@@ -34,6 +34,8 @@ class Village {
 			Batiment* get_Batiment( int id );
 			int get_Ressource( int id );
 
+			Ressource* get_Ressources();
+
 		// Setters
 			void add_Villageois( Villageois* v );
 			void change_Villageois( Villageois* v );

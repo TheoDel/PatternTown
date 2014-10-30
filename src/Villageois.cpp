@@ -104,16 +104,19 @@ void Villageois::change_Satisfaction( int val ) {
 
 
 int Villageois::recolter_Bois() {
+    cout << endl << nom_ << " coupe du bois comme un souillon...";
 	return 1;
 }
 
 
 int Villageois::recolter_Nourriture() {
+    cout << endl << nom_ << " recolte de la nourriture comme un souillon...";
 	return 1;
 }
 
 
 void Villageois::construire_Batiment() {
+
 }
 
 

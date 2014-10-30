@@ -15,7 +15,7 @@ Village::Village() : population_(0) {}
 Village::~Village() {
 	for (size_t i=0 ; i<villageois_.size() ; ++i ) {
 			delete villageois_[i];
-	}		
+	}
 }
 
 
@@ -34,7 +34,7 @@ bool Village::existe_Batiment( int id ) {
 		}
 	}
 	return false;
-} 
+}
 
 
 // renvoie vrai si id est present dans le vector de villageois
@@ -45,7 +45,7 @@ bool Village::existe_Villageois( int id ) {
 		}
 	}
 	return false;
-} 
+}
 
 
 
@@ -82,6 +82,11 @@ Batiment* Village::get_Batiment( int id ) {
 // retourne la quantité de la ressource id
 int Village::get_Ressource( int id ) {
 	return ressources_.get_Ressource(id);
+}
+
+// retourne les ressources
+Ressource* Village::get_Ressources() {
+	return &ressources_;
 }
 
 

@@ -30,6 +30,7 @@ string Bucheron::get_Description() {
 }
 
 int Bucheron::recolter_Bois() {
+    cout << endl << nom_ << " coupe du bois comme un pro !";
 	return 5;
 }
 

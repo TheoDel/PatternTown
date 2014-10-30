@@ -26,10 +26,19 @@ int main()
 	//village.change_Villageois(  village.get_Villageois(2)->get_Villageois() ) ;
 
 	village.afficher_Villageois();
+
+	//Tests gestion des ressources
 	village.get_Ressources()->afficher_Ressources();
 
 	village.change_Ressource(1,village.get_Villageois(1)->recolter_Bois());
 	village.change_Ressource(1,village.get_Villageois(2)->recolter_Bois());
+
+	village.get_Ressources()->afficher_Ressources();
+
+    // Test gestion d'energie des villageois
+	for (int i = 0; i<5; i++){
+        village.change_Ressource(1,village.get_Villageois(1)->recolter_Bois());
+    }
 
 	village.get_Ressources()->afficher_Ressources();
 

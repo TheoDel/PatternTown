@@ -30,8 +30,14 @@ string Bucheron::get_Description() {
 }
 
 int Bucheron::recolter_Bois() {
-    cout << endl << nom_ << " coupe du bois comme un pro !";
-	return 5;
+    if (energie_ < 1){
+        cout << endl << nom_ << ", a beau etre un pro pour couper du bois, il est trop fatigue...";
+        return 0;
+    } else {
+        cout << endl << nom_ << " coupe du bois comme un pro !";
+        --energie_;
+        return 5;
+    }
 }
 
 void Bucheron::afficher() {

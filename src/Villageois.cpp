@@ -104,14 +104,26 @@ void Villageois::change_Satisfaction( int val ) {
 
 
 int Villageois::recolter_Bois() {
-    cout << endl << nom_ << " coupe du bois comme un souillon...";
-	return 1;
+    if (energie_ < 1){
+        cout << endl << nom_ << ", non content d'etre incompetent pour couper du bois, est trop fatigue...";
+        return 0;
+    } else {
+        cout << endl << nom_ << " coupe du bois comme un souillon...";
+        --energie_;
+        return 1;
+    }
 }
 
 
 int Villageois::recolter_Nourriture() {
-    cout << endl << nom_ << " recolte de la nourriture comme un souillon...";
-	return 1;
+    if (energie_ < 1){
+        cout << endl << nom_ << ", non content d'etre incompetent pour récolter de la nourriture, est trop fatigue...";
+        return 0;
+    } else {
+        cout << endl << nom_ << " recolte de la nourriture comme un souillon...";
+        --energie_;
+        return 1;
+    }
 }
 
 

@@ -13,7 +13,7 @@ int main()
 	cout << "test" << endl;
 
     //Tests village/villageois
-
+    /*
 	Village village;
 
 	village.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content", &village) );
@@ -23,7 +23,7 @@ int main()
 	village.change_Villageois(  &ba ) ;
 
 	village.afficher_Villageois();
-
+    */
 
 	//Tests gestion des ressources
 	/*
@@ -44,7 +44,7 @@ int main()
 	*/
 
     //Tests decorator
-
+    /*
 	VillageoisConcret v1( 1, "Tota", "Normal", &village );
 	Bucheron b1(&v1);
 	Bucheron b2(&b1);
@@ -56,11 +56,11 @@ int main()
 	cout  << b1.recolter_Bois() << endl ;
 	b3.afficher();
 	cout  << b3.recolter_Bois() << endl ;
-
+    */
 
 	//Tests SystemeJeu
-	/*
+
 	SystemeJeu s;
-	s.lancerTour();
-	*/
+	s.lancerJeu();
+
 }

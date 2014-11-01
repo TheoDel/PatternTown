@@ -5,12 +5,12 @@
 
 
 // Decorator
-class Competence : public Villageois { 
+class Competence : public Villageois {
 
 	protected :
 
 		Villageois* villageois_;
-	
+
 
 	public :
 
@@ -19,7 +19,6 @@ class Competence : public Villageois {
 
 		Villageois* get_Villageois();
 		virtual std::string get_Description() = 0;
-		virtual void afficher() = 0;
 };
 
 #endif

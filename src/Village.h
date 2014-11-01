@@ -23,8 +23,6 @@ class Village {
 		Village();
 		~Village();
 
-		void test();
-
 		// Testing
 			bool existe_Batiment( int id );
 			bool existe_Villageois( int id );

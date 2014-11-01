@@ -27,7 +27,7 @@ string Villageois::get_Nom() {
 
 // retourne la description du villageois
 string Villageois::get_Description() {
-	return ( "\n" + description_ );
+	return (description_ );
 }
 
 
@@ -105,10 +105,10 @@ void Villageois::change_Satisfaction( int val ) {
 
 int Villageois::recolter_Bois() {
     if (energie_ < 1){
-        cout << endl << nom_ << ", non content d'etre incompetent pour couper du bois, est trop fatigue...";
+        cout << nom_ << ", non content d'etre incompetent pour couper du bois, est trop fatigue..." << endl;
         return 0;
     } else {
-        cout << endl << nom_ << " coupe du bois comme un souillon...";
+        cout << nom_ << " coupe du bois comme un souillon..." << endl;
         --energie_;
         return 1;
     }
@@ -117,10 +117,10 @@ int Villageois::recolter_Bois() {
 
 int Villageois::recolter_Nourriture() {
     if (energie_ < 1){
-        cout << endl << nom_ << ", non content d'etre incompetent pour récolter de la nourriture, est trop fatigue...";
+        cout << nom_ << ", non content d'etre incompetent pour récolter de la nourriture, est trop fatigue..." << endl;
         return 0;
     } else {
-        cout << endl << nom_ << " recolte de la nourriture comme un souillon...";
+        cout << nom_ << " recolte de la nourriture comme un souillon..." << endl;
         --energie_;
         return 1;
     }
@@ -133,5 +133,5 @@ void Villageois::construire_Batiment() {
 
 
 void Villageois::afficher() {
-	cout << endl << nom_ << " : " << description_;
+	cout << id_<<"-"<< nom_ << " : " << get_Description() << endl;
 }

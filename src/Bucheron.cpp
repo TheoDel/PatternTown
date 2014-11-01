@@ -31,16 +31,17 @@ string Bucheron::get_Description() {
 
 int Bucheron::recolter_Bois() {
     if (energie_ < 1){
-        cout << endl << nom_ << ", a beau etre un pro pour couper du bois, il est trop fatigue...";
+        cout << nom_ << ", a beau etre un pro pour couper du bois, il est trop fatigue..." << endl ;
         return 0;
     } else {
-        cout << endl << nom_ << " coupe du bois comme un pro !";
+        cout << nom_ << " coupe du bois comme un pro !" << endl ;
         --energie_;
         return 5;
     }
 }
 
+/*
 void Bucheron::afficher() {
 	villageois_->afficher();
 	cout << ", " << description_;
-}
+}*/

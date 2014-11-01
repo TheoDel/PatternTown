@@ -128,12 +128,6 @@ void Village::add_Batiments( Batiment* b ) {
 }
 
 
-// modifie la quantite de la ressource id
-void Village::change_Ressource( int id, int quantite ) {
-	ressources_.change_Ressource(id,quantite);
-}
-
-
 // supprime le villageois correspondant à id
 // si absent, ne fait rien
 void Village::remove_Villageois( int id ) {

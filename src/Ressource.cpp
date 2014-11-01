@@ -31,6 +31,6 @@ void Ressource::change_Ressource ( int id, int quantite ){
 }
 
 void Ressource::afficher_Ressources(){
-    cout << endl <<"Bois: " << stock_Bois_;
-    cout << endl << "Nourriture: " << stock_Nourriture_;
+    cout << "Bois: " << stock_Bois_ << endl ;
+    cout << "Nourriture: " << stock_Nourriture_ << endl ;
 }

@@ -42,12 +42,13 @@ void SystemeJeu::lancerTour() {
     bool sortieBoucleInstruction(false);
 
     while (!sortieBoucleInstruction){
+        cout << ">";
         getline(cin, entreeUtilisateur); //(TODO ?) Saisie non sécurisée
 
         if (entreeUtilisateur == "1")
             village_.afficher_Villageois();
         else if (entreeUtilisateur == "2")
-            cout << "[Donner ordre villageois] \n";
+            donnerOrdre();
         else if (entreeUtilisateur == "3")
             cout << "[Promotion de villageois] \n";
         else if (entreeUtilisateur == "4")
@@ -59,6 +60,50 @@ void SystemeJeu::lancerTour() {
         else
             ;
     }
+}
+
+//Interface pour donner un ordre à un villageois (mis dans une fonction à part pour lisibilité)
+void SystemeJeu::donnerOrdre()
+{
+    // Choix du villageois par l'utilisateur
+    cout << " Indiquez l'id du villageois a qui vous voulez donner ordre : \n >";
+    int villageoischoisi(0);
+    cin >> villageoischoisi; //TODO Saisie affreusement non sécurisée
+    cin.ignore();
+    Villageois* v = village_.get_Villageois(villageoischoisi);
+    if (v==0){
+        cout << " Ce villageois n'existe pas."<< endl;
+        return;
+    }
+
+    // AFFICHAGE DE LA LISTE DE CHOIX DES COMPETENCES
+    string descripv = v->get_Description();
+    //Cherche si le villageois choisi est bucheron. Si oui, l'indique
+    if (descripv.find("bucheron") != string::npos)
+        cout << "  1> Couper du bois (pro)" << endl;
+    else
+        cout << "  1> Couper du bois" << endl;
+
+    //Idem pour le fermier
+    if (descripv.find("fermier") != string::npos)
+        cout << "  2> Recolter de la nourriture (pro)" << endl;
+    else
+        cout << "  2> Recolter de la nourriture" << endl;
+
+    cout << "  3> Construire un batiment" << endl;
+
+    string entreeUtilisateur("");
+    cout << "  >";
+    getline(cin, entreeUtilisateur); //(TODO ?) Saisie non sécurisée
+    cout << "  ";
+    //Chois recolte bois
+    if (entreeUtilisateur == "1")
+        village_.get_Ressources()->change_Ressource(1,village_.get_Villageois(villageoischoisi)->recolter_Bois());
+    else if (entreeUtilisateur == "2")
+        village_.get_Ressources()->change_Ressource(2,village_.get_Villageois(villageoischoisi)->recolter_Nourriture());
+    else if (entreeUtilisateur == "3")
+        cout << "[Construction de bâtiment]";
+
 }
 
 // retourne le village du systeme

@@ -10,6 +10,8 @@ class SystemeJeu {
         Village village_;
         int jour_;
 
+        void donnerOrdre();
+
     public :
 
         SystemeJeu();

@@ -11,20 +11,20 @@ class SystemeJeu {
         int jour_;
 
         void donnerOrdre();
+    	void lancerTour();
+
 
     public :
 
-        SystemeJeu();
-		~SystemeJeu();
+		// Constructeurs/Destructeurs
+        	SystemeJeu();
+        	~SystemeJeu();
 
-        void lancerJeu();
-        void lancerTour();
+        // Getter
+        	Village* get_Village();
 
-		Village* get_Village();
-
-
+       	void lancerJeu();
 
 };
 
-
-#endif // SYSTEMEJEU_H_INCLUDED
+#endif

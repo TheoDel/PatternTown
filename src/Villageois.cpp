@@ -6,8 +6,15 @@ using namespace std;
 
 
 
-Villageois::Villageois( Village* v ) : vie_(100), energie_(5), satisfaction_(0), village_(v) {}
 
+
+
+
+Villageois::Villageois( int id, std::string n, std::string d, Village* v ) :
+	id_(id), nom_(n), vie_(100), energie_(5),
+	satisfaction_(0), village_(v), description_(d) {}
+
+Villageois::Villageois() {}
 
 Villageois::~Villageois() {}
 
@@ -19,21 +26,21 @@ Villageois::~Villageois() {}
 
 
 
+// retourne l'id du villageois
+int Villageois::get_id() {
+	return id_;
+}
+
+
 // retourne le nom du villageois
 string Villageois::get_Nom() {
 	return nom_;
 }
 
 
-// retourne la description du villageois
+// retourne la description complete du villageois
 string Villageois::get_Description() {
-	return (description_ );
-}
-
-
-// retourne l'id du villageois
-int Villageois::get_id() {
-	return id_;
+	return description_;
 }
 
 
@@ -41,6 +48,7 @@ int Villageois::get_id() {
 int Villageois::get_Vie() {
 	return vie_;
 }
+
 
 // retourne l'energie ( = points d'action ) du villageois
 int Villageois::get_Energie() {
@@ -60,6 +68,7 @@ Village* Villageois::get_Village() {
 }
 
 
+// retourne le villageois racine
 Villageois* Villageois::get_Villageois() {
 	return this;
 }
@@ -72,9 +81,15 @@ Villageois* Villageois::get_Villageois() {
 
 
 
-// modifie la decription du villageois
+// modifie la description du villageois
 void Villageois::set_Description( string d ){
 	description_ = d;
+}
+
+
+// modifie le village de rattachement
+void Villageois::set_Village( Village* v ) {
+	village_ = v;
 }
 
 
@@ -103,6 +118,7 @@ void Villageois::change_Satisfaction( int val ) {
 
 
 
+// renvoie un entier lié a la quantite de bois coupé
 int Villageois::recolter_Bois() {
     if (energie_ < 1){
         cout << nom_ << ", non content d'etre incompetent pour couper du bois, est trop fatigue..." << endl;
@@ -115,6 +131,7 @@ int Villageois::recolter_Bois() {
 }
 
 
+// renvoie un entier lié a la quantite de nourriture recoltée
 int Villageois::recolter_Nourriture() {
     if (energie_ < 1){
         cout << nom_ << ", non content d'etre incompetent pour récolter de la nourriture, est trop fatigue..." << endl;
@@ -127,11 +144,18 @@ int Villageois::recolter_Nourriture() {
 }
 
 
+// cree un nouveau batiment
 void Villageois::construire_Batiment() {
-
 }
 
 
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
 void Villageois::afficher() {
-	cout << id_<<"-"<< nom_ << " : " << get_Description() << endl;
+	cout << get_id() << "-" << get_Nom() << " : " << get_Description() << endl;
 }

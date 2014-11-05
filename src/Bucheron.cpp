@@ -7,11 +7,9 @@ using namespace std;
 
 
 
-Bucheron::Bucheron( Villageois* v ) : Competence( v->get_Village() ) {
-	id_ = v->get_id();
-	nom_ = v->get_Nom();
+Bucheron::Bucheron( Villageois* v ) :
+	Competence(v) {
 	description_ = "Bucheron";
-	villageois_ = v;
 }
 
 
@@ -25,17 +23,19 @@ Bucheron::~Bucheron() {}
 
 
 
+/*
 string Bucheron::get_Description() {
 	return ( villageois_->get_Description() + ", " + description_ );
 }
+*/
 
 int Bucheron::recolter_Bois() {
-    if (energie_ < 1){
-        cout << nom_ << ", a beau etre un pro pour couper du bois, il est trop fatigue..." << endl ;
+    if ( villageois_->get_Energie() < 1 ){
+        cout << villageois_->get_Nom() << ", a beau etre un pro pour couper du bois, il est trop fatigue..." << endl ;
         return 0;
     } else {
-        cout << nom_ << " coupe du bois comme un pro !" << endl ;
-        --energie_;
+        cout << villageois_->get_Nom() << " coupe du bois comme un pro !" << endl ;
+        villageois_->change_Energie(-1);
         return 5;
     }
 }

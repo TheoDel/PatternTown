@@ -9,7 +9,7 @@ using namespace std;
 
 
 
-Village::Village() : population_(0) {}
+Village::Village() : population_(0), constructions_(0) {}
 
 
 Village::~Village() {
@@ -87,6 +87,12 @@ int Village::get_Ressource( int id ) {
 // retourne les ressources
 Ressource* Village::get_Ressources() {
 	return &ressources_;
+}
+
+
+// retourne le nombre d'habitants du village
+int Village::get_Population() {
+	return population_;
 }
 
 

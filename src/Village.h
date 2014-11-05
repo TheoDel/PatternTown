@@ -31,6 +31,7 @@ class Village {
 			Villageois* get_Villageois( int id );
 			Batiment* get_Batiment( int id );
 			int get_Ressource( int id );
+			int get_Population();
 
 			Ressource* get_Ressources();
 

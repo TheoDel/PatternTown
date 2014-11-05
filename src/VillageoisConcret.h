@@ -7,10 +7,16 @@
 // Classe concrete de villageois
 class VillageoisConcret : public Villageois {
 
+	private :
+
+		// vide ( pour l'instant ? )
+
+
     public :
 
-		VillageoisConcret( int id, std::string nom, std::string d, Village* v );
-		virtual ~VillageoisConcret();
+		// Constructeurs/Destructeurs
+			VillageoisConcret( int id, std::string n, std::string d, Village* v );
+			~VillageoisConcret();
 
 };
 

@@ -9,12 +9,15 @@ using namespace std;
 
 
 
-Village::Village() : population_(0), constructions_(0) {}
+Village::Village( string nom ) : nom_(nom) {}
 
 
 Village::~Village() {
-	for (size_t i=0 ; i<villageois_.size() ; ++i ) {
+	for ( size_t i=0 ; i<villageois_.size() ; ++i ) {
 			delete villageois_[i];
+	}
+	for ( size_t i=0 ; i<batiments_.size() ; ++i ) {
+			delete batiments_[i];
 	}
 }
 
@@ -55,6 +58,12 @@ bool Village::existe_Villageois( int id ) {
 
 
 
+// retourne le nom du village
+string Village::get_Nom() {
+	return nom_;
+}
+
+
 // retourne le villageois correspondant a id
 // id doit exister dans le vector !
 Villageois* Village::get_Villageois( int id ) {
@@ -92,7 +101,13 @@ Ressource* Village::get_Ressources() {
 
 // retourne le nombre d'habitants du village
 int Village::get_Population() {
-	return population_;
+	return villageois_.size();
+}
+
+
+// retourne le nombre de batiments du village
+int Village::get_Constructions() {
+	return batiments_.size();
 }
 
 
@@ -108,19 +123,15 @@ int Village::get_Population() {
 void Village::add_Villageois( Villageois* v ) {
 	if ( !existe_Villageois( v->get_id() ) ) {
 		villageois_.push_back(v);
-		++population_;
 	}
 }
 
 
-// modifie un villageois (decorator)
-// id doit exister dans le vector !
+// modifie un villageois (decoration)
 void Village::change_Villageois( Villageois* nv ) {
-	int id = nv->get_id();
-	villageois_.push_back( nv );
 	int i = 0;
-	while ( villageois_[i]->get_id() != id ) { ++i; }
-	villageois_.erase( villageois_.begin() + i);
+	while ( i<villageois_.size() and villageois_[i]->get_id() != nv->get_id() ) { ++i; }
+	villageois_[i] = nv;
 }
 
 
@@ -129,7 +140,6 @@ void Village::change_Villageois( Villageois* nv ) {
 void Village::add_Batiments( Batiment* b ) {
 	if ( !existe_Batiment( b->get_id() ) ) {
 		batiments_.push_back(b);
-		++constructions_;
 	}
 }
 

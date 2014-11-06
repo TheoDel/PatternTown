@@ -5,7 +5,7 @@ class Village;
 #include <string>
 
 
-// Classe ( Abstraite ? ) de Villageois
+// Classe ( Abstraite ) de Villageois
 class Villageois {
 
     private:
@@ -28,7 +28,7 @@ class Villageois {
 		// Constructeurs/Destructeurs
 			Villageois();
 			Villageois( int id, std::string n, std::string d, Village *v );
-			virtual ~Villageois();
+			virtual ~Villageois() = 0;
 
 		// Getters
 			virtual int get_id();

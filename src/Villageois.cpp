@@ -6,15 +6,13 @@ using namespace std;
 
 
 
-
-
+Villageois::Villageois() {}
 
 
 Villageois::Villageois( int id, std::string n, std::string d, Village* v ) :
 	id_(id), nom_(n), vie_(100), energie_(5),
 	satisfaction_(0), village_(v), description_(d) {}
 
-Villageois::Villageois() {}
 
 Villageois::~Villageois() {}
 
@@ -68,7 +66,7 @@ Village* Villageois::get_Village() {
 }
 
 
-// retourne le villageois racine
+// ici, ne sert à rien !! (se retourne lui-même)
 Villageois* Villageois::get_Villageois() {
 	return this;
 }

@@ -13,19 +13,19 @@ int main()
 
     //Tests village/villageois
 
-	Village village;
+	Village village("Pattern City");
 
 	village.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content", &village) );
 	village.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant", &village) );
 
-	Bucheron ba( village.get_Villageois(2) );
-	village.change_Villageois(  &ba ) ;
-	//Bucheron bb( village.get_Villageois(2) );
-	//village.change_Villageois(  &bb ) ;
-	//village.afficher_Villageois();
+	village.change_Villageois(  new Bucheron( *village.get_Villageois(2) ) );
+	village.change_Villageois(  new Bucheron( *village.get_Villageois(2) ) );
+	village.afficher_Villageois();
+	
+	village.get_Villageois(2)->afficher();
+	cout << village.get_Villageois(2)->get_id();
 
-
-
+	village.get_Villageois(2)->get_Villageois()->afficher();
 
 
 	//Tests gestion des ressources
@@ -54,27 +54,32 @@ int main()
 
 
     //Tests decorator
-	/*
-	VillageoisConcret v1( 1, "Tota", "Normal", &village );
-	Bucheron b1(&v1);
-	Bucheron b2(&b1);
-	Bucheron b3(&b2);
 
-	v1.afficher();
-	cout  << v1.recolter_Bois() << endl ;
-	b1.afficher();
-	cout  << b1.recolter_Bois() << endl ;
-	b3.afficher();
-	cout  << b3.recolter_Bois() << endl ;
-	*/
+	Villageois* v1 = new VillageoisConcret ( 1, "Tota", "Normal", &village );
+	v1->change_Energie(-2);
+	//v1->afficher();
+	//cout << v1->get_Energie() << endl;
 
+	v1 = new Bucheron (*v1);
+	//v1->afficher();
+	//cout << v1->get_Energie() << endl;
 
+	v1 = new Bucheron (*v1);
+	v1->afficher();
+	cout << v1->recolter_Bois() << endl;
 
+	v1->set_Description("mollusque");
+	v1->afficher();
+	cout << v1->recolter_Bois() << endl;
+
+	delete v1;
 
 
 	//Tests SystemeJeu
 
-	SystemeJeu s;
+	SystemeJeu s("NYC");
 	s.lancerJeu();
+
+
 
 }

@@ -10,14 +10,11 @@ class Bucheron : public Competence {
 	public :
 
 		// Constructeurs/Destructeurs
-			Bucheron( Villageois* v );
+			Bucheron( Villageois& v );
 			~Bucheron();
 
 		// Getters
 			int recolter_Bois();			//@Override
-
-		// Actions de jeu
-			//std::string get_Description();	//@Override
 
 };
 

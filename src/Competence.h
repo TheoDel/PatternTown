@@ -1,6 +1,7 @@
 #ifndef COMPETENCE_H
 #define COMPETENCE_H
 
+#include "Village.h"
 #include "Villageois.h"
 
 
@@ -9,14 +10,14 @@ class Competence : public Villageois {
 
 	protected :
 
-		Villageois* villageois_;
+		Villageois& villageois_;
 
 
 	public :
 
 		// Constructeurs/Destructeurs
-			Competence( Villageois* v );
-			virtual ~Competence();
+			Competence( Villageois& v );
+			virtual ~Competence() = 0;
 
 		// Getters
 			int get_id();						//@Override
@@ -29,7 +30,7 @@ class Competence : public Villageois {
 			Villageois* get_Villageois(); 		//@Override
 
 		// Setters
-//			void set_Description( std::string d );	//@Override
+			void set_Description( std::string d );	//@Override
 			void set_Village( Village* v );			//@Override
 			void change_Vie( int val );				//@Override
 			void change_Energie( int val );			//@Override

@@ -1,6 +1,10 @@
 #include "SystemeJeu.h"
+
 #include "Village.h"
 #include "VillageoisConcret.h"
+#include "Ressource.h"
+#include "Batiment.h"
+#include "Bucheron.h"
 
 #include <iostream>
 #include <string>
@@ -10,7 +14,7 @@ using namespace std;
 
 
 
-SystemeJeu::SystemeJeu() : jour_(1) {}
+SystemeJeu::SystemeJeu( string nomVillage ) : village_( nomVillage ), jour_(1) {}
 
 
 SystemeJeu::~SystemeJeu() {}
@@ -20,6 +24,8 @@ SystemeJeu::~SystemeJeu() {}
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+
 
 
 
@@ -46,7 +52,7 @@ void SystemeJeu::lancerJeu() {
 // Lance un tour de jeu correspondant a une journee, permettant au joueur d'effectuer differentes actions
 void SystemeJeu::lancerTour() {
 
-	cout << "\nVillage - jour " << jour_ << "\n"
+	cout << "\nBienvenue a " << village_.get_Nom() << " - jour " << jour_ << "\n"
 	<< "1> Voir villageois \n"
 	<< "2> Donner un ordre a un villageois \n"
 	<< "3> Promouvoir un villageois \n"
@@ -59,32 +65,25 @@ void SystemeJeu::lancerTour() {
 
 	while (!sortieBoucleInstruction){
 		cout << ">";
-		getline(cin, entreeUtilisateur); //(TODO ?) Saisie non securisee
-
-		//(TODO ?) plutot un switch case à la place des if-then-else ?
-
-		if (entreeUtilisateur == "1")
-			village_.afficher_Villageois();
-        else if (entreeUtilisateur == "2")
-        	donnerOrdre();
-        else if (entreeUtilisateur == "3")
-        	cout << "[Promotion de villageois] \n";
-        else if (entreeUtilisateur == "4")
-        	village_.get_Ressources()->afficher_Ressources();
-        else if (entreeUtilisateur == "5")
-        	cout << "[Affichage batiments] \n";
-        else if (entreeUtilisateur == "6")
-        	sortieBoucleInstruction = true;
-        else
-            ;
+		getline(cin, entreeUtilisateur);
+		if (entreeUtilisateur == "1")		{	village_.afficher_Villageois(); }
+		else if (entreeUtilisateur == "2")	{	donnerOrdre(); }
+		else if (entreeUtilisateur == "3")	{	promouvoir(); }
+        else if (entreeUtilisateur == "4")	{  	village_.get_Ressources()->afficher_Ressources(); }
+        else if (entreeUtilisateur == "5")	{	cout << "[Affichage batiments] \n"; }
+        else if (entreeUtilisateur == "6")	{	sortieBoucleInstruction = true; }
     }
 }
 
 
 
+
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+
 
 
 
@@ -151,9 +150,64 @@ void SystemeJeu::donnerOrdre() {
 
 
 
+
+
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+
+//
+void SystemeJeu::promouvoir() {
+
+	cout << " Indiquez l'id du villageois a qui vous voulez donner ordre : \n >";
+	int villageoischoisi(0);
+	
+	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { // tant que l'on ne saisie pas un nombre seul
+		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
+		cout << " >";
+	}
+
+    if ( !village_.existe_Villageois( villageoischoisi ) ) {
+    	cout << " Ce villageois n'existe pas."<< endl;
+    	return; 
+    }
+
+    //Villageois* v = village_.get_Villageois( villageoischoisi );
+	cout << "  1> Promouvoir en bucheron" << endl;
+   	cout << "  2> Promouvoir en fermier" << endl;
+
+    string entreeUtilisateur("");
+    bool sortieBoucleInstruction(false);
+
+    	while (!sortieBoucleInstruction){
+    		cout << "  >";
+    		getline(cin, entreeUtilisateur);
+
+    		if (entreeUtilisateur == "1") {
+    			village_.change_Villageois( new Bucheron( *village_.get_Villageois( villageoischoisi ) ) );
+    			sortieBoucleInstruction = true;
+    		}
+    		else if (entreeUtilisateur == "2") {
+				cout << "Fermier" << endl;
+    			sortieBoucleInstruction = true;
+    		}
+       	}
+}
+
+	
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
 
 
 

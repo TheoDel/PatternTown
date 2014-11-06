@@ -10,14 +10,16 @@ class SystemeJeu {
         Village village_;
         int jour_;
 
-        void donnerOrdre();
+		// méthodes privées
     	void lancerTour();
+        void donnerOrdre();
+		void promouvoir();
 
 
     public :
 
 		// Constructeurs/Destructeurs
-        	SystemeJeu();
+        	SystemeJeu( std::string nomVillage );
         	~SystemeJeu();
 
         // Getter

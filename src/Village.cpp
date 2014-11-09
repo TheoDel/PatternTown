@@ -180,3 +180,12 @@ void Village::afficher_Villageois() {
 		v->afficher();
 	}
 }
+
+void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
+    if (idRessource == 1) {
+        ressources_.change_Ressource(1,get_Villageois(idVillageois)->recolter_Bois());
+    }
+    else if (idRessource == 2) {
+        ressources_.change_Ressource(2,get_Villageois(idVillageois)->recolter_Nourriture());
+    }
+};

@@ -29,7 +29,7 @@ class Village {
 			bool existe_Villageois( int id );
 
 		// Getters
-			std::string get_Nom();			
+			std::string get_Nom();
 			Villageois* get_Villageois( int id );
 			Batiment* get_Batiment( int id );
 			Ressource* get_Ressources();
@@ -47,6 +47,7 @@ class Village {
 			void remove_Batiment( int id );
 
 		void afficher_Villageois();
+		void faire_Recolter_Villageois(int idRessource, int idVillageois);
 
 
 };

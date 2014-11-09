@@ -134,11 +134,11 @@ void SystemeJeu::donnerOrdre() {
     		getline(cin, entreeUtilisateur); //(TODO ?) Saisie non securisee
 
     		if (entreeUtilisateur == "1") {
-    			village_.get_Ressources()->change_Ressource(1,village_.get_Villageois(villageoischoisi)->recolter_Bois());
+    			village_.faire_Recolter_Villageois(1,villageoischoisi);
     			sortieBoucleInstruction = true;
     		}
     		else if (entreeUtilisateur == "2") {
-    			village_.get_Ressources()->change_Ressource(2,village_.get_Villageois(villageoischoisi)->recolter_Nourriture());
+    			village_.faire_Recolter_Villageois(2,villageoischoisi);
     			sortieBoucleInstruction = true;
     		}
     		else if (entreeUtilisateur == "3") {
@@ -163,7 +163,7 @@ void SystemeJeu::donnerOrdre() {
 //
 void SystemeJeu::promouvoir() {
 
-	cout << " Indiquez l'id du villageois a qui vous voulez donner ordre : \n >";
+	cout << " Indiquez l'id du villageois que vous voulez promouvoir : \n >";
 	int villageoischoisi(0);
 
 	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { // tant que l'on ne saisie pas un nombre seul

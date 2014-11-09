@@ -1,7 +1,6 @@
 #ifndef VILLAGEOIS_H
 #define VILLAGEOIS_H
 
-class Village;
 #include <string>
 
 
@@ -15,7 +14,6 @@ class Villageois {
 		int vie_;
     	int energie_;
 		int satisfaction_;
-		Village* village_; // village auquel il appartient
 
 
     protected:
@@ -27,7 +25,7 @@ class Villageois {
 
 		// Constructeurs/Destructeurs
 			Villageois();
-			Villageois( int id, std::string n, std::string d, Village *v );
+			Villageois( int id, std::string n, std::string d);
 			virtual ~Villageois() = 0;
 
 		// Getters
@@ -37,12 +35,10 @@ class Villageois {
 			virtual int get_Vie();
 			virtual int get_Energie();
 			virtual int get_Satisfaction();
-			virtual Village* get_Village();
 			virtual Villageois* get_Villageois();
 
 		// Setters
 			virtual void set_Description( std::string d );
-			virtual void set_Village( Village* v );
 			virtual void change_Vie( int val );
 			virtual void change_Energie( int val );
 			virtual void change_Satisfaction( int val );

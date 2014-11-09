@@ -36,8 +36,8 @@ void SystemeJeu::lancerJeu() {
 	//Création du jeu de données de départ
 	village_.get_Ressources()->change_Ressource(1,5);
 	village_.get_Ressources()->change_Ressource(2,20);
-	village_.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content", &village_) );
-	village_.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant", &village_) );
+	village_.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content") );
+	village_.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant") );
 
 	//Lance 3 tours de jeu
 	for (int i = 1; i<=3; i++){
@@ -165,7 +165,7 @@ void SystemeJeu::promouvoir() {
 
 	cout << " Indiquez l'id du villageois a qui vous voulez donner ordre : \n >";
 	int villageoischoisi(0);
-	
+
 	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { // tant que l'on ne saisie pas un nombre seul
 		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
 		cout << " >";
@@ -173,7 +173,7 @@ void SystemeJeu::promouvoir() {
 
     if ( !village_.existe_Villageois( villageoischoisi ) ) {
     	cout << " Ce villageois n'existe pas."<< endl;
-    	return; 
+    	return;
     }
 
     //Villageois* v = village_.get_Villageois( villageoischoisi );
@@ -198,7 +198,7 @@ void SystemeJeu::promouvoir() {
        	}
 }
 
-	
+
 
 
 

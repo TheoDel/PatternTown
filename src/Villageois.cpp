@@ -9,9 +9,9 @@ using namespace std;
 Villageois::Villageois() {}
 
 
-Villageois::Villageois( int id, std::string n, std::string d, Village* v ) :
+Villageois::Villageois( int id, std::string n, std::string d) :
 	id_(id), nom_(n), vie_(100), energie_(5),
-	satisfaction_(0), village_(v), description_(d) {}
+	satisfaction_(0), description_(d) {}
 
 
 Villageois::~Villageois() {}
@@ -60,12 +60,6 @@ int Villageois::get_Satisfaction() {
 }
 
 
-// retourne un pointeur sur le village auquel appartient le villageois
-Village* Villageois::get_Village() {
-	return village_;
-}
-
-
 // ici, ne sert à rien !! (se retourne lui-même)
 Villageois* Villageois::get_Villageois() {
 	return this;
@@ -83,13 +77,6 @@ Villageois* Villageois::get_Villageois() {
 void Villageois::set_Description( string d ){
 	description_ = d;
 }
-
-
-// modifie le village de rattachement
-void Villageois::set_Village( Village* v ) {
-	village_ = v;
-}
-
 
 // incremente ou decremente la vie du villageois
 void Villageois::change_Vie( int val ) {

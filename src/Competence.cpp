@@ -24,7 +24,7 @@ Competence::~Competence() {
 // @Override
 // retourne l'id du villageois
 int Competence::get_id() {
-	return villageois_.get_id();	
+	return villageois_.get_id();
 }
 
 
@@ -64,13 +64,6 @@ int Competence::get_Satisfaction() {
 
 
 // @Override
-// retourne le village auquel appartient le villageois
-Village* Competence::get_Village() {
-	return villageois_.get_Village();
-}
-
-
-// @Override
 // retourne le villageois décoré (par ex. pour supprimer la competence actuelle)
 Villageois* Competence::get_Villageois() {
 	return &villageois_;
@@ -88,13 +81,6 @@ Villageois* Competence::get_Villageois() {
 // modifie la description du villageois
 void Competence::set_Description( string d ){
 	villageois_.set_Description(d);
-}
-
-
-// @Override
-// modifie le village de rattachement
-void Competence::set_Village( Village* v ) {
-	villageois_.set_Village(v);
 }
 
 

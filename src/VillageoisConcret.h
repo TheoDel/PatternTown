@@ -15,7 +15,7 @@ class VillageoisConcret : public Villageois {
     public :
 
 		// Constructeurs/Destructeurs
-			VillageoisConcret( int id, std::string n, std::string d, Village* v );
+			VillageoisConcret( int id, std::string n, std::string d);
 			~VillageoisConcret();
 
 };

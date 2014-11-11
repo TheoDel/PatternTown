@@ -1,0 +1,70 @@
+#include "Observer.h"
+
+#include "Observable.h"
+
+using namespace std;
+
+
+
+// Constructeur par défaut
+Observer::Observer() {}
+
+
+Observer::Observer( Observable* observable ) : observable_(observable) {
+	if ( observable != nullptr ) { observable_->enregistrerObs( this ); }
+}
+
+
+Observer::~Observer() {}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+// retourne l'observable associé
+Observable* Observer::get_Observable() {
+	return observable_;
+}
+
+
+// retourne la donnee
+string Observer::get_Donnee() {
+	if ( observable_ == nullptr ) { return "<Aucune donnee disponible>"; }
+	return donnee_;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+// modifie l'observable actuel
+void Observer::set_Observable( Observable* obs ) {
+	if ( observable_ != nullptr ) {	// si deja enregistré dans observable
+		observable_->supprimerObs( this );
+	}
+	observable_ = obs;
+	if ( obs != nullptr ) {	// si le nouvel observable n'existe pas
+		observable_->enregistrerObs( this );
+	}
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+// actualise la donnee dans tous les observers
+void Observer::actualiser( string donnee ) {
+	donnee_ = donnee;
+}

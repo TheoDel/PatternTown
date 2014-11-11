@@ -70,6 +70,20 @@ Villageois* Competence::get_Villageois() {
 }
 
 
+// @Override
+// retourne la donnee
+string Competence::get_Donnee() {
+	return villageois_.get_Donnee();
+}
+
+
+// @Override
+// retourne l'observable associé
+Observable* Competence::get_Observable() {
+	return villageois_.get_Observable();
+}
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -99,4 +113,21 @@ void Competence::change_Energie( int val ) {
 // incremente ou decremente la satisfaction ( = points d'action ) du villageois
 void Competence::change_Satisfaction( int val ) {
 	villageois_.change_Satisfaction(val);
+}
+
+
+void Competence::set_Observable( Observable* obs ) {
+	villageois_.set_Observable(obs);
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+void Competence::actualiser( string d ) {
+	villageois_.actualiser(d);
 }

@@ -1,11 +1,13 @@
 #ifndef VILLAGEOIS_H
 #define VILLAGEOIS_H
 
+#include "Observable.h"
+#include "Observer.h"
 #include <string>
 
 
 // Classe ( Abstraite ) de Villageois
-class Villageois {
+class Villageois : public Observer {
 
     private:
 
@@ -25,7 +27,8 @@ class Villageois {
 
 		// Constructeurs/Destructeurs
 			Villageois();
-			Villageois( int id, std::string n, std::string d);
+			Villageois( int id, std::string nom, std::string description );
+			Villageois( int id, std::string nom, std::string description, Observable* obs );
 			virtual ~Villageois() = 0;
 
 		// Getters

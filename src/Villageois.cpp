@@ -1,17 +1,33 @@
 #include "Villageois.h"
 
+//#include "Observable.h"
 #include <iostream>
 
 using namespace std;
 
 
 
+// constructeur par dÃ©faut
 Villageois::Villageois() {}
 
 
-Villageois::Villageois( int id, std::string n, std::string d) :
-	id_(id), nom_(n), vie_(100), energie_(5),
+// Constructeur SANS observable
+Villageois::Villageois( int id, std::string nom, std::string description ) :
+	Villageois( id, nom, description, nullptr ) {}
+
+
+// Constructeur AVEC observable
+Villageois::Villageois( int id, std::string nom, std::string description, Observable* obs ) :
+	Observer(obs), id_(id), nom_(nom), vie_(100), energie_(5),
+	satisfaction_(0), description_(description) {}
+
+
+/*
+// Constructeur AVEC observable
+Villageois::Villageois( int id, std::string n, std::string d, Observable* obs ) :
+	Observer(obs), id_(id), nom_(n), vie_(100), energie_(5),
 	satisfaction_(0), description_(d) {}
+*/
 
 
 Villageois::~Villageois() {}
@@ -60,7 +76,7 @@ int Villageois::get_Satisfaction() {
 }
 
 
-// ici, ne sert à rien !! (se retourne lui-même)
+// ici, ne sert ï¿½ rien !! (se retourne lui-mï¿½me)
 Villageois* Villageois::get_Villageois() {
 	return this;
 }
@@ -103,7 +119,7 @@ void Villageois::change_Satisfaction( int val ) {
 
 
 
-// renvoie un entier lié a la quantite de bois coupé
+// renvoie un entier liï¿½ a la quantite de bois coupï¿½
 int Villageois::recolter_Bois() {
     if (energie_ < 1){
         cout << nom_ << ", non content d'etre incompetent pour couper du bois, est trop fatigue..." << endl;
@@ -116,10 +132,10 @@ int Villageois::recolter_Bois() {
 }
 
 
-// renvoie un entier lié a la quantite de nourriture recoltée
+// renvoie un entier liï¿½ a la quantite de nourriture recoltï¿½e
 int Villageois::recolter_Nourriture() {
     if (energie_ < 1){
-        cout << nom_ << ", non content d'etre incompetent pour récolter de la nourriture, est trop fatigue..." << endl;
+        cout << nom_ << ", non content d'etre incompetent pour rï¿½colter de la nourriture, est trop fatigue..." << endl;
         return 0;
     } else {
         cout << nom_ << " recolte de la nourriture comme un souillon..." << endl;

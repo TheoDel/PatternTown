@@ -1,8 +1,10 @@
 #ifndef VILLAGE_H
 #define VILLAGE_H
 
-class Villageois;
-class Batiment;
+//class Villageois;
+//class Batiment;
+#include "Villageois.h"
+#include "Batiment.h"
 #include "Ressource.h"
 #include <vector>
 #include <string>
@@ -41,12 +43,13 @@ class Village {
 		// Setters
 			void add_Villageois( Villageois* v );
 			void change_Villageois( Villageois* v );
-			void add_Batiments( Batiment* b );
+			void add_Batiment( Batiment* b );
 			void change_Ressource( int id, int quantite );
 			void remove_Villageois( int id );
 			void remove_Batiment( int id );
 
 		void afficher_Villageois();
+		void afficher_Batiments();
 		void faire_Recolter_Villageois(int idRessource, int idVillageois);
 
 

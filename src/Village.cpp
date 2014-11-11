@@ -4,6 +4,7 @@
 #include "Batiment.h"
 #include "Ressource.h"
 #include <iostream>
+#include <vector>
 
 using namespace std;
 
@@ -76,7 +77,7 @@ Villageois* Village::get_Villageois( int id ) {
 }
 
 
-// retourne le batiment correspondant a id
+// retourne le batiment correspondant aï¿½id
 // id doit exister dans le vector !
 Batiment* Village::get_Batiment( int id ) {
 	for ( Batiment* b : batiments_ ) {
@@ -88,7 +89,7 @@ Batiment* Village::get_Batiment( int id ) {
 }
 
 
-// retourne la quantité de la ressource id
+// retourne la quantitï¿½ de la ressource id
 int Village::get_Ressource( int id ) {
 	return ressources_.get_Ressource(id);
 }
@@ -119,7 +120,7 @@ int Village::get_Constructions() {
 
 
 // ajoute un villageois
-// si déja present, ne fait rien
+// si dï¿½ja present, ne fait rien
 void Village::add_Villageois( Villageois* v ) {
 	if ( !existe_Villageois( v->get_id() ) ) {
 		villageois_.push_back(v);
@@ -129,26 +130,29 @@ void Village::add_Villageois( Villageois* v ) {
 
 // modifie un villageois (decoration)
 void Village::change_Villageois( Villageois* nv ) {
-	int i = 0;
+	size_t i = 0;
 	while ( i<villageois_.size() and villageois_[i]->get_id() != nv->get_id() ) { ++i; }
 	villageois_[i] = nv;
 }
 
 
 // ajoute un batiment
-// si déja present, ne fait rien
-void Village::add_Batiments( Batiment* b ) {
+// si dï¿½ja present, ne fait rien
+void Village::add_Batiment( Batiment* b ) {
 	if ( !existe_Batiment( b->get_id() ) ) {
 		batiments_.push_back(b);
 	}
 }
 
 
-// supprime le villageois correspondant à id
+// supprime le villageois correspondant ï¿½ id
 // si absent, ne fait rien
 void Village::remove_Villageois( int id ) {
 	for( size_t i=0 ; i<villageois_.size() ; ++i ) {
 		if ( villageois_[i]->get_id() == id ) {
+			if ( villageois_[i]->get_Observable() != nullptr ) {
+				villageois_[i]->get_Observable()->supprimerObs( villageois_[i] );
+			}
 			delete villageois_[i];
 			villageois_.erase( villageois_.begin() + i );
 		}
@@ -156,11 +160,14 @@ void Village::remove_Villageois( int id ) {
 }
 
 
-// supprime le batiment correspondant à id
+// supprime le batiment correspondant ï¿½ id
 // si absent, ne fait rien
 void Village::remove_Batiment( int id ) {
 	for( size_t i=0 ; i<batiments_.size() ; ++i ) {
 		if ( batiments_[i]->get_id() == id ) {
+			for ( Observer* o : batiments_[i]->get_Observers() ) {
+				o->set_Observable( nullptr );
+			}
 			delete batiments_[i];
 			batiments_.erase( batiments_.begin() + i );
 		}
@@ -175,11 +182,22 @@ void Village::remove_Batiment( int id ) {
 
 
 
+// affiche la liste des villageois
 void Village::afficher_Villageois() {
 	for ( Villageois* v : villageois_ ) {
 		v->afficher();
 	}
 }
+
+
+// affiche la liste des batiments
+void Village::afficher_Batiments() {
+	for ( Batiment* b : batiments_ ) {
+		b->afficher();
+	}
+}
+
+
 
 void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
     if (idRessource == 1) {

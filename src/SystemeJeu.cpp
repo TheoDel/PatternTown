@@ -1,10 +1,14 @@
 #include "SystemeJeu.h"
-
 #include "Village.h"
+#include "Observer.h"
+#include "Villageois.h"
 #include "VillageoisConcret.h"
-#include "Ressource.h"
-#include "Batiment.h"
+#include "Competence.h"
 #include "Bucheron.h"
+#include "Observable.h"
+#include "Batiment.h"
+#include "Maison.h"
+#include "Ressource.h"
 
 #include <iostream>
 #include <string>
@@ -36,8 +40,9 @@ void SystemeJeu::lancerJeu() {
 	//Création du jeu de données de départ
 	village_.get_Ressources()->change_Ressource(1,5);
 	village_.get_Ressources()->change_Ressource(2,20);
-	village_.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content") );
-	village_.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant") );
+	village_.add_Batiment( new Maison ( 1, "Maison_1", "taudis" ) );
+	village_.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content", village_.get_Batiment(1) ) );
+	village_.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant", village_.get_Batiment(1) ) );
 
 	//Lance 3 tours de jeu
 	for (int i = 1; i<=3; i++){

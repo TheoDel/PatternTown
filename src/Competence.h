@@ -20,21 +20,26 @@ class Competence : public Villageois {
 			virtual ~Competence() = 0;
 
 		// Getters
-			int get_id();						//@Override
-			std::string get_Nom();				//@Override
-			std::string get_Description();		//@Override
-			int get_Vie();						//@Override
-			int get_Energie();					//@Override
-			int get_Satisfaction();				//@Override
-			Village* get_Village();				//@Override
-			Villageois* get_Villageois(); 		//@Override
+			int get_id();					//@Override
+			std::string get_Nom();			//@Override
+			std::string get_Description();	//@Override
+			int get_Vie();					//@Override
+			int get_Energie();				//@Override
+			int get_Satisfaction();			//@Override
+			//Village* get_Village();		//@Override
+			Villageois* get_Villageois(); 	//@Override
+			std::string get_Donnee();		//@Override
+			Observable* get_Observable();	//@Override
 
 		// Setters
 			void set_Description( std::string d );	//@Override
-			void set_Village( Village* v );			//@Override
+			//void set_Village( Village* v );		//@Override
 			void change_Vie( int val );				//@Override
 			void change_Energie( int val );			//@Override
 			void change_Satisfaction( int val );	//@Override
+			void set_Observable( Observable* obs ); //@Override
+
+		void actualiser( std::string d );	//@Override
 
 };
 

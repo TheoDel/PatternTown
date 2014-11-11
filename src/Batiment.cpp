@@ -1,12 +1,13 @@
 #include "Batiment.h"
 
-#include <string>
+#include <iostream>
 
 using namespace std;
 
 
 
-Batiment::Batiment( int id, string nom ) : id_(id), nom_(nom) {}
+Batiment::Batiment( int id, string nom, string description ) :
+		id_(id), nom_(nom), description_(description) {}
 
 
 Batiment::~Batiment() {}
@@ -19,11 +20,37 @@ Batiment::~Batiment() {}
 
 
 
+// retourne l'id du batiment
 int Batiment::get_id(){
 	return id_;
 }
 
 
+// retourne le nom (type) du batiment
 string Batiment::get_Nom(){
 	return nom_;
+}
+
+
+// retourne la description du atiment
+string Batiment::get_Description() {
+	return description_;
+}
+
+
+// modifie la descriptiondu batiment
+void Batiment::set_Description( string d ) {
+	description_ = d;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+void Batiment::afficher() {
+	cout << get_id() << "-" << get_Nom() << " : " << get_Description() << endl;
 }

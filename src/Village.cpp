@@ -73,11 +73,11 @@ Villageois* Village::get_Villageois( int id ) {
 			return v;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 
-// retourne le batiment correspondant a�id
+// retourne le batiment correspondant a id
 // id doit exister dans le vector !
 Batiment* Village::get_Batiment( int id ) {
 	for ( Batiment* b : batiments_ ) {
@@ -85,11 +85,11 @@ Batiment* Village::get_Batiment( int id ) {
 			return b;
 		}
 	}
-	return 0;
+	return nullptr;
 }
 
 
-// retourne la quantit� de la ressource id
+// retourne la quantité de la ressource id
 int Village::get_Ressource( int id ) {
 	return ressources_.get_Ressource(id);
 }
@@ -145,7 +145,7 @@ void Village::add_Batiment( Batiment* b ) {
 }
 
 
-// supprime le villageois correspondant � id
+// supprime le villageois correspondant à id
 // si absent, ne fait rien
 void Village::remove_Villageois( int id ) {
 	for( size_t i=0 ; i<villageois_.size() ; ++i ) {
@@ -160,7 +160,7 @@ void Village::remove_Villageois( int id ) {
 }
 
 
-// supprime le batiment correspondant � id
+// supprime le batiment correspondant à id
 // si absent, ne fait rien
 void Village::remove_Batiment( int id ) {
 	for( size_t i=0 ; i<batiments_.size() ; ++i ) {
@@ -170,6 +170,37 @@ void Village::remove_Batiment( int id ) {
 			}
 			delete batiments_[i];
 			batiments_.erase( batiments_.begin() + i );
+		}
+	}
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+// faire recolter la ressource idRessource par le villageois idVillageois
+// le cas écheant, l'ajoute aux ressources et modifie l'energie du villageois
+void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
+	Villageois* v = get_Villageois(idVillageois);
+	if ( existe_Villageois( v->get_id() ) ) {
+		if		(idRessource == 1)	{ ressources_.change_Ressource(1,v->recolter_Bois()); }
+		else if (idRessource == 2)	{ ressources_.change_Ressource(2,v->recolter_Nourriture()); }
+	}
+}
+
+
+// si possible, faire recolter le batiment b par le villageois idVillageois
+//
+void Village::faire_Construire( Batiment* b, int idVillageois ) {
+	Villageois* v = get_Villageois(idVillageois);
+	if ( existe_Villageois( v->get_id() ) ) {
+		if ( v->construire_Batiment(b) != nullptr ) {
+			cout << v->get_Nom() << " a construit " << b->get_Nom() << endl;
+			add_Batiment(b);
 		}
 	}
 }
@@ -196,14 +227,3 @@ void Village::afficher_Batiments() {
 		b->afficher();
 	}
 }
-
-
-
-void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
-    if (idRessource == 1) {
-        ressources_.change_Ressource(1,get_Villageois(idVillageois)->recolter_Bois());
-    }
-    else if (idRessource == 2) {
-        ressources_.change_Ressource(2,get_Villageois(idVillageois)->recolter_Nourriture());
-    }
-};

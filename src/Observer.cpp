@@ -7,12 +7,7 @@ using namespace std;
 
 
 // Constructeur par défaut
-Observer::Observer() {}
-
-
-Observer::Observer( Observable* observable ) : observable_(observable) {
-	if ( observable != nullptr ) { observable_->enregistrerObs( this ); }
-}
+Observer::Observer() : observable_(nullptr) {}
 
 
 Observer::~Observer() {}
@@ -64,7 +59,7 @@ void Observer::set_Observable( Observable* obs ) {
 
 
 
-// actualise la donnee dans tous les observers
+// actualise la donnee
 void Observer::actualiser( string donnee ) {
 	donnee_ = donnee;
 }

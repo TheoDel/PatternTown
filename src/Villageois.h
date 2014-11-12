@@ -3,6 +3,7 @@
 
 #include "Observable.h"
 #include "Observer.h"
+#include "Batiment.h"
 #include <string>
 
 
@@ -28,7 +29,6 @@ class Villageois : public Observer {
 		// Constructeurs/Destructeurs
 			Villageois();
 			Villageois( int id, std::string nom, std::string description );
-			Villageois( int id, std::string nom, std::string description, Observable* obs );
 			virtual ~Villageois() = 0;
 
 		// Getters
@@ -49,7 +49,7 @@ class Villageois : public Observer {
 		// Actions de jeu
 			virtual int recolter_Bois();
 			virtual int recolter_Nourriture();
-			virtual void construire_Batiment();
+			virtual Batiment* construire_Batiment( Batiment* b );
 
 		void afficher();
 

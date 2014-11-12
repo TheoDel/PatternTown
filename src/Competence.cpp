@@ -98,24 +98,29 @@ void Competence::set_Description( string d ){
 }
 
 
+// @Override
 // incremente ou decremente la vie du villageois
 void Competence::change_Vie( int val ) {
 	villageois_.change_Vie(val);
 }
 
 
+// @Override
 // incremente ou decremente l'energie ( = points d'action ) du villageois
 void Competence::change_Energie( int val ) {
 	villageois_.change_Energie(val);
 }
 
 
+// @Override
 // incremente ou decremente la satisfaction ( = points d'action ) du villageois
 void Competence::change_Satisfaction( int val ) {
 	villageois_.change_Satisfaction(val);
 }
 
 
+// @Override
+// modifie l'observable actuel
 void Competence::set_Observable( Observable* obs ) {
 	villageois_.set_Observable(obs);
 }
@@ -128,13 +133,24 @@ void Competence::set_Observable( Observable* obs ) {
 
 
 
+// @Override
+// renvoie un entier lié a la quantite de bois coupé
 int Competence::recolter_Bois() {
 	return villageois_.recolter_Bois();
 }
 
 
+// @Override
+// renvoie un entier lié a la quantite de nourriture recoltée
 int Competence::recolter_Nourriture() {
 	return villageois_.recolter_Nourriture();
+}
+
+
+// @Override
+// cree un nouveau batiment
+Batiment* Competence::construire_Batiment( Batiment* b ) {
+	return villageois_.construire_Batiment(b);
 }
 
 
@@ -145,6 +161,8 @@ int Competence::recolter_Nourriture() {
 
 
 
+// @Override
+// actualise la donnee
 void Competence::actualiser( string d ) {
 	villageois_.actualiser(d);
 }

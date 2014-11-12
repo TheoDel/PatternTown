@@ -33,13 +33,13 @@ string Batiment::get_Nom(){
 }
 
 
-// retourne la description du atiment
+// retourne la description du batiment
 string Batiment::get_Description() {
 	return description_;
 }
 
 
-// modifie la descriptiondu batiment
+// modifie la description du batiment
 void Batiment::set_Description( string d ) {
 	description_ = d;
 }
@@ -52,6 +52,7 @@ void Batiment::set_Description( string d ) {
 
 
 
+// affiche le batiment
 void Batiment::afficher() {
-	cout << get_id() << "-" << get_Nom() << " : " << get_Description() << endl;
+	 cout << get_id() << "-" << get_Nom() << " : " << get_Description() << endl;
 }

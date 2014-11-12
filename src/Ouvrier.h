@@ -14,7 +14,7 @@ class Ouvrier : public Competence {
 			~Ouvrier();
 
 		// Getters
-			void construire_Batiment();		//@Override
+			Batiment* construire_Batiment( Batiment* b);	//@Override
 
 };
 

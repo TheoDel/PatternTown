@@ -23,6 +23,8 @@ Fermier::~Fermier() {}
 
 
 
+// @Override
+// renvoie un entier lié a la quantite de nourriture recoltée
 int Fermier::recolter_Nourriture() {
     if ( villageois_.get_Energie() < 1 ){
         cout << villageois_.get_Nom() << ", a beau etre un pro pour cultiver, il est trop fatigue..." << endl ;
@@ -33,8 +35,3 @@ int Fermier::recolter_Nourriture() {
         return 5;
     }
 }
-
-
-
-
-

@@ -42,7 +42,7 @@ class Competence : public Villageois {
 		// Actions de jeu
 			virtual int recolter_Bois();
 			virtual int recolter_Nourriture();
-			//virtual void construire_Batiment();
+			virtual Batiment* construire_Batiment( Batiment* b );
 
 		void actualiser( std::string d );	//@Override
 

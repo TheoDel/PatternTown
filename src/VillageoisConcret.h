@@ -16,7 +16,6 @@ class VillageoisConcret : public Villageois {
 
 		// Constructeurs/Destructeurs
 			VillageoisConcret( int id, std::string nom, std::string description );
-			VillageoisConcret( int id, std::string nom, std::string description, Observable* obs);
 			~VillageoisConcret();
 
 };

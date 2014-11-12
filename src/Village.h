@@ -39,7 +39,6 @@ class Village {
 			int get_Population();
 			int get_Constructions();
 
-
 		// Setters
 			void add_Villageois( Villageois* v );
 			void change_Villageois( Villageois* v );
@@ -48,9 +47,12 @@ class Village {
 			void remove_Villageois( int id );
 			void remove_Batiment( int id );
 
+		// Actions de jeu
+			void faire_Recolter_Villageois(int idRessource, int idVillageois);
+			void faire_Construire( Batiment* b, int idVillageois );
+
 		void afficher_Villageois();
 		void afficher_Batiments();
-		void faire_Recolter_Villageois(int idRessource, int idVillageois);
 
 
 };

@@ -18,7 +18,6 @@ class Observer {
 
 		// Constructeurs/Destructeurs
 			Observer();
-			Observer( Observable* o );
 			virtual ~Observer() = 0;
 
 		// Getters

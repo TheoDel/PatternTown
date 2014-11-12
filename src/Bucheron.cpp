@@ -23,6 +23,8 @@ Bucheron::~Bucheron() {}
 
 
 
+// @Override
+// renvoie un entier lié a la quantite de bois coupé
 int Bucheron::recolter_Bois() {
     if ( villageois_.get_Energie() < 1 ){
         cout << villageois_.get_Nom() << ", a beau etre un pro pour couper du bois, il est trop fatigue..." << endl ;
@@ -33,9 +35,3 @@ int Bucheron::recolter_Bois() {
         return 5;
     }
 }
-
-/*
-void Bucheron::afficher() {
-	villageois_->afficher();
-	cout << ", " << description_;
-}*/

@@ -5,6 +5,8 @@
 #include "VillageoisConcret.h"
 #include "Competence.h"
 #include "Bucheron.h"
+#include "Fermier.h"
+#include "Ouvrier.h"
 #include "Observable.h"
 #include "Batiment.h"
 #include "Maison.h"
@@ -70,17 +72,27 @@ int main()
 
 
     //Tests decorator
-	/*
+
 	Villageois* v1 = new VillageoisConcret ( 1, "Tota", "Normal");
-	v1->change_Energie(-2);
-	//v1->afficher();
+	//v1->change_Energie(-2);
+	v1->afficher();
 	//cout << v1->get_Energie() << endl;
 
 	v1 = new Bucheron (*v1);
-	//v1->afficher();
-	//cout << v1->get_Energie() << endl;
+	v1 = new Ouvrier (*v1);
+	v1 = new Fermier (*v1);
 
-	v1 = new Bucheron (*v1);
+
+	v1->afficher();
+	cout << v1->get_Energie() << endl;
+	cout << v1->recolter_Bois() << endl;
+	cout << v1->recolter_Nourriture() << endl;
+
+	cout << v1->get_Energie() << endl;
+
+
+
+	/*v1 = new Bucheron (*v1);
 	v1->afficher();
 	cout << v1->recolter_Bois() << endl;
 
@@ -96,9 +108,9 @@ int main()
 
 
 	//Tests Observer
-
-	village.add_Batiment( new Maison ( 1, "Maison_1", "taudis" ) );
-	village.add_Batiment( new Maison ( 2, "Maison_2", "palace" ) );
+/*
+	village.add_Batiment( new Maison ( "Maison_1", "taudis" ) );
+	village.add_Batiment( new Maison ( "Maison_2", "palace" ) );
 
 	village.add_Villageois( new VillageoisConcret(1, "Toto",  "villageois content" ) );
 	village.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant",  village.get_Batiment(1) ) );
@@ -109,7 +121,11 @@ int main()
 	//village.remove_Villageois(2);
 	//village.remove_Batiment(2);
 	//village.afficher_Villageois();
-	//village.afficher_Batiments();
+	village.afficher_Batiments();
+	village.remove_Batiment(2);
+	village.add_Batiment( new Maison ( "Maison_2", "palace" ) );
+	village.afficher_Batiments();
+
 
 	village.get_Batiment(1)->set_Donnee("ouvert");
 	village.get_Batiment(2)->set_Donnee("fermé");
@@ -123,7 +139,7 @@ int main()
 	cout << village.get_Villageois(1)->get_Donnee() << endl;
 	cout << village.get_Villageois(2)->get_Donnee() << endl;
 	cout << village.get_Villageois(3)->get_Donnee() << endl << endl;
-
+*/
 
 
 

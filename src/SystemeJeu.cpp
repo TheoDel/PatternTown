@@ -40,7 +40,7 @@ void SystemeJeu::lancerJeu() {
 	//Création du jeu de données de départ
 	village_.get_Ressources()->change_Ressource(1,5);
 	village_.get_Ressources()->change_Ressource(2,20);
-	village_.add_Batiment( new Maison ( 1, "Maison_1", "taudis" ) );
+	village_.add_Batiment( new Maison ( "Maison_1", "taudis" ) );
 	village_.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content", village_.get_Batiment(1) ) );
 	village_.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant", village_.get_Batiment(1) ) );
 

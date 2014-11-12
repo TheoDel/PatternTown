@@ -3,11 +3,12 @@
 #include <iostream>
 
 using namespace std;
+int Batiment::NEXTID_ = 1;
 
 
 
-Batiment::Batiment( int id, string nom, string description ) :
-		id_(id), nom_(nom), description_(description) {}
+Batiment::Batiment( string nom, string description ) :
+		id_(NEXTID_), nom_(nom), description_(description) { ++NEXTID_; }
 
 
 Batiment::~Batiment() {}

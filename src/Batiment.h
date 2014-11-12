@@ -8,6 +8,11 @@
 // Classe (Abstraite) de Batiment
 class Batiment : public Observable {
 
+	private:
+		// pour l'attribution automatique de id
+		static int NEXTID_;
+
+
 	protected :
 
 		int id_;
@@ -18,7 +23,7 @@ class Batiment : public Observable {
 	public :
 
 		// Constructeurs/Destructeurs
-			Batiment( int id, std::string nom, std::string description );
+			Batiment( std::string nom, std::string description );
 			virtual ~Batiment() = 0;
 
 		// Getters/Setters

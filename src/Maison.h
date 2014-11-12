@@ -17,7 +17,7 @@ class Maison : public Batiment {
 	public:
 
 		// Constructeurs/Destructeurs
-			Maison( int id, std::string nom, std::string description );
+			Maison( std::string nom, std::string description );
 			~Maison();
 
 };

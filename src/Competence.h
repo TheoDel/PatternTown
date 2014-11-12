@@ -39,6 +39,11 @@ class Competence : public Villageois {
 			void change_Satisfaction( int val );	//@Override
 			void set_Observable( Observable* obs ); //@Override
 
+		// Actions de jeu
+			virtual int recolter_Bois();
+			virtual int recolter_Nourriture();
+			//virtual void construire_Batiment();
+
 		void actualiser( std::string d );	//@Override
 
 };

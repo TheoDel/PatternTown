@@ -35,6 +35,9 @@ class Village {
 			std::string get_Nom();
 			Villageois* get_Villageois( int id );
 			Batiment* get_Batiment( int id );
+
+			std::vector<Villageois*> get_villageois();
+			std::vector<Batiment*> get_batiments();
 			Ressource* get_Ressources();
 			int get_Ressource( int id );
 			int get_Population();

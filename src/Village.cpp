@@ -98,6 +98,14 @@ int Village::get_Ressource( int id ) {
 	return ressources_.get_Ressource(id);
 }
 
+std::vector<Villageois*> Village::get_villageois(){
+	return villageois_;
+}
+
+std::vector<Batiment*> Village::get_batiments(){
+	return batiments_;
+}
+
 // retourne les ressources
 Ressource* Village::get_Ressources() {
 	return &ressources_;

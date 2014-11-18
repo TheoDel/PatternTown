@@ -1,13 +1,13 @@
 #ifndef VILLAGE_H
 #define VILLAGE_H
 
-//class Villageois;
-//class Batiment;
+#include "EtatVillage.h"
 #include "Villageois.h"
 #include "Batiment.h"
 #include "Ressource.h"
 #include <vector>
 #include <string>
+
 
 
 class Village {
@@ -18,6 +18,7 @@ class Village {
 		std::vector<Villageois*> villageois_;
 		std::vector<Batiment*> batiments_;
 		Ressource ressources_;
+		EtatVillage* etatVillage_;
 
 
 	public :

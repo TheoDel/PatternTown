@@ -1,5 +1,6 @@
 #include "Village.h"
 
+#include "EtatVillage.h"
 #include "Villageois.h"
 #include "Batiment.h"
 #include "Ressource.h"
@@ -10,7 +11,10 @@ using namespace std;
 
 
 
-Village::Village( string nom ) : nom_(nom) {}
+Village::Village( string nom ) {
+	nom_ = nom;
+	etatVillage_= new EtatVillage(this);
+}
 
 
 Village::~Village() {

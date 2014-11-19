@@ -6,8 +6,8 @@ using namespace std;
 
 
 
-VillageoisConcret::VillageoisConcret( int id, string nom, string description ) :
-	Villageois( id, nom, description ) {}
+VillageoisConcret::VillageoisConcret( string nom, string description ) :
+	Villageois( nom, description ) {}
 
 
 VillageoisConcret::~VillageoisConcret() {}

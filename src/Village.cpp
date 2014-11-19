@@ -151,7 +151,7 @@ void Village::change_Villageois( Villageois* nv ) {
 // ajoute un batiment
 // si d�ja present, ne fait rien
 void Village::add_Batiment( Batiment* b ) {
-	if ( !existe_Batiment( b->get_id() ) ) {
+	if ( ( b != nullptr ) && !existe_Batiment( b->get_id() ) ) {
 		batiments_.push_back(b);
 	}
 }
@@ -186,9 +186,12 @@ void Village::remove_Batiment( int id ) {
 	}
 }
 
+
 void Village::change_Ressource(int id, int quantite) {
 	ressources_.change_Ressource(id, quantite);
 }
+
+
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -204,7 +207,7 @@ void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
 
 
 // si possible, faire recolter le batiment b par le villageois idVillageois
-//
+// sinon, ne fait rien
 void Village::faire_Construire( Batiment* b, int idVillageois ) {
 	etatVillage_->faire_Construire(b, idVillageois);
 }

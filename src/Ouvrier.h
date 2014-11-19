@@ -13,8 +13,8 @@ class Ouvrier : public Competence {
 			Ouvrier( Villageois& v );
 			~Ouvrier();
 
-		// Getters
-			Batiment* construire_Batiment( Batiment* b);	//@Override
+		// Actions de jeu
+			Batiment* construire_Batiment( Batiment* b );	//@Override
 
 };
 

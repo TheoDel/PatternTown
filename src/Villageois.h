@@ -12,6 +12,14 @@ class Villageois : public Observer {
 
     private:
 
+		// pour l'attribution automatique de id
+		static int NEXTID_;
+
+		// < Observer >
+		Observable* observable_;
+		std::string donnee_;
+
+		// Attributs propres
 		int id_;
 		std::string nom_;
 		int vie_;
@@ -28,7 +36,7 @@ class Villageois : public Observer {
 
 		// Constructeurs/Destructeurs
 			Villageois();
-			Villageois( int id, std::string nom, std::string description );
+			Villageois( std::string nom, std::string description );
 			virtual ~Villageois() = 0;
 
 		// Getters
@@ -45,6 +53,12 @@ class Villageois : public Observer {
 			virtual void change_Vie( int val );
 			virtual void change_Energie( int val );
 			virtual void change_Satisfaction( int val );
+
+		// < Observer >
+			virtual Observable* get_Observable();
+			virtual std::string get_Donnee();
+			virtual void set_Observable( Observable* obs );
+			void actualiser( std::string donnee );
 
 		// Actions de jeu
 			virtual int recolter_Bois();

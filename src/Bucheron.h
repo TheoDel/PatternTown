@@ -13,7 +13,7 @@ class Bucheron : public Competence {
 			Bucheron( Villageois& v );
 			~Bucheron();
 
-		// Getters
+		// Actions de jeu
 			int recolter_Bois();			//@Override
 
 };

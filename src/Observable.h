@@ -2,35 +2,18 @@
 #define OBSERVABLE_H
 
 class Observer;
-#include <string>
-#include <vector>
 
 
-// Classe abstraite Observable
+// Interface Observable
 class Observable {
-
-	protected:
-
-		std::vector<Observer*> observers_;
-		std::string donnee_;
-
 
 	public:
 
-		// Constructeurs/Destructeurs
-			Observable();
-			virtual ~Observable() = 0;
+		virtual ~Observable() {};
 
-		// Getters
-			std::string get_Donnee();
-			std::vector<Observer*> get_Observers();
-
-		//Setters
-			void set_Donnee( std::string donnee );
-
-		void enregistrerObs( Observer* observer );
-		void supprimerObs( Observer* observer );
-		void notifierObs();
+		virtual void enregistrerObs( Observer* observer ) = 0;
+		virtual void supprimerObs( Observer* observer ) = 0;
+		virtual void notifierObs() = 0;
 
 };
 

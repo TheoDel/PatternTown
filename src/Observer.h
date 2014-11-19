@@ -5,30 +5,16 @@ class Observable;
 #include <string>
 
 
-// Classe abstraite Observer
+// Interface Observer
 class Observer {
-
-	protected:
-
-		Observable* observable_;
-		std::string donnee_;
-
 
 	public :
 
-		// Constructeurs/Destructeurs
-			Observer();
-			virtual ~Observer() = 0;
+		virtual ~Observer() {};
 
-		// Getters
-			virtual int get_id() = 0;	// non implementer ici !!
-			virtual Observable* get_Observable();
-			virtual std::string get_Donnee();
-
-		//Setters
-			virtual void set_Observable( Observable* obs );
-
-		virtual void actualiser( std::string donnee );
+		virtual int get_id() = 0;	// pour Villageois !!
+		virtual void set_Observable( Observable* obs ) = 0;
+		virtual void actualiser( std::string donnee ) = 0;
 
 };
 

@@ -26,14 +26,12 @@ class Competence : public Villageois {
 			int get_Vie();					//@Override
 			int get_Energie();				//@Override
 			int get_Satisfaction();			//@Override
-			//Village* get_Village();		//@Override
 			Villageois* get_Villageois(); 	//@Override
 			std::string get_Donnee();		//@Override
 			Observable* get_Observable();	//@Override
 
 		// Setters
 			void set_Description( std::string d );	//@Override
-			//void set_Village( Village* v );		//@Override
 			void change_Vie( int val );				//@Override
 			void change_Energie( int val );			//@Override
 			void change_Satisfaction( int val );	//@Override

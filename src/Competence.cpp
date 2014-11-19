@@ -150,7 +150,7 @@ int Competence::recolter_Nourriture() {
 // @Override
 // cree un nouveau batiment
 Batiment* Competence::construire_Batiment( Batiment* b ) {
-	return villageois_.construire_Batiment(b);
+	return villageois_.construire_Batiment( b );
 }
 
 

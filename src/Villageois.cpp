@@ -1,18 +1,22 @@
 #include "Villageois.h"
+#include "Maison.h"
 
 #include <iostream>
 
 using namespace std;
+int Villageois::NEXTID_ = 1;
 
 
 
 // constructeur par défaut
 Villageois::Villageois() :
-	id_(0), nom_(""), vie_(0), energie_(0), satisfaction_(0), description_("") {}
+	observable_(nullptr), donnee_(""), id_(0), nom_(""), vie_(0),
+	energie_(0), satisfaction_(0), description_("") {}
 
 
-Villageois::Villageois( int id, std::string nom, std::string description ) :
-	id_(id), nom_(nom), vie_(100), energie_(50), satisfaction_(0), description_(description) {}
+Villageois::Villageois( std::string nom, std::string description ) :
+	observable_(nullptr), donnee_("<Aucun Observateur>"), id_(NEXTID_), nom_(nom),
+	vie_(100), energie_(50), satisfaction_(0), description_(description) { ++NEXTID_; }
 
 
 Villageois::~Villageois() {}
@@ -101,6 +105,45 @@ void Villageois::change_Satisfaction( int val ) {
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
+// < Observer >
+
+
+
+// retourne l'observable associé
+Observable* Villageois::get_Observable() {
+	return observable_;
+}
+
+
+// retourne la donnee
+string Villageois::get_Donnee() {
+	if ( observable_ == nullptr ) { return "<Aucun Observateur>"; }
+	return donnee_;
+}
+
+
+// modifie l'observable actuel
+void Villageois::set_Observable( Observable* obs ) {
+	if ( observable_ != nullptr ) {	// si deja enregistré dans observable
+		observable_->supprimerObs( this );
+	}
+	observable_ = obs;
+	if ( obs != nullptr ) {	// si le nouvel observable n'existe pas
+		observable_->enregistrerObs( this );
+	}
+}
+
+
+// actualise la donnee
+void Villageois::actualiser( string donnee ) {
+	donnee_ = donnee;
+}
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
 
 
 
@@ -133,7 +176,9 @@ int Villageois::recolter_Nourriture() {
 // cree un nouveau batiment
 Batiment* Villageois::construire_Batiment( Batiment* b ) {
 	cout << nom_ << " n'est pas un ouvrier" << endl;
-	return nullptr;
+	delete b; // suppression du batiment créé
+	b = nullptr;
+	return b;
 }
 
 
@@ -145,5 +190,5 @@ Batiment* Villageois::construire_Batiment( Batiment* b ) {
 
 
 void Villageois::afficher() {
-	cout << get_id() << "-" << get_Nom() << " : " << get_Description() << endl;
+	cout << "(ID:" << get_id() << ") " << get_Nom() << " : " << get_Description() << endl;
 }

@@ -1,14 +1,17 @@
 #ifndef BATIMENT_H
 #define BATIMENT_H
 
+class Observer;
 #include "Observable.h"
 #include <string>
+#include <vector>
 
 
 // Classe (Abstraite) de Batiment
 class Batiment : public Observable {
 
 	private:
+
 		// pour l'attribution automatique de id
 		static int NEXTID_;
 
@@ -18,6 +21,10 @@ class Batiment : public Observable {
 		int id_;
 		std::string nom_;
 		std::string description_;
+
+		// < Observable >
+		std::vector<Observer*> observers_;
+		std::string donnee_;
 
 
 	public :
@@ -31,6 +38,14 @@ class Batiment : public Observable {
 			std::string get_Nom();
 			std::string get_Description();
 			void set_Description( std::string d );
+
+		// < Observable >
+			std::string get_Donnee();
+			void set_Donnee( std::string donnee );
+			std::vector<Observer*> get_Observers();
+			void enregistrerObs( Observer* observer );
+			void supprimerObs( Observer* observer );
+			void notifierObs();
 
 		void afficher();
 

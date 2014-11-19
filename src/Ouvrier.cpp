@@ -26,11 +26,14 @@ Ouvrier::~Ouvrier() {}
 // @Override
 // cree un nouveau batiment
 Batiment* Ouvrier::construire_Batiment( Batiment* b ) {
-	if ( get_Energie() < 50 ) {
+	if ( get_Energie() < 10 ) {
 		cout << get_Nom() << " est trop fatigué pour construire !" << endl;
-		return nullptr;
+		delete b; // suppression du batiment créé
+		b = nullptr;
+		return b;
 	} else {
-		change_Energie(-50);
+		cout << get_Nom() << " a construit le batiment !" << endl;
+		change_Energie(-10);
 		return b;
 	}
 }

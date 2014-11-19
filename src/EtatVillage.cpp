@@ -25,11 +25,7 @@ void EtatVillage::faire_Recolter_Villageois(int idRessource, int idVillageois){
 }
 
 void EtatVillage::faire_Construire( Batiment* b, int idVillageois){
-	Villageois* v = village_->get_Villageois(idVillageois);
-	if ( village_->existe_Villageois( v->get_id() ) ) {
-		if ( v->construire_Batiment(b) != nullptr ) {
-			cout << v->get_Nom() << " a construit " << b->get_Nom() << endl;
-			village_->add_Batiment(b);
-		}
+	if ( village_->existe_Villageois(idVillageois) ) {
+		village_->add_Batiment( village_->get_Villageois(idVillageois)->construire_Batiment(b) );
 	}
 }

@@ -14,6 +14,7 @@ class SystemeJeu {
     	void lancerTour();
         void donnerOrdre();
 		void promouvoir();
+		void construire( int id );
 
 
     public :

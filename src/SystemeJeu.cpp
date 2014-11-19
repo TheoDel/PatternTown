@@ -9,6 +9,8 @@
 #include "Batiment.h"
 #include "Maison.h"
 #include "Ressource.h"
+#include "Fermier.h"
+#include "Ouvrier.h"
 
 #include <iostream>
 #include <string>
@@ -42,9 +44,8 @@ void SystemeJeu::lancerJeu() {
 	village_.get_Ressources()->change_Ressource(1,5);
 	village_.get_Ressources()->change_Ressource(2,20);
 	village_.add_Batiment( new Maison ( "Maison_1", "taudis" ) );
-	village_.add_Villageois( new VillageoisConcret(1, "Toto", "villageois content" ) );
-	village_.add_Villageois( new VillageoisConcret(2, "Raoul", "villageois chiant" ) );
-
+	village_.add_Villageois( new VillageoisConcret( "Toto", "villageois content" ) );
+	village_.add_Villageois( new VillageoisConcret( "Raoul", "villageois chiant" ) );
 
 	//Lance 3 tours de jeu
 	for (int i = 1; i<=3; i++){
@@ -55,16 +56,18 @@ void SystemeJeu::lancerJeu() {
 
 
 
+
+
 ///////////////////////////////////////////////////////////////////////////////
 // Lance un tour de jeu correspondant a une journee, permettant au joueur d'effectuer differentes actions
 void SystemeJeu::lancerTour() {
 
-	cout << "\nBienvenue a " << village_.get_Nom() << " - jour " << jour_ << "\n"
-	<< "1> Voir villageois \n"
+	cout << "\n*** Bienvenue à " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
+	<< "1> Voir la liste des villageois \n"
 	<< "2> Donner un ordre a un villageois \n"
 	<< "3> Promouvoir un villageois \n"
-	<< "4> Voir ressources \n"
-	<< "5> Voir batiments \n"
+	<< "4> Voir la quantité de ressources \n"
+	<< "5> Voir la liste des batiments \n"
 	<< "6> Passer au jour suivant \n";
 
 	string entreeUtilisateur("");
@@ -77,7 +80,7 @@ void SystemeJeu::lancerTour() {
 		else if (entreeUtilisateur == "2")	{	donnerOrdre(); }
 		else if (entreeUtilisateur == "3")	{	promouvoir(); }
         else if (entreeUtilisateur == "4")	{  	village_.get_Ressources()->afficher_Ressources(); }
-        else if (entreeUtilisateur == "5")	{	cout << "[Affichage batiments] \n"; }
+        else if (entreeUtilisateur == "5")	{	village_.afficher_Batiments(); }
         else if (entreeUtilisateur == "6")	{	sortieBoucleInstruction = true; }
     }
 }
@@ -149,7 +152,7 @@ void SystemeJeu::donnerOrdre() {
     			sortieBoucleInstruction = true;
     		}
     		else if (entreeUtilisateur == "3") {
-    			cout << "[Construction de bâtiment]";
+    			construire( villageoischoisi );
     			sortieBoucleInstruction =true;
     		}
        	}
@@ -186,6 +189,7 @@ void SystemeJeu::promouvoir() {
     //Villageois* v = village_.get_Villageois( villageoischoisi );
 	cout << "  1> Promouvoir en bucheron" << endl;
    	cout << "  2> Promouvoir en fermier" << endl;
+   	cout << "  3> Promouvoir en ouvrier" << endl;
 
     string entreeUtilisateur("");
     bool sortieBoucleInstruction(false);
@@ -199,11 +203,60 @@ void SystemeJeu::promouvoir() {
     			sortieBoucleInstruction = true;
     		}
     		else if (entreeUtilisateur == "2") {
-				cout << "Fermier" << endl;
+    			village_.change_Villageois( new Fermier( *village_.get_Villageois( villageoischoisi ) ) );
     			sortieBoucleInstruction = true;
     		}
+    		else if (entreeUtilisateur == "3") {
+    			village_.change_Villageois( new Ouvrier( *village_.get_Villageois( villageoischoisi ) ) );
+    		    sortieBoucleInstruction = true;
+    		    		}
        	}
 }
+
+
+
+
+
+
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////////
+
+
+
+
+// constuire un batiment
+void SystemeJeu::construire( int id ) {
+
+	cout << "   choisissez le batiment à construire" << endl
+		<< "   1> Maison \n";
+
+	string entreeUtilisateur("");
+	bool sortieBoucleInstruction(false);
+
+	while (!sortieBoucleInstruction){
+		cout << "   >";
+		getline(cin, entreeUtilisateur);
+		if ( entreeUtilisateur == "1" )	{
+			sortieBoucleInstruction = true;
+		}
+	}
+
+	string nom;
+	cout << "   Entrez son nom\n   >";
+	getline(cin, nom);
+
+	string description;
+	cout << "   Entrez sa description\n   >";
+	getline(cin, description);
+
+	if (entreeUtilisateur == "1")		{
+		village_.faire_Construire( new Maison(nom,description), id );
+	}
+}
+
+
+
 
 
 

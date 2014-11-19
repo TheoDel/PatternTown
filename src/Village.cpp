@@ -186,7 +186,9 @@ void Village::remove_Batiment( int id ) {
 	}
 }
 
-
+void Village::change_Ressource(int id, int quantite) {
+	ressources_.change_Ressource(id, quantite);
+}
 
 ///////////////////////////////////////////////////////////////////////////////
 ///////////////////////////////////////////////////////////////////////////////
@@ -197,24 +199,14 @@ void Village::remove_Batiment( int id ) {
 // faire recolter la ressource idRessource par le villageois idVillageois
 // le cas écheant, l'ajoute aux ressources et modifie l'energie du villageois
 void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
-	Villageois* v = get_Villageois(idVillageois);
-	if ( existe_Villageois( v->get_id() ) ) {
-		if		(idRessource == 1)	{ ressources_.change_Ressource(1,v->recolter_Bois()); }
-		else if (idRessource == 2)	{ ressources_.change_Ressource(2,v->recolter_Nourriture()); }
-	}
+	etatVillage_->faire_Recolter_Villageois(idRessource, idVillageois);
 }
 
 
 // si possible, faire recolter le batiment b par le villageois idVillageois
 //
 void Village::faire_Construire( Batiment* b, int idVillageois ) {
-	Villageois* v = get_Villageois(idVillageois);
-	if ( existe_Villageois( v->get_id() ) ) {
-		if ( v->construire_Batiment(b) != nullptr ) {
-			cout << v->get_Nom() << " a construit " << b->get_Nom() << endl;
-			add_Batiment(b);
-		}
-	}
+	etatVillage_->faire_Construire(b, idVillageois);
 }
 
 

@@ -13,7 +13,8 @@ using namespace std;
 
 Village::Village( string nom ) {
 	nom_ = nom;
-	etatVillage_= new EtatVillage(this);
+	etatVillageNormal_= new EtatVillageNormal(this);
+	etatVillage_ = etatVillageNormal_;
 }
 
 

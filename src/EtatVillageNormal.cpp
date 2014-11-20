@@ -1,4 +1,4 @@
-#include "EtatVillage.h"
+#include "EtatVillageNormal.h"
 
 #include "Village.h"
 #include "Villageois.h"
@@ -8,13 +8,14 @@
 
 using namespace std;
 
-EtatVillage::EtatVillage(Village* v){
-	village_ = v;
+EtatVillageNormal::EtatVillageNormal(Village* v) :
+	EtatVillage(v) {}
+
+EtatVillageNormal::~EtatVillageNormal(){
+
 }
 
-EtatVillage::~EtatVillage(){}
-
-void EtatVillage::faire_Recolter_Villageois(int idRessource, int idVillageois){
+void EtatVillageNormal::faire_Recolter_Villageois(int idRessource, int idVillageois){
 	Villageois* v = village_->get_Villageois(idVillageois);
 	if ( village_->existe_Villageois( v->get_id() ) ) {
 		if		(idRessource == 1)	{ village_->change_Ressource(1,v->recolter_Bois()); }
@@ -22,7 +23,7 @@ void EtatVillage::faire_Recolter_Villageois(int idRessource, int idVillageois){
 	}
 }
 
-void EtatVillage::faire_Construire( Batiment* b, int idVillageois){
+void EtatVillageNormal::faire_Construire( Batiment* b, int idVillageois){
 	if ( village_->existe_Villageois(idVillageois) ) {
 		village_->add_Batiment( village_->get_Villageois(idVillageois)->construire_Batiment(b) );
 	}

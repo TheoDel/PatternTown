@@ -2,6 +2,7 @@
 #define VILLAGE_H
 
 #include "EtatVillage.h"
+#include "EtatVillageNormal.h"
 #include "Villageois.h"
 #include "Batiment.h"
 #include "Ressource.h"
@@ -19,6 +20,7 @@ class Village {
 		std::vector<Batiment*> batiments_;
 		Ressource ressources_;
 		EtatVillage* etatVillage_;
+		EtatVillageNormal* etatVillageNormal_;
 
 
 	public :

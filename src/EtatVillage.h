@@ -6,17 +6,17 @@
 class Village;
 
 class EtatVillage {
-	private :
+	protected :
 		Village* village_;
 
 	public :
 		// Constructeurs/Destructeurs
 		EtatVillage(Village* v);
-		~EtatVillage();
+		virtual ~EtatVillage()=0;
 
 		// Actions de jeu
-		void faire_Recolter_Villageois(int idRessource, int idVillageois);
-		void faire_Construire( Batiment* b, int idVillageois );
+		virtual void faire_Recolter_Villageois(int idRessource, int idVillageois);
+		virtual void faire_Construire( Batiment* b, int idVillageois );
 };
 
 

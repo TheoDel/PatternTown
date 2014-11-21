@@ -3,6 +3,7 @@
 
 #include "EtatVillage.h"
 #include "EtatVillageNormal.h"
+#include "EtatVillageFamine.h"
 #include "Villageois.h"
 #include "Batiment.h"
 #include "Ressource.h"
@@ -21,7 +22,7 @@ class Village {
 		Ressource ressources_;
 		EtatVillage* etatVillage_;
 		EtatVillageNormal* etatVillageNormal_;
-
+		EtatVillageFamine* etatVillageFamine_;
 
 	public :
 

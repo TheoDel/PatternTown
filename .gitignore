@@ -27,7 +27,12 @@
 *.out
 *.app
 
-# CodeBlocks file
+# CodeBlocks files
 *.cbp
 *.depend
 *.layout
+
+# Eclipse files
+.cproject
+.project
+.settings/language*

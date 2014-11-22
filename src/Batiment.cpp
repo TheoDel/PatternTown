@@ -61,7 +61,7 @@ string Batiment::get_Donnee() {
 
 
 // retourne la liste des observers
-std::vector<Observer*> Batiment::get_Observers() {
+std::unordered_map<int,Observer*> Batiment::get_Observers() {
 	return observers_;
 }
 
@@ -75,31 +75,24 @@ void Batiment::set_Donnee( string donnee ) {
 
 // ajoute un observer
 void Batiment::enregistrerObs( Observer* observer ) {
-	for( Observer* o : observers_ ) {
-		if ( o->get_id() == observer->get_id() ) {
-			return;
-		}
-	}
-	observers_.push_back( observer );
-	observers_[ observers_.size()-1 ]->actualiser(donnee_);
+	observers_.emplace( observer->get_id(), observer );
+	observers_[ observer->get_id() ]->actualiser(donnee_);
 }
 
 
 // supprime l'observer de la liste
 void Batiment::supprimerObs( Observer* observer ) {
-	for( size_t i=0 ; i<observers_.size() ; ++i ) {
-		if ( observers_[i]->get_id() == observer->get_id() ) {
-			observers_.erase( observers_.begin() + i );
-			observer->set_Observable( nullptr );
-		}
+	if ( observers_.find( observer->get_id() ) != observers_.end() ) {
+		observers_.erase( observer->get_id() );
+		observer->set_Observable( nullptr );
 	}
 }
 
 
 // notifie la modification de la donnee aux observers
 void Batiment::notifierObs() {
-	for( Observer* o : observers_ ) {
-		o->actualiser( donnee_ );
+	for( auto o : observers_ ) {
+		o.second->actualiser( donnee_ );
 	}
 }
 

@@ -35,4 +35,4 @@
 # Eclipse files
 .cproject
 .project
-.settings/language*
+.settings

@@ -25,8 +25,6 @@ int main()
 
 
 
-
-
     //Tests village/villageois
 /*
 	village.add_Batiment( new Maison ( "Maison_1", "taudis" ) );
@@ -36,6 +34,8 @@ int main()
 	village.add_Villageois( new VillageoisConcret( "Raoul", "villageois chiant" ) );
 	village.add_Villageois( new VillageoisConcret( "fre", "villageois chiant" ) );
 	village.change_Villageois(  new Ouvrier( *village.get_Villageois(1) ) );
+	village.change_Villageois(  new Fermier( *village.get_Villageois(1) ) );
+
 
 	village.faire_Construire( new Maison( "MaisonOuvrier", "suite "), 1 );
 	village.faire_Construire( new Maison( "Maison1", "suite "), 3 );
@@ -43,8 +43,13 @@ int main()
 
 
 	cout << village.get_Villageois(1)->get_Energie() << endl;
+	cout << village.get_Constructions() << endl;
+	cout << village.get_Population() << endl;
+
+	village.remove_Batiment(1);
+
 	village.afficher_Batiments();
-	cout << village.get_batiments().size() << endl;
+
 	village.afficher_Villageois();
 */
 	/*
@@ -130,7 +135,7 @@ int main()
 
 
 	//Tests Observer
-/*
+
 	village.add_Batiment( new Maison ( "Maison_1", "taudis" ) ); // id=1
 	village.add_Batiment( new Maison ( "Maison_2", "palace" ) ); // id=2
 
@@ -168,16 +173,16 @@ int main()
 	cout << village.get_Villageois(1)->get_Donnee() << endl;
 	cout << village.get_Villageois(2)->get_Donnee() << endl;
 	cout << village.get_Villageois(3)->get_Donnee() << endl << endl;
-*/
+
 
 
 
 
 	//Tests SystemeJeu
-
+/*
 	SystemeJeu s("NYC");
 	s.lancerJeu();
-
+*/
 
 
 }

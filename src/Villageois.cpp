@@ -16,7 +16,7 @@ Villageois::Villageois() :
 
 Villageois::Villageois( std::string nom, std::string description ) :
 	observable_(nullptr), donnee_("<Aucun Observateur>"), id_(NEXTID_), nom_(nom),
-	vie_(100), energie_(50), satisfaction_(0), description_(description) { ++NEXTID_; }
+	vie_(100), energie_(10), satisfaction_(0), description_(description) { ++NEXTID_; }
 
 
 Villageois::~Villageois() {}

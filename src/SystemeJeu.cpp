@@ -20,7 +20,7 @@ using namespace std;
 
 
 
-SystemeJeu::SystemeJeu( string nomVillage ) : village_( nomVillage ), jour_(1) {}
+SystemeJeu::SystemeJeu( string nomVillage ) : village_( nomVillage ), jour_(1), promotions_disponibles(1) {}
 
 
 SystemeJeu::~SystemeJeu() {}
@@ -89,7 +89,6 @@ void SystemeJeu::lancerTour() {
 	//En fin de tour, le village effectue ses actions
 	village_.jour_Suivant();
 }
-
 
 
 

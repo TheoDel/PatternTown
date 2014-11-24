@@ -135,7 +135,7 @@ int main()
 
 
 	//Tests Observer
-
+/*
 	village.add_Batiment( new Maison ( "Maison_1", "taudis" ) ); // id=1
 	village.add_Batiment( new Maison ( "Maison_2", "palace" ) ); // id=2
 
@@ -173,16 +173,16 @@ int main()
 	cout << village.get_Villageois(1)->get_Donnee() << endl;
 	cout << village.get_Villageois(2)->get_Donnee() << endl;
 	cout << village.get_Villageois(3)->get_Donnee() << endl << endl;
-
+*/
 
 
 
 
 	//Tests SystemeJeu
-/*
+
 	SystemeJeu s("NYC");
 	s.lancerJeu();
-*/
+
 
 
 }

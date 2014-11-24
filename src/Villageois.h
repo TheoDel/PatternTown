@@ -22,7 +22,6 @@ class Villageois : public Observer {
 		// Attributs propres
 		int id_;
 		std::string nom_;
-		int vie_;
     	int energie_;
 		int satisfaction_;
 
@@ -43,14 +42,12 @@ class Villageois : public Observer {
 			virtual int get_id();
 			virtual std::string get_Nom();
 			virtual std::string get_Description();
-			virtual int get_Vie();
 			virtual int get_Energie();
 			virtual int get_Satisfaction();
 			virtual Villageois* get_Villageois();
 
 		// Setters
 			virtual void set_Description( std::string d );
-			virtual void change_Vie( int val );
 			virtual void change_Energie( int val );
 			virtual void change_Satisfaction( int val );
 

@@ -2,6 +2,7 @@
 #include "Observer.h"
 
 #include <iostream>
+#include <unordered_map>
 
 using namespace std;
 int Batiment::NEXTID_ = 1;

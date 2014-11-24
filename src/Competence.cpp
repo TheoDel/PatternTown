@@ -41,14 +41,6 @@ string Competence::get_Description() {
 	return ( villageois_.get_Description() + ", " + description_ );
 }
 
-
-// @Override
-// retourne le vie du villageois
-int Competence::get_Vie() {
-	return villageois_.get_Vie();
-}
-
-
 // @Override
 // retourne l'energie ( = points d'action ) du villageois
 int Competence::get_Energie() {
@@ -96,14 +88,6 @@ Observable* Competence::get_Observable() {
 void Competence::set_Description( string d ){
 	villageois_.set_Description(d);
 }
-
-
-// @Override
-// incremente ou decremente la vie du villageois
-void Competence::change_Vie( int val ) {
-	villageois_.change_Vie(val);
-}
-
 
 // @Override
 // incremente ou decremente l'energie ( = points d'action ) du villageois

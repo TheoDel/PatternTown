@@ -10,13 +10,13 @@ int Villageois::NEXTID_ = 1;
 
 // constructeur par défaut
 Villageois::Villageois() :
-	observable_(nullptr), donnee_(""), id_(0), nom_(""), vie_(0),
+	observable_(nullptr), donnee_(""), id_(0), nom_(""),
 	energie_(0), satisfaction_(0), description_("") {}
 
 
 Villageois::Villageois( std::string nom, std::string description ) :
 	observable_(nullptr), donnee_("<Aucun Observateur>"), id_(NEXTID_), nom_(nom),
-	vie_(100), energie_(10), satisfaction_(0), description_(description) { ++NEXTID_; }
+	energie_(1), satisfaction_(3), description_(description) { ++NEXTID_; }
 
 
 Villageois::~Villageois() {}
@@ -45,13 +45,6 @@ string Villageois::get_Nom() {
 string Villageois::get_Description() {
 	return description_;
 }
-
-
-// retourne le vie du villageois
-int Villageois::get_Vie() {
-	return vie_;
-}
-
 
 // retourne l'energie ( = points d'action ) du villageois
 int Villageois::get_Energie() {
@@ -82,12 +75,6 @@ Villageois* Villageois::get_Villageois() {
 void Villageois::set_Description( string d ){
 	description_ = d;
 }
-
-// incremente ou decremente la vie du villageois
-void Villageois::change_Vie( int val ) {
-	vie_ += val;
-}
-
 
 // incremente ou decremente l'energie ( = points d'action ) du villageois
 void Villageois::change_Energie( int val ) {
@@ -190,5 +177,5 @@ Batiment* Villageois::construire_Batiment( Batiment* b ) {
 
 
 void Villageois::afficher() {
-	cout << "(ID:" << get_id() << ") " << get_Nom() << " : " << get_Description() << endl;
+	cout << "(ID:" << get_id() << ")(Energie:"<< energie_ <<" - Satisfaction:"<< satisfaction_<< ") "<< get_Nom() << " : " << get_Description() << endl;
 }

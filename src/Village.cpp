@@ -197,9 +197,18 @@ void Village::jour_Suivant() {
 	cout << "\n...Prélèvement de la nourriture... ";
 	int nourritureNecessaire = get_Population()*2;
 	if (get_Ressource(2)<nourritureNecessaire){
-		cout << " il n'y a pas assez de nourriture, le village est en famine !";
+		cout << " il n'y a pas assez de nourriture, le village est en famine ! Les villageois ne sont pas contents...";
 		ressources_.set_Ressource(2,0);
 		etatVillage_=etatVillageFamine_;
+
+		for ( auto v : villageois_ ) {
+			v.second->change_Satisfaction(-1);
+			if (v.second->get_Satisfaction()<=0){
+				cout << "Las, "<< v.second->get_Nom() << " a quitté le village...";
+				remove_Villageois(v.second->get_id());
+
+			}
+		}
 	}
 	else {
 		cout << nourritureNecessaire << " rations de nourriture prélevées !";

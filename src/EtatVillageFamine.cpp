@@ -16,7 +16,11 @@ EtatVillageFamine::~EtatVillageFamine(){
 }
 
 void EtatVillageFamine::faire_Recolter_Villageois(int idRessource, int idVillageois){
-	cout << "Le villageois refuse de travailler, il a trop faim !";
+	Villageois* v = village_->get_Villageois(idVillageois);
+	if ( village_->existe_Villageois( v->get_id() ) ) {
+		if		(idRessource == 1)	{ cout << "Le villageois refuse de travailler, il a trop faim !"; }
+		else if (idRessource == 2)	{ village_->change_Ressource(2,v->recolter_Nourriture()); }
+	}
 }
 
 void EtatVillageFamine::faire_Construire( Batiment* b, int idVillageois){

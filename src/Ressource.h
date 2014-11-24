@@ -16,6 +16,7 @@ class Ressource {
 
 		int get_Ressource( int id );
 		void change_Ressource ( int id, int quantite );
+		void set_Ressource ( int id, int quantite );
 
 		void afficher_Ressources();
 

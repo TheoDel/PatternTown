@@ -9,6 +9,7 @@ class SystemeJeu {
 
         Village village_;
         int jour_;
+        int promotions_disponibles;
 
 		// méthodes privées
     	void lancerTour();

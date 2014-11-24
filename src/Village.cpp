@@ -214,6 +214,22 @@ void Village::faire_Construire( Batiment* b, int idVillageois ) {
 	etatVillage_->faire_Construire(b, idVillageois);
 }
 
+// Effectue toutes les actions suivant le fin de tour
+void Village::jour_Suivant() {
+
+	cout << "\n...Prélèvement de la nourriture... ";
+	int nourritureNecessaire = get_Population()*2;
+	if (get_Ressource(2)<nourritureNecessaire){
+		cout << " il n'y a pas assez de nourriture, le village est en famine !";
+		ressources_.set_Ressource(2,0);
+		etatVillage_=etatVillageFamine_;
+	}
+	else {
+		cout << nourritureNecessaire << " rations de nourriture prélevées !";
+		ressources_.change_Ressource(2,-nourritureNecessaire);
+		etatVillage_=etatVillageNormal_;
+	}
+}
 
 
 ///////////////////////////////////////////////////////////////////////////////

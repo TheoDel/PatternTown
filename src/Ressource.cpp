@@ -30,6 +30,11 @@ void Ressource::change_Ressource ( int id, int quantite ){
 	if ( id == 2 ) { stock_Nourriture_ += quantite; }
 }
 
+void Ressource::set_Ressource ( int id, int quantite ){
+	if ( id == 1 ) { stock_Bois_ = quantite; }
+	if ( id == 2 ) { stock_Nourriture_ = quantite; }
+}
+
 void Ressource::afficher_Ressources(){
     cout << "Bois: " << stock_Bois_ << endl ;
     cout << "Nourriture: " << stock_Nourriture_ << endl ;

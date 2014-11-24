@@ -61,8 +61,10 @@ void SystemeJeu::lancerJeu() {
 ///////////////////////////////////////////////////////////////////////////////
 // Lance un tour de jeu correspondant a une journee, permettant au joueur d'effectuer differentes actions
 void SystemeJeu::lancerTour() {
+	//On crédite le nombre de promotions disponibles pour ce tour
+	promotions_disponibles = 1;
 
-	cout << "\n*** Bienvenue à " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
+	cout << "\n\n*** Bienvenue à " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
 	<< "1> Voir la liste des villageois \n"
 	<< "2> Donner un ordre a un villageois \n"
 	<< "3> Promouvoir un villageois \n"
@@ -83,6 +85,9 @@ void SystemeJeu::lancerTour() {
         else if (entreeUtilisateur == "5")	{	village_.afficher_Batiments(); }
         else if (entreeUtilisateur == "6")	{	sortieBoucleInstruction = true; }
     }
+
+	//En fin de tour, le village effectue ses actions
+	village_.jour_Suivant();
 }
 
 
@@ -172,6 +177,10 @@ void SystemeJeu::donnerOrdre() {
 
 //
 void SystemeJeu::promouvoir() {
+	if (promotions_disponibles<=0) {
+		cout << " Vous ne pouvez plus donner de promotion aujourd'hui." << endl;
+		return;
+	}
 
 	cout << " Indiquez l'id du villageois que vous voulez promouvoir : \n >";
 	int villageoischoisi(0);
@@ -211,6 +220,10 @@ void SystemeJeu::promouvoir() {
     		    sortieBoucleInstruction = true;
     		    		}
        	}
+
+    	//Diminue le nombre de promotions disponibles pour ce tour
+    	--promotions_disponibles;
+    	cout << "  La promotion a bien été donnée !"<< endl;
 }
 
 

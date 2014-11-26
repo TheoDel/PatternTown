@@ -1,7 +1,7 @@
 #ifndef SYSTEMEJEU_H_INCLUDED
 #define SYSTEMEJEU_H_INCLUDED
 
-#include "Village.h"
+#include "village/Village.h"
 
 class SystemeJeu {
 

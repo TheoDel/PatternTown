@@ -1,8 +1,8 @@
 #include "Village.h"
 
-#include "EtatVillage.h"
-#include "Villageois.h"
-#include "Batiment.h"
+#include "etats/EtatVillage.h"
+#include "../villageois/Villageois.h"
+#include "../batiments/Batiment.h"
 #include "Ressource.h"
 #include <iostream>
 #include <vector>

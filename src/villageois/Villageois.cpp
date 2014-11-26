@@ -1,5 +1,5 @@
 #include "Villageois.h"
-#include "Maison.h"
+#include "../batiments/Maison.h"
 
 #include <iostream>
 

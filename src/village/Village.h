@@ -1,11 +1,11 @@
 #ifndef VILLAGE_H
 #define VILLAGE_H
 
-#include "EtatVillage.h"
-#include "EtatVillageNormal.h"
-#include "EtatVillageFamine.h"
-#include "Villageois.h"
-#include "Batiment.h"
+#include "etats/EtatVillage.h"
+#include "etats/EtatVillageNormal.h"
+#include "etats/EtatVillageFamine.h"
+#include "../villageois/Villageois.h"
+#include "../batiments/Batiment.h"
 #include "Ressource.h"
 
 #include <unordered_map>

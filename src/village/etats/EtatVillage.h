@@ -1,8 +1,8 @@
 #ifndef ETATVILLAGE_H_
 #define ETATVILLAGE_H_
 
-#include "Villageois.h"
-#include "Batiment.h"
+#include "../../villageois/Villageois.h"
+#include "../../batiments/Batiment.h"
 class Village;
 
 class EtatVillage {

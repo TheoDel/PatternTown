@@ -1,5 +1,5 @@
 #include "Batiment.h"
-#include "Observer.h"
+#include "../villageois/Observer.h"
 
 #include <iostream>
 #include <unordered_map>

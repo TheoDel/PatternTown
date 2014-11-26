@@ -1,9 +1,9 @@
 #ifndef VILLAGEOIS_H
 #define VILLAGEOIS_H
 
-#include "Observable.h"
+#include "../batiments/Observable.h"
 #include "Observer.h"
-#include "Batiment.h"
+#include "../batiments/Batiment.h"
 #include <string>
 
 

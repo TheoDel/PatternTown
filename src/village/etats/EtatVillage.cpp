@@ -1,9 +1,7 @@
 #include "EtatVillage.h"
 
-#include "Village.h"
-#include "Villageois.h"
-#include "Batiment.h"
-#include "Ressource.h"
+#include "../Village.h"
+#include "../Ressource.h"
 #include <iostream>
 
 using namespace std;

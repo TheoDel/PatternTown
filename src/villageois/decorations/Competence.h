@@ -1,8 +1,8 @@
 #ifndef COMPETENCE_H
 #define COMPETENCE_H
 
-#include "Village.h"
-#include "Villageois.h"
+#include "../../village/Village.h"
+#include "../Villageois.h"
 
 
 // Decorator Abstrait

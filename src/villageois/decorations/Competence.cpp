@@ -64,8 +64,8 @@ Villageois* Competence::get_Villageois() {
 
 // @Override
 // retourne la donnee
-string Competence::get_Donnee() {
-	return villageois_.get_Donnee();
+int Competence::get_indiceBatiment() {
+	return villageois_.get_indiceBatiment();
 }
 
 
@@ -147,6 +147,6 @@ Batiment* Competence::construire_Batiment( Batiment* b ) {
 
 // @Override
 // actualise la donnee
-void Competence::actualiser( string d ) {
-	villageois_.actualiser(d);
+void Competence::actualiser( int newIndice ) {
+	villageois_.actualiser( newIndice );
 }

@@ -36,3 +36,7 @@
 .cproject
 .project
 .settings
+
+# Directories
+bin/
+obj/

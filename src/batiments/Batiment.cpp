@@ -10,7 +10,7 @@ int Batiment::NEXTID_ = 1;
 
 
 Batiment::Batiment( string nom, string description ) :
-		id_(NEXTID_), nom_(nom), description_(description) { ++NEXTID_; }
+		id_(NEXTID_), nom_(nom), description_(description), indiceSatisfaction_(5) { ++NEXTID_; }
 
 
 Batiment::~Batiment() {}
@@ -56,8 +56,8 @@ void Batiment::set_Description( string d ) {
 
 
 // retourne la donnee
-string Batiment::get_Donnee() {
-	return donnee_;
+int Batiment::get_indiceSatisfaction() {
+	return indiceSatisfaction_;
 }
 
 
@@ -68,8 +68,8 @@ std::unordered_map<int,Observer*> Batiment::get_Observers() {
 
 
 // modifie la donnee
-void Batiment::set_Donnee( string donnee ) {
-	donnee_ = donnee;
+void Batiment::set_indiceSatisfaction( int is ) {
+	indiceSatisfaction_ = is;
 	notifierObs();
 }
 
@@ -77,7 +77,7 @@ void Batiment::set_Donnee( string donnee ) {
 // ajoute un observer
 void Batiment::enregistrerObs( Observer* observer ) {
 	observers_.emplace( observer->get_id(), observer );
-	observers_[ observer->get_id() ]->actualiser(donnee_);
+	observers_[ observer->get_id() ]->actualiser(indiceSatisfaction_);
 }
 
 
@@ -93,7 +93,7 @@ void Batiment::supprimerObs( Observer* observer ) {
 // notifie la modification de la donnee aux observers
 void Batiment::notifierObs() {
 	for( auto o : observers_ ) {
-		o.second->actualiser( donnee_ );
+		o.second->actualiser( indiceSatisfaction_ );
 	}
 }
 

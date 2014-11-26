@@ -25,7 +25,7 @@ class Batiment : public Observable {
 
 		// < Observable >
 		std::unordered_map< int, Observer* > observers_;
-		std::string donnee_;
+		int indiceSatisfaction_;
 
 
 	public :
@@ -41,8 +41,8 @@ class Batiment : public Observable {
 			void set_Description( std::string d );
 
 		// < Observable >
-			std::string get_Donnee();
-			void set_Donnee( std::string donnee );
+			int get_indiceSatisfaction();
+			void set_indiceSatisfaction( int is );
 			std::unordered_map<int,Observer*> get_Observers();
 			void enregistrerObs( Observer* observer );
 			void supprimerObs( Observer* observer );

@@ -17,7 +17,7 @@ class Villageois : public Observer {
 
 		// < Observer >
 		Observable* observable_;
-		std::string donnee_;
+		int indiceBatiment_;
 
 		// Attributs propres
 		int id_;
@@ -53,9 +53,9 @@ class Villageois : public Observer {
 
 		// < Observer >
 			virtual Observable* get_Observable();
-			virtual std::string get_Donnee();
+			virtual int get_indiceBatiment();
 			virtual void set_Observable( Observable* obs );
-			void actualiser( std::string donnee );
+			void actualiser( int newIndice );
 
 		// Actions de jeu
 			virtual int recolter_Bois();

@@ -10,12 +10,12 @@ int Villageois::NEXTID_ = 1;
 
 // constructeur par défaut
 Villageois::Villageois() :
-	observable_(nullptr), donnee_(""), id_(0), nom_(""),
+	observable_(nullptr), indiceBatiment_(0), id_(0), nom_(""),
 	energie_(0), satisfaction_(0), description_("") {}
 
 
 Villageois::Villageois( std::string nom, std::string description ) :
-	observable_(nullptr), donnee_("<Aucun Observateur>"), id_(NEXTID_), nom_(nom),
+	observable_(nullptr), indiceBatiment_(0), id_(NEXTID_), nom_(nom),
 	energie_(1), satisfaction_(3), description_(description) { ++NEXTID_; }
 
 
@@ -103,9 +103,9 @@ Observable* Villageois::get_Observable() {
 
 
 // retourne la donnee
-string Villageois::get_Donnee() {
-	if ( observable_ == nullptr ) { return "<Aucun Observateur>"; }
-	return donnee_;
+int Villageois::get_indiceBatiment() {
+	//if ( observable_ == nullptr ) { return "<Aucun Observateur>"; }
+	return indiceBatiment_;
 }
 
 
@@ -122,8 +122,9 @@ void Villageois::set_Observable( Observable* obs ) {
 
 
 // actualise la donnee
-void Villageois::actualiser( string donnee ) {
-	donnee_ = donnee;
+void Villageois::actualiser( int newIndice ) {
+	satisfaction_ += newIndice - indiceBatiment_;
+	indiceBatiment_ = newIndice;
 }
 
 

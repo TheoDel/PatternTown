@@ -1,3 +1,11 @@
+/**
+ *@file Main.cpp
+ *@brief Fichier contenant la méthode principale
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #include "SystemeJeu.h"
 #include "village/Village.h"
 #include "villageois/Observer.h"
@@ -18,8 +26,12 @@ using namespace std;
 
 
 
-int main()
-{
+//--------------------------------------------------------
+/**
+ *@brief Méthode principale
+ */
+int main() {
+
 
 	Village village("Pattern City");
 

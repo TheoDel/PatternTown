@@ -1,3 +1,11 @@
+/**
+ *@file Batiment.h
+ *@brief Fichier contenant la definition de la classe Batiment
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #ifndef BATIMENT_H
 #define BATIMENT_H
 
@@ -8,48 +16,57 @@ class Observer;
 #include <unordered_map>
 
 
-// Classe (Abstraite) de Batiment
+//--------------------------------------------------------
+/**
+ *@class Batiment
+ *@brief Classe abstraite représentant les batiments et implementant l'interface Observable
+ */
+
 class Batiment : public Observable {
 
 	private:
 
-		// pour l'attribution automatique de id
-		static int NEXTID_;
+		// pour l'attribution automatique de l'identifiant
+		static int NEXTID_; /**< ID du prochain batiment créé */
 
 
 	protected :
 
-		int id_;
-		std::string nom_;
-		std::string description_;
+		int id_; /**< ID du batiment */
+		std::string nom_; /**< Nom du batiment */
+		std::string description_; /**< Description breve du batiment */
 
-		// < Observable >
-		std::unordered_map< int, Observer* > observers_;
-		int indiceSatisfaction_;
+		std::unordered_map< int, Observer* > observers_; /**< Liste des observateurs de ce batiment */
+		int indiceSatisfaction_; /**< Indice de satisfaction lié au batiment */
 
 
 	public :
 
 		// Constructeurs/Destructeurs
-			Batiment( std::string nom, std::string description );
-			virtual ~Batiment() = 0;
+		Batiment( std::string nom, std::string description );
+		virtual ~Batiment() = 0;
 
-		// Getters/Setters
-			int get_id();
-			std::string get_Nom();
-			std::string get_Description();
-			void set_Description( std::string d );
+		// Getters
+		int get_id();
+		std::string get_Nom();
+		std::string get_Description();
 
-		// < Observable >
-			int get_indiceSatisfaction();
-			void set_indiceSatisfaction( int is );
-			std::unordered_map<int,Observer*> get_Observers();
-			void enregistrerObs( Observer* observer );
-			void supprimerObs( Observer* observer );
-			void notifierObs();
+		//Setters
+		void set_Description( std::string d );
+
+		////////////////////////////////////////////////////////////
+		// Méthodes liées aux pattern Observer
+		int get_indiceSatisfaction();
+		void set_indiceSatisfaction( int is );
+		std::unordered_map<int,Observer*> get_Observers();
+		void enregistrerObs( Observer* observer );
+		void supprimerObs( Observer* observer );
+		void notifierObs();
+		////////////////////////////////////////////////////////////
 
 		void afficher();
 
 };
 
+//--------------------------------------------------------
 #endif

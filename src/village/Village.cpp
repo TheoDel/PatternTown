@@ -1,3 +1,11 @@
+/**
+ *@file Village.cpp
+ *@brief Fichier contenant l'implementation de la classe Village
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #include "Village.h"
 
 #include "etats/EtatVillage.h"
@@ -11,6 +19,11 @@ using namespace std;
 
 
 
+//--------------------------------------------------------
+/**
+ *@brief Constructeur de base
+ *@param nom Nom à donner au Village
+ */
 Village::Village( string nom ) {
 	nom_ = nom;
 	etatVillageNormal_= new EtatVillageNormal(this);
@@ -19,6 +32,13 @@ Village::Village( string nom ) {
 }
 
 
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Destructeur
+ */
 Village::~Village() {
 	for ( auto v : villageois_ ) { delete v.second; }
 	for ( auto b : batiments_ )  { delete b.second; }
@@ -28,13 +48,14 @@ Village::~Village() {
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// renvoie vrai si id est present
+//--------------------------------------------------------
+/**
+ *@brief Méthode verifiant si un villageois est present
+ *@param id Identifiant du villageois
+ *@return Un booleen vrai si le villageois est present, faux sinon
+ */
 bool Village::existe_Batiment( int id ) {
 	if ( villageois_.find(id) == villageois_.end() ) {
 			return false;
@@ -43,7 +64,15 @@ bool Village::existe_Batiment( int id ) {
 }
 
 
-// renvoie vrai si id est present
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode verifiant si un batiment existe
+ *@param id Identifiant du batiment
+ *@return Un booleen vrai si le batiment existe, faux sinon
+ */
 bool Village::existe_Villageois( int id ) {
 	if ( batiments_.find(id) == batiments_.end() ) {
 		return false;
@@ -53,20 +82,27 @@ bool Village::existe_Villageois( int id ) {
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// retourne le nom du village
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le nom du village
+ *@return Une std::string representant le nom du village
+ */
 string Village::get_Nom() {
 	return nom_;
 }
 
 
-// retourne le villageois correspondant a id
-// id doit exister dans le vector !
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant un villageois
+ *@param id Identifiant du villageois
+ *@return Un pointeur vers ce villageois, ou nullptr s'il n'est pas present
+ */
 Villageois* Village::get_Villageois( int id ) {
 	if ( villageois_.find(id) != villageois_.end() ) {
 		return villageois_[id];
@@ -75,8 +111,15 @@ Villageois* Village::get_Villageois( int id ) {
 }
 
 
-// retourne le batiment correspondant a id
-// id doit exister dans le vector !
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant un batiment
+ *@param id Identifiant du batiment
+ *@return Un pointeur vers ce batiment, ou nullptr s'il n'existe pas
+ */
 Batiment* Village::get_Batiment( int id ) {
 	if ( batiments_.find(id) != batiments_.end() ) {
 			return batiments_[id];
@@ -85,39 +128,67 @@ Batiment* Village::get_Batiment( int id ) {
 	}
 
 
-// retourne la quantité de la ressource id
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant une ressource
+ *@param id Identifiant de la ressource
+ *@return La quantité de la ressource
+ */
 int Village::get_Ressource( int id ) {
 	return ressources_.get_Ressource(id);
 }
 
 
-// retourne les ressources
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant les ressources du village
+ *@return L'adresse de l'objet Ressources_ de village
+ */
 Ressource* Village::get_Ressources() {
 	return &ressources_;
 }
 
 
-// retourne le nombre d'habitants du village
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le nombre de villageois
+ *@return Un entier representant le nombre de villageois
+ */
 int Village::get_Population() {
 	return villageois_.size();
 }
 
 
-// retourne le nombre de batiments du village
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le nombre de batiments
+ *@return Un entier representant le nombre de batiments
+ */
 int Village::get_Constructions() {
 	return batiments_.size();
 }
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// ajoute un villageois
-// si déja present, ne fait rien
+//--------------------------------------------------------
+/**
+ *@brief Méthode ajoutant (sous condition) un villageois
+ *@param v Pointeur vers le villageois à ajouter
+ */
 void Village::add_Villageois( Villageois* v ) {
 	if ( v != nullptr ) {
 		villageois_.emplace( v->get_id(), v );
@@ -125,14 +196,27 @@ void Village::add_Villageois( Villageois* v ) {
 }
 
 
-// modifie un villageois (decoration)
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode modifiant un villageois, c'est-à-dire lui ajoutant une competence
+ *@param nv Pointeur vers le villageois à décorer
+ */
 void Village::change_Villageois( Villageois* nv ) {
 	villageois_[ nv->get_id() ] = nv;
 }
 
 
-// ajoute un batiment
-// si déja present, ne fait rien
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode ajoutant (sous condition) un batiment
+ *@param b Pointeur vers le batiment à ajouter
+ */
 void Village::add_Batiment( Batiment* b ) {
 	if ( b != nullptr ) {
 		batiments_.emplace( b->get_id(), b );
@@ -140,11 +224,19 @@ void Village::add_Batiment( Batiment* b ) {
 }
 
 
-// supprime le villageois correspondant à id
-// si absent, ne fait rien
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode supprimant un villageois
+ *@param id Identifiant du villageois à supprimer
+ */
 void Village::remove_Villageois( int id ) {
 	if ( villageois_.find(id) != villageois_.end() ) {
+		//si ce villageois observe un batiment (sujet)
 		if ( villageois_[id]->get_Observable() != nullptr ) {
+			//on supprime ce villageois de la liste des observateurs de ce batiment
 			villageois_[id]->get_Observable()->supprimerObs( villageois_[id] );
 		}
 		delete villageois_[id];
@@ -153,11 +245,19 @@ void Village::remove_Villageois( int id ) {
 }
 
 
-// supprime le batiment correspondant à id
-// si absent, ne fait rien
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode supprimant un batiment
+ *@param id Identifiant du batiment à supprimer
+ */
 void Village::remove_Batiment( int id ) {
 	if ( batiments_.find(id) != batiments_.end() ) {
+		//pour chaque observateur de ce batiment
 		for ( auto o : batiments_[id]->get_Observers() ) {
+			//on lui supprime ce batiment
 			o.second->set_Observable( nullptr );
 		}
 		delete batiments_[id];
@@ -166,65 +266,94 @@ void Village::remove_Batiment( int id ) {
 }
 
 
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode modifiant la quantité d'une ressource
+ *@param id Identifiant de la ressource à modifier
+ *@param quantité Quantité à ajouter/retirer à la ressource
+ */
 void Village::change_Ressource(int id, int quantite) {
 	ressources_.change_Ressource(id, quantite);
 }
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// faire recolter la ressource idRessource par le villageois idVillageois
-// le cas écheant, l'ajoute aux ressources et modifie l'energie du villageois
+//--------------------------------------------------------
+/**
+ *@brief Méthode faisant effectuer de la recolte à un villageois
+ *@details Le cas écheant, la ressource recoltée est ajoutée aux ressources du village et l'energie du villageois est modifiée
+ *@param idRessource Identifiant de la ressource à recolter
+ *@param idVillageois Identifiant du villageois recoltant
+ */
 void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
 	etatVillage_->faire_Recolter_Villageois(idRessource, idVillageois);
 }
 
 
-// si possible, faire recolter le batiment b par le villageois idVillageois
-// sinon, ne fait rien
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode faisant construire (sous condition) un batiment à un villageois
+ *@details Le cas écheant, le batiment est ajouté à la liste des batiments et l'energie du villageois est modifiée
+ *@param b Pointeur vers le batiment à construire
+ *@param idVillageois Identifiant du villageois construisant
+ */
 void Village::faire_Construire( Batiment* b, int idVillageois ) {
 	etatVillage_->faire_Construire(b, idVillageois);
 }
 
-// Effectue toutes les actions suivant le fin de tour
+
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode effectuant toutes les actions suivant le fin d'un tour
+ *@param b Pointeur vers le batiment à construire
+ *@param idVillageois Identifiant du villageois construisant
+ */
 void Village::jour_Suivant() {
 
 	cout << "\n...Prélèvement de la nourriture... ";
 	int nourritureNecessaire = get_Population()*2;
-	if (get_Ressource(2)<nourritureNecessaire){
+
+	if ( get_Ressource(2) < nourritureNecessaire ) {
 		cout << " il n'y a pas assez de nourriture, le village est en famine ! Les villageois ne sont pas contents...";
 		ressources_.set_Ressource(2,0);
-		etatVillage_=etatVillageFamine_;
-
+		//Le village passe dans l'etat Famine
+		etatVillage_ = etatVillageFamine_;
+		//on modifie la satisfaction de tous les villageois
 		for ( auto v : villageois_ ) {
 			v.second->change_Satisfaction(-1);
-			if (v.second->get_Satisfaction()<=0){
+			if ( v.second->get_Satisfaction() <= 0 ) {
 				cout << "Las, "<< v.second->get_Nom() << " a quitté le village...";
-				remove_Villageois(v.second->get_id());
-
+				remove_Villageois( v.second->get_id() );
 			}
 		}
 	}
+
 	else {
 		cout << nourritureNecessaire << " rations de nourriture prélevées !";
 		ressources_.change_Ressource(2,-nourritureNecessaire);
-		etatVillage_=etatVillageNormal_;
+		etatVillage_ = etatVillageNormal_;
 	}
 }
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
 
-// affiche la liste des villageois
+//--------------------------------------------------------
+/**
+ *@brief Méthode affichant la liste des villageois
+ */
 void Village::afficher_Villageois() {
 	for ( auto v : villageois_ ) {
 		v.second->afficher();
@@ -232,7 +361,13 @@ void Village::afficher_Villageois() {
 }
 
 
-// affiche la liste des batiments
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode affichant la liste des batiments
+ */
 void Village::afficher_Batiments() {
 	for ( auto b : batiments_ ) {
 		b.second->afficher();

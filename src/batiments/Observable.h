@@ -1,10 +1,23 @@
+/**
+ *@file Observable.h
+ *@brief Fichier contenant la definition de l'interface Observable
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #ifndef OBSERVABLE_H
 #define OBSERVABLE_H
 
 class Observer;
 
 
-// Interface Observable
+//--------------------------------------------------------
+/**
+ *@class Observable
+ *@brief Interface représentant le sujet observé dans le pattern Observer
+ */
+
 class Observable {
 
 	public:
@@ -17,4 +30,5 @@ class Observable {
 
 };
 
+//--------------------------------------------------------
 #endif

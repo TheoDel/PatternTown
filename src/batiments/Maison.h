@@ -1,3 +1,11 @@
+/**
+ *@file Maison.h
+ *@brief Fichier contenant la definition de la classe Maison
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #ifndef MAISON_H
 #define MAISON_H
 
@@ -6,20 +14,20 @@
 #include <string>
 
 
-// Classe concrete de Batiment
+//--------------------------------------------------------
+/**
+ *@class Maison
+ *@brief Classe concrete heritant de Batiment et représentant les maisons
+ */
+
 class Maison : public Batiment {
-
-	private :
-
-		// vide ( pour l'instant ? )
-
 
 	public:
 
-		// Constructeurs/Destructeurs
-			Maison( std::string nom, std::string description );
-			~Maison();
+		Maison( std::string nom, std::string description );
+		~Maison();
 
 };
 
+//--------------------------------------------------------
 #endif

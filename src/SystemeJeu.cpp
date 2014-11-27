@@ -1,3 +1,11 @@
+/**
+ *@file SystemeJeu.cpp
+ *@brief Fichier contenant l'implementation de la classe SystemeJeu
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #include "SystemeJeu.h"
 #include "village/Village.h"
 #include "villageois/Observer.h"
@@ -20,25 +28,32 @@ using namespace std;
 
 
 
+//--------------------------------------------------------
+/**
+ *@brief Constructeur de base
+ *@param nomVillage Nom à donner au Village
+ */
 SystemeJeu::SystemeJeu( string nomVillage ) : village_( nomVillage ), jour_(1), promotions_disponibles(1) {}
 
 
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Destructeur
+ */
 SystemeJeu::~SystemeJeu() {}
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-// Fonction a appeler dans le main pour lancer la partie
+//--------------------------------------------------------
+/**
+ *@brief Méthode lançant la partie
+ */
 void SystemeJeu::lancerJeu() {
-
 
 	//Création du jeu de données de départ
 	village_.get_Ressources()->change_Ressource(1,5);
@@ -58,12 +73,16 @@ void SystemeJeu::lancerJeu() {
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-// Lance un tour de jeu correspondant a une journee, permettant au joueur d'effectuer differentes actions
+//--------------------------------------------------------
+/**
+ *@brief Lance un tour de jeu correspondant a une journee, permettant au joueur d'effectuer differentes actions
+ */
 void SystemeJeu::lancerTour() {
+	
 	//On crédite le nombre de promotions disponibles pour ce tour
 	promotions_disponibles = 1;
 
+	//Affichage du menu
 	cout << "\n\n*** Bienvenue à " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
 	<< "1> Voir la liste des villageois \n"
 	<< "2> Donner un ordre a un villageois \n"
@@ -71,10 +90,10 @@ void SystemeJeu::lancerTour() {
 	<< "4> Voir la quantité de ressources \n"
 	<< "5> Voir la liste des batiments \n"
 	<< "6> Passer au jour suivant \n";
-
+	
+	//Selection
 	string entreeUtilisateur("");
 	bool sortieBoucleInstruction(false);
-
 	while (!sortieBoucleInstruction){
 		cout << ">";
 		getline(cin, entreeUtilisateur);
@@ -93,89 +112,77 @@ void SystemeJeu::lancerTour() {
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
-
-
-
-
-//Interface pour donner un ordre a un villageois (mis dans une fonction a part pour lisibilite)
+//--------------------------------------------------------
+/**
+ *@brief Interface pour donner un ordre a un villageois (mis dans une fonction a part pour lisibilite)
+ */
 void SystemeJeu::donnerOrdre() {
 
-	// Choix du villageois par l'utilisateur
+	//Choix du villageois par l'utilisateur
 	cout << " Indiquez l'id du villageois a qui vous voulez donner ordre : \n >";
 	int villageoischoisi(0);
 
-	// TODO on peut toujours entrez n'importe quel nombre
-	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { // tant que l'on ne saisie pas un nombre seul
+	//Attente de la saisie d'un nombre
+	//Tant que l'on ne saisie pas un nombre seul, on boucle
+	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { 
 		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
 		cout << " >";
 	}
 
-	// Verification de l'existence d'un villageois
+	//Verification de l'existence d'un villageois
     if ( !village_.existe_Villageois( villageoischoisi ) ) {
     	cout << " Ce villageois n'existe pas."<< endl;
     	return;
     }
 
-    // AFFICHAGE DE LA LISTE DE CHOIX DES COMPETENCES
     Villageois* v = village_.get_Villageois( villageoischoisi );
     string descripv = v->get_Description();
 
+    //Affichage de la liste des competences
+
     	// Si le villageois choisi est bucheron
-    	if (descripv.find("bucheron") != string::npos)
-    		cout << "  1> Couper du bois (pro)" << endl;
-    	// Si le villageois choisi n'est pas bucheron
-    	else
-    		cout << "  1> Couper du bois" << endl;
+   		if (descripv.find("bucheron") != string::npos) { cout << "  1> Couper du bois (pro)" << endl; }
+   		// Si le villageois choisi n'est pas bucheron
+    	else { cout << "  1> Couper du bois" << endl; }
 
     	// Si le villageois choisi est fermier
-    	if (descripv.find("fermier") != string::npos)
-    		cout << "  2> Recolter de la nourriture (pro)" << endl;
+    	if (descripv.find("fermier") != string::npos) { cout << "  2> Recolter de la nourriture (pro)" << endl; }
     	// Si le villageois choisi n'est pas fermier
-    	else
-    		cout << "  2> Recolter de la nourriture" << endl;
+    	else { cout << "  2> Recolter de la nourriture" << endl; }
 
     	cout << "  3> Construire un batiment" << endl;
-
+	
+    //Selection de l'action à effectuer
     string entreeUtilisateur("");
     bool sortieBoucleInstruction(false);
-
-    	while (!sortieBoucleInstruction){
-    		cout << "  >";
-    		getline(cin, entreeUtilisateur); //(TODO ?) Saisie non securisee
-
-    		if (entreeUtilisateur == "1") {
-    			village_.faire_Recolter_Villageois(1,villageoischoisi);
-    			sortieBoucleInstruction = true;
-    		}
-    		else if (entreeUtilisateur == "2") {
-    			village_.faire_Recolter_Villageois(2,villageoischoisi);
-    			sortieBoucleInstruction = true;
-    		}
-    		else if (entreeUtilisateur == "3") {
-    			construire( villageoischoisi );
-    			sortieBoucleInstruction =true;
-    		}
-       	}
+    while (!sortieBoucleInstruction){
+    	cout << "  >";
+    	getline(cin, entreeUtilisateur);
+    	if (entreeUtilisateur == "1") {
+    		village_.faire_Recolter_Villageois(1,villageoischoisi);
+    		sortieBoucleInstruction = true;
+    	} else if (entreeUtilisateur == "2") {
+    		village_.faire_Recolter_Villageois(2,villageoischoisi);
+    		sortieBoucleInstruction = true;
+    	} else if (entreeUtilisateur == "3") {
+    		construire( villageoischoisi );
+    		sortieBoucleInstruction =true;
+    	}
+    }
 }
 
 
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-//
+//--------------------------------------------------------
+/**
+ *@brief Interface pour promouvoir (ajouter une competence à) un villageois
+ */
 void SystemeJeu::promouvoir() {
+
+	//On verifie qu'il reste des promotions disponibles
 	if (promotions_disponibles<=0) {
 		cout << " Vous ne pouvez plus donner de promotion aujourd'hui." << endl;
 		return;
@@ -184,68 +191,64 @@ void SystemeJeu::promouvoir() {
 	cout << " Indiquez l'id du villageois que vous voulez promouvoir : \n >";
 	int villageoischoisi(0);
 
-	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { // tant que l'on ne saisie pas un nombre seul
+	//Attente de la saisie d'un nombre
+	//Tant que l'on ne saisie pas un nombre seul, on boucle
+	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) {
 		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
 		cout << " >";
 	}
 
+	//On verifie que le villageois choisi est present dans le village
     if ( !village_.existe_Villageois( villageoischoisi ) ) {
     	cout << " Ce villageois n'existe pas."<< endl;
     	return;
     }
 
-    //Villageois* v = village_.get_Villageois( villageoischoisi );
 	cout << "  1> Promouvoir en bucheron" << endl;
    	cout << "  2> Promouvoir en fermier" << endl;
    	cout << "  3> Promouvoir en ouvrier" << endl;
 
+	//Selection de l'action à effectuer
     string entreeUtilisateur("");
     bool sortieBoucleInstruction(false);
+   	while (!sortieBoucleInstruction){
+   		cout << "  >";
+   		getline(cin, entreeUtilisateur);
+   		if (entreeUtilisateur == "1") {
+   			village_.change_Villageois( new Bucheron( *village_.get_Villageois( villageoischoisi ) ) );
+   			sortieBoucleInstruction = true;
+   		}
+   		else if (entreeUtilisateur == "2") {
+   			village_.change_Villageois( new Fermier( *village_.get_Villageois( villageoischoisi ) ) );
+   			sortieBoucleInstruction = true;
+   		}
+   		else if (entreeUtilisateur == "3") {
+   			village_.change_Villageois( new Ouvrier( *village_.get_Villageois( villageoischoisi ) ) );
+   		    sortieBoucleInstruction = true;
+   		}
+   	}
 
-    	while (!sortieBoucleInstruction){
-    		cout << "  >";
-    		getline(cin, entreeUtilisateur);
-
-    		if (entreeUtilisateur == "1") {
-    			village_.change_Villageois( new Bucheron( *village_.get_Villageois( villageoischoisi ) ) );
-    			sortieBoucleInstruction = true;
-    		}
-    		else if (entreeUtilisateur == "2") {
-    			village_.change_Villageois( new Fermier( *village_.get_Villageois( villageoischoisi ) ) );
-    			sortieBoucleInstruction = true;
-    		}
-    		else if (entreeUtilisateur == "3") {
-    			village_.change_Villageois( new Ouvrier( *village_.get_Villageois( villageoischoisi ) ) );
-    		    sortieBoucleInstruction = true;
-    		    		}
-       	}
-
-    	//Diminue le nombre de promotions disponibles pour ce tour
-    	--promotions_disponibles;
-    	cout << "  La promotion a bien été donnée !"<< endl;
+    //Diminue le nombre de promotions disponibles pour ce tour
+    --promotions_disponibles;
+    cout << "  La promotion a bien été donnée !"<< endl;
 }
 
 
 
 
 
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-// constuire un batiment
+//--------------------------------------------------------
+/**
+ *@brief Interface pour construire (sous conditions) un batiment
+ */
 void SystemeJeu::construire( int id ) {
 
 	cout << "   choisissez le batiment à construire" << endl
-		<< "   1> Maison \n";
+		 << "   1> Maison \n";
 
+	//Selection de l'action à effectuer
 	string entreeUtilisateur("");
 	bool sortieBoucleInstruction(false);
-
 	while (!sortieBoucleInstruction){
 		cout << "   >";
 		getline(cin, entreeUtilisateur);
@@ -262,28 +265,17 @@ void SystemeJeu::construire( int id ) {
 	cout << "   Entrez sa description\n   >";
 	getline(cin, description);
 
-	if (entreeUtilisateur == "1")		{
-		village_.faire_Construire( new Maison(nom,description), id );
-	}
+	if (entreeUtilisateur == "1")	{ village_.faire_Construire( new Maison(nom,description), id );	}
 }
 
 
 
 
 
-
-
-
-
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-
-
-
-
-
-// retourne le village du systeme
+//--------------------------------------------------------
+/**
+ *@brief Méthode qui retourne le village utilisé
+ */
 Village* SystemeJeu::get_Village() {
 	return &village_;
 }

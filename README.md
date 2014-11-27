@@ -3,6 +3,6 @@ PatternTown
 
   A little C++ school game project implementing design patterns
 
-* State : WIP
-* Observer : WIP
+* State : Done
+* Observer : Done
 * Decorator : Done

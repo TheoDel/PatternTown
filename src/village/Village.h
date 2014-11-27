@@ -12,6 +12,7 @@
 #include "etats/EtatVillage.h"
 #include "etats/EtatVillageNormal.h"
 #include "etats/EtatVillageFamine.h"
+#include "etats/EtatVillageFete.h"
 #include "../villageois/Villageois.h"
 #include "../batiments/Batiment.h"
 #include "Ressource.h"
@@ -38,6 +39,11 @@ class Village {
 		EtatVillage* etatVillage_; /**< Etat courant du village */
 		EtatVillageNormal* etatVillageNormal_; /**< Etat normal */
 		EtatVillageFamine* etatVillageFamine_; /**< Etat famine */
+		EtatVillageFete* EtatVillageFete_; /**< Etat fête */
+
+		static const int ration_hebdo_=2; /**< Quantité de nourriture consommée par habitant par jour */
+		static const int satisf_moy_pour_fete=30; /**< Satisfaction moyenne nécessaire pour déclencher l'état fête */
+		static const int proba_arrivee=50; /**< Pourcentage de chances d'arrivé d'un nouveau villageois dans l'état fête*/
 
 	public :
 

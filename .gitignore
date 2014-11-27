@@ -40,3 +40,7 @@
 # Directories
 bin/
 obj/
+Debug/
+
+# Temp
+*~

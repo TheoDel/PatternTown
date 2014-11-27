@@ -14,6 +14,7 @@
 #include "Ressource.h"
 #include <iostream>
 #include <vector>
+#include <cstdlib>
 
 using namespace std;
 
@@ -28,6 +29,7 @@ Village::Village( string nom ) {
 	nom_ = nom;
 	etatVillageNormal_= new EtatVillageNormal(this);
 	etatVillageFamine_ = new EtatVillageFamine(this);
+	EtatVillageFete_ = new EtatVillageFete(this);
 	etatVillage_ = etatVillageNormal_;
 }
 
@@ -321,9 +323,11 @@ void Village::faire_Construire( Batiment* b, int idVillageois ) {
  */
 void Village::jour_Suivant() {
 
+	//Prélèvement de la nourriture
 	cout << "\n...Prélèvement de la nourriture... ";
-	int nourritureNecessaire = get_Population()*2;
+	int nourritureNecessaire = get_Population()*ration_hebdo_;
 
+	// Si elle est insuffisante...
 	if ( get_Ressource(2) < nourritureNecessaire ) {
 		cout << " il n'y a pas assez de nourriture, le village est en famine ! Les villageois ne sont pas contents...";
 		ressources_.set_Ressource(2,0);
@@ -343,6 +347,27 @@ void Village::jour_Suivant() {
 		cout << nourritureNecessaire << " rations de nourriture prélevées !";
 		ressources_.change_Ressource(2,-nourritureNecessaire);
 		etatVillage_ = etatVillageNormal_;
+
+		// Test s'il faut passer dans l'état fête en calculant la satisfaction moyenne (on peut penser à un observateur à l'avenir pour éviter ceci)
+		int somme_satisf=0;
+		for ( auto v : villageois_ ) {
+					somme_satisf += v.second->get_Satisfaction();
+			}
+		if ((somme_satisf/get_Population())>= satisf_moy_pour_fete){
+			etatVillage_ = EtatVillageFete_;
+			cout << "On dirait que les villageois sont très contents, c'est la fête !";
+
+			//Ajoute aléatoirement ou pas un nouveau villageois
+			int aleat = rand() % 100 + 1;
+			//TODO avec proba_arrivee
+
+			//Décrémente la satisfaction pour éviter une fête infinie
+			for ( auto v : villageois_ ) {
+				if ( v.second->get_Satisfaction() >= satisf_moy_pour_fete ) {
+					v.second->change_Satisfaction(-1);
+				}
+			}
+		}
 	}
 }
 

@@ -1,7 +1,8 @@
 ##############################################
 #
 # Makefile pour le projet PatternTown
-# Auteurs : Thomas Chevrel, Theo Delalande
+# Auteur : Florian Richoux
+# Modifié par : Thomas Chevrel, Theo Delalande
 #
 ##############################################
 
@@ -49,7 +50,6 @@ $(EXEC): $(OBJECTS)
 	@$(LINKER) $@ $^
 
 $(OBJDIR)/%.o: %.cpp
-
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
 

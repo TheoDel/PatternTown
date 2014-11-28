@@ -18,7 +18,7 @@
 //--------------------------------------------------------
 /**
  *@class Villageois
- *@brief Classe abstraite représentant les villageois
+ *@brief Classe abstraite heritant de Observer et représentant les villageois
  */
 
 class Villageois : public Observer {
@@ -52,7 +52,7 @@ class Villageois : public Observer {
 		virtual ~Villageois() = 0;
 
 		// Getters
-		virtual int get_id();							//@Implements
+		virtual int get_id();			//@Implements
 		virtual std::string get_Nom();
 		virtual std::string get_Description();
 		virtual int get_Energie();
@@ -64,11 +64,13 @@ class Villageois : public Observer {
 		virtual void change_Energie( int val );
 		virtual void change_Satisfaction( int val );
 
-		// < Observer >
+		////////////////////////////////////////////////////////////
+		// Méthodes liées aux pattern Observer
 		virtual Observable* get_Observable();
 		virtual int get_indiceBatiment();
 		virtual void set_Observable( Observable* obs );	//@Implements
 		void actualiser( int newIndice );				//@Implements
+		////////////////////////////////////////////////////////////
 
 		// Actions de jeu
 		virtual int recolter_Bois();

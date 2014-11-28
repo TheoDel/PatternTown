@@ -26,7 +26,7 @@ class SystemeJeu {
         int jour_;					/**< Jour courant */
         int promotions_disponibles; /**< Nombre d'ajout de compétences restantes pour les villageois */
 
-		// méthodes privées
+		// Méthodes privées
     	void lancerTour();
         void donnerOrdre();
 		void promouvoir();

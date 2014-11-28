@@ -150,7 +150,7 @@ int Village::get_Ressource( int id ) {
 //--------------------------------------------------------
 /**
  *@brief Méthode retournant les ressources du village
- *@return L'adresse de l'objet Ressources_ de village
+ *@return Un pointeur vers l'objet Ressources_ du village
  */
 Ressource* Village::get_Ressources() {
 	return &ressources_;

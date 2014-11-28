@@ -80,7 +80,7 @@ string Villageois::get_Nom() {
 //--------------------------------------------------------
 /**
  *@brief Méthode retournant la description du villageois
- *@return Un entier representant la description du villageois
+ *@return Une std::string representant la description du villageois
  */
 string Villageois::get_Description() {
 	return description_;
@@ -183,8 +183,8 @@ Observable* Villageois::get_Observable() {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode retournant l'indice de satisfaction du sujet (batiment) observé
- *@return Un entier representant l'indice de satisfaction du sujet (batiment) observé
+ *@brief Méthode retournant l'indice de satisfaction du sujet (batiment) observé par le villageois
+ *@return Un entier representant l'indice de satisfaction du sujet (batiment) observé par le villageois
  */
 int Villageois::get_indiceBatiment() {
 	//if ( observable_ == nullptr ) { return "<Aucun Observateur>"; }
@@ -197,7 +197,7 @@ int Villageois::get_indiceBatiment() {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode modifiant le sujet observé
+ *@brief Méthode modifiant le sujet observé par le villageois
  *@param obs Le nouveau sujet à observé, ou nullptr
  */
 void Villageois::set_Observable( Observable* obs ) {
@@ -218,8 +218,8 @@ void Villageois::set_Observable( Observable* obs ) {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode actualisant l'indice de satisfaction reçu du sujet
- *@param newIndice l'indice mis à jour du sujet
+ *@brief Méthode actualisant le niveau de satisfaction du villageois par l'indice de satisfaction reçu du sujet
+ *@param newIndice l'indice de satisfaction mis à jour du sujet
  */
 void Villageois::actualiser( int newIndice ) {
 	satisfaction_ += newIndice - indiceBatiment_;
@@ -295,5 +295,5 @@ Batiment* Villageois::construire_Batiment( Batiment* b ) {
  *@brief Méthode affichant l'identifiant, l'energie, la satisfaction, le nom et la description du villageois
  */
 void Villageois::afficher() {
-	cout << "(ID:" << get_id() << ")(Energie:"<< energie_ <<" - Satisfaction:"<< satisfaction_<< ") "<< get_Nom() << " : " << get_Description() << endl;
+	cout << "(ID:" << get_id() << ")(Energie:" << get_Energie() << " - Satisfaction:" << get_Satisfaction() << ") " << get_Nom() << " : " << get_Description() << endl;
 }

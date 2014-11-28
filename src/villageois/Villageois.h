@@ -18,7 +18,7 @@
 //--------------------------------------------------------
 /**
  *@class Villageois
- *@brief Classe abstraite heritant de Observer et représentant les villageois
+ *@brief Classe abstraite implementant l'interface Observer et représentant les villageois
  */
 
 class Villageois : public Observer {

@@ -19,7 +19,7 @@ class Observer;
 //--------------------------------------------------------
 /**
  *@class Batiment
- *@brief Classe abstraite heritant de Observable et représentant les batiments et implementant l'interface Observable
+ *@brief Classe abstraite implementant l'interface Observable et représentant les batiments
  */
 
 class Batiment : public Observable {

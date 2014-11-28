@@ -1,72 +1,90 @@
-# Project name
+##############################################
+#
+# Makefile pour le projet PatternTown
+# Auteurs : Thomas Chevrel, Theo Delalande
+#
+##############################################
+
+
+
+##############################################
+# Informations de compilation
 EXEC=PatternTown
+CXXFLAGS=-std=c++0x
 
-# Compiler
-IDIR=include include/constraints include/domains include/misc include/objectives include/variables
-IDIRFLAG=$(foreach idir, $(IDIR), -I$(idir))
-CXXFLAGS=-std=c++0x -Ofast -W -Wall -Wextra -pedantic -Wno-sign-compare -Wno-unused-parameter $(IDIRFLAG)
 
-# Linker
-LFLAGS=$(IDIRFLAG)
 
-# Directories
+##############################################
+# Dossiers
 SRCDIR=src src/batiments src/village src/village/etats src/villageois src/villageois/decorations
 OBJDIR=obj
-BINDIR=bin
 
-# Files
+
+
+##############################################
+# Fichiers
 SOURCES=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp))
 OBJECTS=$(patsubst %.cpp, $(OBJDIR)/%.o, $(notdir $(SOURCES)))
-
-# For rm
-SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
-INCLUDESTILDE=$(foreach idir, $(IDIR), $(wildcard $(idir)/*.hpp~))
-
 vpath %.cpp $(SRCDIR)
 
-# Reminder, 'cause it is easy to forget makefile's fucked-up syntax...
-# $@ is what triggered the rule, ie the target before :
-# $^ is the whole dependencies list, ie everything after :
-# $< is the first item in the dependencies list
 
-# Rules
+
+##############################################
+# Compilation complète
+
 gcc: clean
 gcc: CXX=g++
 gcc: LINKER=g++ -o
 gcc: CXXFLAGS += -DNDEBUG
-gcc: $(BINDIR)/$(EXEC)
+gcc: $(EXEC)
 
 gcc-debug: clean
 gcc-debug: CXX=g++
 gcc-debug: LINKER=g++ -o
 gcc-debug: CXXFLAGS += -g
-gcc-debug: $(BINDIR)/$(EXEC)
-
-clang: clean
-clang: CXX=clang++
-clang: LINKER=clang++ -o
-clang: CXXFLAGS += -DNDEBUG -stdlib=libc++
-clang: $(BINDIR)/$(EXEC)
-
-clang-debug: clean
-clang-debug: CXX=clang++
-clang-debug: LINKER=clang++ -o
-clang-debug: CXXFLAGS += -g -stdlib=libc++
-clang-debug: $(BINDIR)/$(EXEC)
+gcc-debug: $(EXEC)
 
 
-
-$(BINDIR)/$(EXEC): $(OBJECTS)
-	@$(LINKER) $@ $(LFLAGS) $^
+$(EXEC): $(OBJECTS)
+	@$(LINKER) $@ $^
 
 $(OBJDIR)/%.o: %.cpp
+
 	@$(CXX) $(CXXFLAGS) -c $< -o $@
 
+
 	
-	
-.PHONY: gcc gcc-debug clang clang-debug clean
+##############################################
+# Règles PHONY
+
+.PHONY: gcc gcc-debug begin clean doc
+
+
+
+##############################################
+# Création des repertoires
+
+begin:
+	@rm -rf PatternTown	
+	@rm -rf obj
+	@mkdir obj
+
+
+
+##############################################
+# Nettoyage des dossiers
+
+SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
+INCLUDESTILDE=$(foreach idir, $(IDIR), $(wildcard $(idir)/*.hpp~))
 
 clean:
-	rm -fr core *~ $(OBJECTS) $(BINDIR)/$(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
+	@rm -rf core *~ $(OBJECTS) $(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
 
 
+
+##############################################
+# Generation de la documentation Doxygen
+
+doc:
+	@rm -rf doc
+	@doxygen Doxyfile

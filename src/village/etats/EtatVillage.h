@@ -30,7 +30,7 @@ class EtatVillage {
 
 		// Constructeurs/Destructeurs
 		EtatVillage(Village* v);
-		virtual ~EtatVillage() =0;
+		virtual ~EtatVillage() = 0;
 
 		// Actions de jeu
 		virtual void faire_Recolter_Villageois(int idRessource, int idVillageois);

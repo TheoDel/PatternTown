@@ -27,17 +27,17 @@ class Batiment : public Observable {
 	private:
 
 		// pour l'attribution automatique de l'identifiant
-		static int NEXTID_; /**< ID du prochain batiment créé */
+		static int NEXTID_; /**< Identifiant du prochain batiment créé */
 
 
 	protected :
 
-		int id_; /**< ID du batiment */
+		int id_; /**< Identifiant du batiment */
 		std::string nom_; /**< Nom du batiment */
 		std::string description_; /**< Description breve du batiment */
 
 		std::unordered_map< int, Observer* > observers_; /**< Liste des observateurs de ce batiment */
-		int indiceSatisfaction_; /**< Indice de satisfaction lié au batiment */
+		int indiceSatisfaction_; /**< Indice de satisfaction du batiment */
 
 
 	public :

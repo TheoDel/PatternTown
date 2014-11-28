@@ -1,5 +1,12 @@
+/**
+ *@file Villageois.cpp
+ *@brief Fichier contenant l'implementation de la classe Villageois
+ *@author Thomas Chevrel
+ *@author Theo Delalande
+ *@date 27 novembre 2014
+ */
+
 #include "Villageois.h"
-#include "../batiments/Maison.h"
 
 #include <iostream>
 
@@ -8,120 +15,212 @@ int Villageois::NEXTID_ = 1;
 
 
 
-// constructeur par défaut
+//--------------------------------------------------------
+/**
+ *@brief Constructeur par defaut
+ */
 Villageois::Villageois() :
 	observable_(nullptr), indiceBatiment_(0), id_(0), nom_(""),
 	energie_(0), satisfaction_(0), description_("") {}
 
 
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Constructeur de base
+ *@param nom Nom du villageois
+ *@param description Description du villageois
+ */
 Villageois::Villageois( std::string nom, std::string description ) :
 	observable_(nullptr), indiceBatiment_(0), id_(NEXTID_), nom_(nom),
 	energie_(1), satisfaction_(3), description_(description) { ++NEXTID_; }
 
 
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Destructeur
+ */
 Villageois::~Villageois() {}
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// retourne l'id du villageois
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant l'identifiant du villageois
+ *@return Un entier representant l'identifiant du villageois
+ */
 int Villageois::get_id() {
 	return id_;
 }
 
 
-// retourne le nom du villageois
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le nom du villageois
+ *@return Une std::string representant le nom du villageois
+ */
 string Villageois::get_Nom() {
 	return nom_;
 }
 
 
-// retourne la description complete du villageois
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant la description du villageois
+ *@return Un entier representant la description du villageois
+ */
 string Villageois::get_Description() {
 	return description_;
 }
 
-// retourne l'energie ( = points d'action ) du villageois
+
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le niveau d'energie (points d'action) du villageois
+ *@return Un entier representant l'energie du villageois
+ */
 int Villageois::get_Energie() {
 	return energie_;
 }
 
 
-// retourne la satisfaction ( positif=heureux, negatif=mecontent ) du villageois
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le niveau de satisfaction ( positif=heureux, negatif=mecontent ) du villageois
+ *@return Un entier representant la satisfaction du villageois
+ */
 int Villageois::get_Satisfaction() {
 	return satisfaction_;
 }
 
 
-// ici, ne sert � rien !! (se retourne lui-m�me)
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le villageois lui-même
+ *@return Un pointeur vers le villageois
+ */
 Villageois* Villageois::get_Villageois() {
 	return this;
 }
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// modifie la description du villageois
+//--------------------------------------------------------
+/**
+ *@brief Méthode modifiant la description du villageois
+ *@param d Nouvelle description du villageois
+ */
 void Villageois::set_Description( string d ){
 	description_ = d;
 }
 
-// incremente ou decremente l'energie ( = points d'action ) du villageois
+
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode modifiant le niveau d'energie du villageois
+ *@param val Energie à ajouter/retirer au villageois
+ */
 void Villageois::change_Energie( int val ) {
 	energie_ += val;
 }
 
 
-// incremente ou decremente la satisfaction ( = points d'action ) du villageois
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode modifiant le niveau de satisfaction du villageois
+ *@param val Satisfaction à ajouter/retirer au villageois
+ */
 void Villageois::change_Satisfaction( int val ) {
 	satisfaction_ += val;
 }
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-// < Observer >
 
 
-
-// retourne l'observable associé
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant le sujet observé par le villageois
+ *@return Un pointeur vers le sujet, ou nullptr s'il n'existe pas
+ */
 Observable* Villageois::get_Observable() {
 	return observable_;
 }
 
 
-// retourne la donnee
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode retournant l'indice de satisfaction du sujet (batiment) observé
+ *@return Un entier representant l'indice de satisfaction du sujet (batiment) observé
+ */
 int Villageois::get_indiceBatiment() {
 	//if ( observable_ == nullptr ) { return "<Aucun Observateur>"; }
 	return indiceBatiment_;
 }
 
 
-// modifie l'observable actuel
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode modifiant le sujet observé
+ *@param obs Le nouveau sujet à observé, ou nullptr
+ */
 void Villageois::set_Observable( Observable* obs ) {
-	if ( observable_ != nullptr ) {	// si deja enregistré dans observable
+	if ( observable_ != nullptr ) {
+		// si deja enregistré dans un sujet
 		observable_->supprimerObs( this );
 	}
 	observable_ = obs;
-	if ( obs != nullptr ) {	// si le nouvel observable n'existe pas
+	if ( obs != nullptr ) {
+		// si ce nouveau sujet n'existe pas
 		observable_->enregistrerObs( this );
 	}
 }
 
 
-// actualise la donnee
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode actualisant l'indice de satisfaction reçu du sujet
+ *@param newIndice l'indice mis à jour du sujet
+ */
 void Villageois::actualiser( int newIndice ) {
 	satisfaction_ += newIndice - indiceBatiment_;
 	indiceBatiment_ = newIndice;
@@ -129,13 +228,14 @@ void Villageois::actualiser( int newIndice ) {
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
-// renvoie un entier lié a la quantite de bois coupé
+//--------------------------------------------------------
+/**
+ *@brief Méthode faisant recolter du bois au villageois
+ *@details Le cas écheant, l'energie du villageois est modifiée
+ *@return La quantité de bois recolté par le villageois
+ */
 int Villageois::recolter_Bois() {
     if ( energie_ < 1){
         cout << nom_ << ", non content d'etre incompetent pour couper du bois, est trop fatigue..." << endl;
@@ -148,10 +248,18 @@ int Villageois::recolter_Bois() {
 }
 
 
-// renvoie un entier lié a la quantite de nourriture recoltée
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode faisant recolter de la nourriture au villageois
+ *@details Le cas écheant, l'energie du villageois est modifiée
+ *@return La quantité de nourriture recoltée par le villageois
+ */
 int Villageois::recolter_Nourriture() {
     if ( energie_ < 1){
-        cout << nom_ << ", non content d'etre incompetent pour r�colter de la nourriture, est trop fatigue..." << endl;
+        cout << nom_ << ", non content d'etre incompetent pour récolter de la nourriture, est trop fatigue..." << endl;
         return 0;
     } else {
         cout << nom_ << " recolte de la nourriture comme un souillon..." << endl;
@@ -161,22 +269,31 @@ int Villageois::recolter_Nourriture() {
 }
 
 
-// cree un nouveau batiment
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode faisant construire un batiment au villageois
+ *@details Le cas écheant, l'energie du villageois est modifiée
+ *@return Un pointeur vers le nouveau batiment, ou nullptr si le villageois n'a pas pu le construire
+ */
 Batiment* Villageois::construire_Batiment( Batiment* b ) {
 	cout << nom_ << " n'est pas un ouvrier" << endl;
-	delete b; // suppression du batiment créé
+	// suppression du batiment créé
+	delete b;
 	b = nullptr;
 	return b;
 }
 
 
 
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
-///////////////////////////////////////////////////////////////////////////////
 
 
-
+//--------------------------------------------------------
+/**
+ *@brief Méthode affichant l'identifiant, l'energie, la satisfaction, le nom et la description du villageois
+ */
 void Villageois::afficher() {
 	cout << "(ID:" << get_id() << ")(Energie:"<< energie_ <<" - Satisfaction:"<< satisfaction_<< ") "<< get_Nom() << " : " << get_Description() << endl;
 }

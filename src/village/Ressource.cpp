@@ -1,6 +1,6 @@
 /**
  *@file Ressource.cpp
- *@brief Fichier contenant l'implementation de la classe SystemeJeu
+ *@brief Fichier contenant l'implementation de la classe Ressource
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014

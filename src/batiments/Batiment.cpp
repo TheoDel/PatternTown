@@ -1,6 +1,6 @@
 /**
  *@file Batiment.cpp
- *@brief Fichier contenant l'implementation de la classe SystemeJeu
+ *@brief Fichier contenant l'implementation de la classe Batiment
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
@@ -42,8 +42,8 @@ Batiment::~Batiment() {}
 
 //--------------------------------------------------------
 /**
- *@brief Méthode retournant l'id du batiment
- *@return Un entier representant l'id du batiment
+ *@brief Méthode retournant l'identifiant du batiment
+ *@return Un entier representant l'identifiant du batiment
  */
 int Batiment::get_id(){
 	return id_;
@@ -94,8 +94,8 @@ void Batiment::set_Description( string d ) {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode retournant d'indice de satisfaction liée au batiment
- *@return Un entier representant le satisfaction liée au batiment
+ *@brief Méthode retournant d'indice de satisfaction du batiment
+ *@return Un entier representant le satisfaction du batiment
  */
 int Batiment::get_indiceSatisfaction() {
 	return indiceSatisfaction_;
@@ -120,7 +120,7 @@ std::unordered_map<int,Observer*> Batiment::get_Observers() {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode modifiant l'indice de satisfaction lié au batiment
+ *@brief Méthode modifiant l'indice de satisfaction du batiment
  *@param is Nouvel indice de satisfaction du batiment
  */
 void Batiment::set_indiceSatisfaction( int is ) {
@@ -150,7 +150,7 @@ void Batiment::enregistrerObs( Observer* observer ) {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode un observateur
+ *@brief Méthode supprimant un observateur
  *@param observer Observateur à supprimer
  */
 void Batiment::supprimerObs( Observer* observer ) {
@@ -181,7 +181,7 @@ void Batiment::notifierObs() {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode affichant le nom, l'id et la description du batiment
+ *@brief Méthode affichant le nom, l'identifiant et la description du batiment
  */
 void Batiment::afficher() {
 	 cout << "(ID:" << get_id() << ") " << get_Nom() << " : " << get_Description() << endl;

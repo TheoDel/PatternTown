@@ -288,7 +288,7 @@ void Village::change_Ressource(int id, int quantite) {
 //--------------------------------------------------------
 /**
  *@brief Méthode faisant effectuer de la recolte à un villageois
- *@details Le cas écheant, la ressource recoltée est ajoutée aux ressources du village et l'energie du villageois est modifiée
+ *@details Le cas écheant, la ressource recoltée est ajoutée aux ressources du village
  *@param idRessource Identifiant de la ressource à recolter
  *@param idVillageois Identifiant du villageois recoltant
  */
@@ -302,8 +302,8 @@ void Village::faire_Recolter_Villageois(int idRessource, int idVillageois){
 
 //--------------------------------------------------------
 /**
- *@brief Méthode faisant construire (sous condition) un batiment à un villageois
- *@details Le cas écheant, le batiment est ajouté à la liste des batiments et l'energie du villageois est modifiée
+ *@brief Méthode faisant construire un batiment à un villageois
+ *@details Le cas écheant, le batiment est ajouté à la liste des batiment
  *@param b Pointeur vers le batiment à construire
  *@param idVillageois Identifiant du villageois construisant
  */

@@ -1,6 +1,6 @@
 /**
  *@file Ressource.h
- *@brief Fichier contenant la definition de la classe SystemeJeu
+ *@brief Fichier contenant la definition de la classe Ressource
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014

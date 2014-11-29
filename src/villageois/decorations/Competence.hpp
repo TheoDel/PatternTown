@@ -1,16 +1,16 @@
 /**
- *@file Competence.h
+ *@file Competence.hpp
  *@brief Fichier contenant la definition de la classe Competence
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef COMPETENCE_H
-#define COMPETENCE_H
+#ifndef COMPETENCE_HPP
+#define COMPETENCE_HPP
 
-#include "../../village/Village.h"
-#include "../Villageois.h"
+#include "../Villageois.hpp"
+#include "../../batiments/Batiment.hpp"
 
 
 //--------------------------------------------------------
@@ -61,4 +61,4 @@ class Competence : public Villageois {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* COMPETENCE_HPP */

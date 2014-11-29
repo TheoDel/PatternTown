@@ -1,19 +1,19 @@
 /**
- *@file Batiment.h
+ *@file Batiment.hpp
  *@brief Fichier contenant la definition de la classe Batiment
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef BATIMENT_H
-#define BATIMENT_H
+#ifndef BATIMENT_HPP
+#define BATIMENT_HPP
 
-class Observer;
-#include "Observable.h"
-#include <string>
-#include <vector>
+#include "Observable.hpp"
+#include "../villageois/Observer.hpp"
+
 #include <unordered_map>
+#include <string>
 
 
 //--------------------------------------------------------
@@ -59,9 +59,9 @@ class Batiment : public Observable {
 		int get_indiceSatisfaction();
 		void set_indiceSatisfaction( int is );
 		std::unordered_map<int,Observer*> get_Observers();
-		void enregistrerObs( Observer* observer );
-		void supprimerObs( Observer* observer );
-		void notifierObs();
+		void enregistrerObs( Observer* observer );	//@Implements
+		void supprimerObs( Observer* observer );	//@Implements
+		void notifierObs();							//@Implements
 		////////////////////////////////////////////////////////////
 
 		void afficher();
@@ -69,4 +69,4 @@ class Batiment : public Observable {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* BATIMENT_HPP */

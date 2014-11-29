@@ -6,19 +6,20 @@
  *@date 27 novembre 2014
  */
 
-#include "SystemeJeu.h"
-#include "village/Village.h"
-#include "villageois/Observer.h"
-#include "villageois/Villageois.h"
-#include "villageois/VillageoisConcret.h"
-#include "villageois/decorations/Competence.h"
-#include "villageois/decorations/Bucheron.h"
-#include "villageois/decorations/Fermier.h"
-#include "villageois/decorations/Ouvrier.h"
-#include "batiments/Observable.h"
-#include "batiments/Batiment.h"
-#include "batiments/Maison.h"
-#include "village/Ressource.h"
+#include "SystemeJeu.hpp"
+
+#include "village/Village.hpp"
+#include "villageois/Observer.hpp"
+#include "villageois/Villageois.hpp"
+#include "villageois/VillageoisConcret.hpp"
+#include "villageois/decorations/Competence.hpp"
+#include "villageois/decorations/Bucheron.hpp"
+#include "villageois/decorations/Fermier.hpp"
+#include "villageois/decorations/Ouvrier.hpp"
+#include "batiments/Observable.hpp"
+#include "batiments/Batiment.hpp"
+#include "batiments/Maison.hpp"
+#include "village/Ressource.hpp"
 
 #include <iostream>
 #include <string>

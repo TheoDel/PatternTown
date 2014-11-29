@@ -6,12 +6,12 @@
  *@date 27 novembre 2014
  */
 
-#include "EtatVillageFamine.h"
+#include "EtatVillageFamine.hpp"
 
-#include "../../villageois/Villageois.h"
-#include "../../batiments/Batiment.h"
-#include "../Village.h"
-#include "../Ressource.h"
+#include "../../villageois/Villageois.hpp"
+#include "../../batiments/Batiment.hpp"
+#include "../Village.hpp"
+
 #include <iostream>
 
 using namespace std;

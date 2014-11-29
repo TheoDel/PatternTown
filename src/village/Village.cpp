@@ -6,14 +6,9 @@
  *@date 27 novembre 2014
  */
 
-#include "Village.h"
+#include "Village.hpp"
 
-#include "etats/EtatVillage.h"
-#include "../villageois/Villageois.h"
-#include "../batiments/Batiment.h"
-#include "Ressource.h"
 #include <iostream>
-#include <vector>
 #include <cstdlib>
 
 using namespace std;

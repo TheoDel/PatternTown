@@ -6,7 +6,7 @@
  *@date 27 novembre 2014
  */
 
-#include "Ouvrier.h"
+#include "Ouvrier.hpp"
 
 #include <string>
 #include <iostream>

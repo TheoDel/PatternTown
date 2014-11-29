@@ -1,15 +1,15 @@
 /**
- *@file VillageoisConcret.h
+ *@file VillageoisConcret.hpp
  *@brief Fichier contenant la definition de la classe VillageoisConcret
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef VILLAGEOIS_C_H
-#define VILLAGEOIS_C_H
+#ifndef VILLAGEOISCONCRET_HPP
+#define VILLAGEOISCONCRET_HPP
 
-#include "Villageois.h"
+#include "Villageois.hpp"
 
 
 //--------------------------------------------------------
@@ -29,4 +29,4 @@ class VillageoisConcret : public Villageois {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* VILLAGEOISCONCRET_HPP */

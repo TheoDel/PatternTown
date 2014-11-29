@@ -6,7 +6,7 @@
  *@date 27 novembre 2014
  */
 
-#include "Fermier.h"
+#include "Fermier.hpp"
 
 #include <string>
 #include <iostream>

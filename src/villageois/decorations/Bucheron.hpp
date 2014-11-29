@@ -1,15 +1,15 @@
 /**
- *@file Bucheron.h
+ *@file Bucheron.hpp
  *@brief Fichier contenant la definition de la classe Bucheron
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef BUCHERON_H
-#define BUCHERON_H
+#ifndef BUCHERON_HPP
+#define BUCHERON_HPP
 
-#include "Competence.h"
+#include "Competence.hpp"
 
 
 //--------------------------------------------------------
@@ -32,4 +32,4 @@ class Bucheron : public Competence {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* BUCHERON_HPP */

@@ -6,7 +6,7 @@
  *@date 27 novembre 2014
  */
 
-#include "Bucheron.h"
+#include "Bucheron.hpp"
 
 #include <string>
 #include <iostream>

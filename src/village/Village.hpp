@@ -1,21 +1,21 @@
 /**
- *@file Village.h
+ *@file Village.hpp
  *@brief Fichier contenant la definition de la classe Village
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef VILLAGE_H
-#define VILLAGE_H
+#ifndef VILLAGE_HPP
+#define VILLAGE_HPP
 
-#include "etats/EtatVillage.h"
-#include "etats/EtatVillageNormal.h"
-#include "etats/EtatVillageFamine.h"
-#include "etats/EtatVillageFete.h"
-#include "../villageois/Villageois.h"
-#include "../batiments/Batiment.h"
-#include "Ressource.h"
+#include "etats/EtatVillage.hpp"
+#include "etats/EtatVillageNormal.hpp"
+#include "etats/EtatVillageFamine.hpp"
+#include "etats/EtatVillageFete.hpp"
+#include "../villageois/Villageois.hpp"
+#include "../batiments/Batiment.hpp"
+#include "Ressource.hpp"
 
 #include <unordered_map>
 #include <string>
@@ -84,4 +84,4 @@ class Village {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* VILLAGE_HPP */

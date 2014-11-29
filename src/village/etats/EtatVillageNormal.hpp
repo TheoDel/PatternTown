@@ -1,15 +1,15 @@
 /**
- *@file EtatVillageNormal.h
+ *@file EtatVillageNormal.hpp
  *@brief Fichier contenant la definition de la classe EtatVillageNormal
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef ETATVILLAGENORMAL_H_
-#define ETATVILLAGENORMAL_H_
+#ifndef ETATVILLAGENORMAL_HPP
+#define ETATVILLAGENORMAL_HPP
 
-#include "EtatVillage.h"
+#include "EtatVillage.hpp"
 
 
 //--------------------------------------------------------
@@ -33,4 +33,4 @@ class EtatVillageNormal : public EtatVillage {
 };
 
 //--------------------------------------------------------
-#endif /* ETATVILLAGENORMAL_H_ */
+#endif /* ETATVILLAGENORMAL_HPP */

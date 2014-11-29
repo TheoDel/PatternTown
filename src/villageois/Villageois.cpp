@@ -6,11 +6,12 @@
  *@date 27 novembre 2014
  */
 
-#include "Villageois.h"
+#include "Villageois.hpp"
 
 #include <iostream>
 
 using namespace std;
+
 int Villageois::NEXTID_ = 1;
 
 

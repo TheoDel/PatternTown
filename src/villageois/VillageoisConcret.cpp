@@ -6,7 +6,7 @@
  *@date 27 novembre 2014
  */
 
-#include "VillageoisConcret.h"
+#include "VillageoisConcret.hpp"
 
 #include <iostream>
 

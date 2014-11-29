@@ -1,15 +1,15 @@
 /**
- *@file SystemeJeu.h
+ *@file SystemeJeu.hpp
  *@brief Fichier contenant la definition de la classe SystemeJeu
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef SYSTEMEJEU_H_INCLUDED
-#define SYSTEMEJEU_H_INCLUDED
+#ifndef SYSTEMEJEU_HPP
+#define SYSTEMEJEU_HPP
 
-#include "village/Village.h"
+#include "village/Village.hpp"
 
 
 //--------------------------------------------------------
@@ -47,4 +47,4 @@ class SystemeJeu {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* SYSTEMEJEU_HPP */

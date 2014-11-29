@@ -6,13 +6,12 @@
  *@date 27 novembre 2014
  */
 
-#include "Batiment.h"
-#include "../villageois/Observer.h"
+#include "Batiment.hpp"
 
 #include <iostream>
-#include <unordered_map>
 
 using namespace std;
+
 int Batiment::NEXTID_ = 1;
 
 

@@ -1,13 +1,13 @@
 /**
- *@file Ressource.h
+ *@file Ressource.hpp
  *@brief Fichier contenant la definition de la classe Ressource
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef RESSOURCE_H
-#define RESSOURCE_H
+#ifndef RESSOURCE_HPP
+#define RESSOURCE_HPP
 
 
 //--------------------------------------------------------
@@ -43,4 +43,4 @@ class Ressource {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* RESSOURCE_HPP */

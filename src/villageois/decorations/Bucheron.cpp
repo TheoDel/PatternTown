@@ -47,10 +47,12 @@ Bucheron::~Bucheron() {}
  */
 int Bucheron::recolter_Bois() {
     if ( villageois_.get_Energie() < 1 ){
+        //si son energie est insuffisante, le decorator ne recolte rien
         cout << villageois_.get_Nom() << ", a beau etre un pro pour couper du bois, il est trop fatigue..." << endl ;
         return 0;
     } else {
         cout << villageois_.get_Nom() << " coupe du bois comme un pro !" << endl ;
+        //on decremente l'energie du villageois decoré et on renvoie sa recolte
         villageois_.change_Energie(-1);
         return 5;
     }

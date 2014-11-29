@@ -124,7 +124,7 @@ std::unordered_map<int,Observer*> Batiment::get_Observers() {
  */
 void Batiment::set_indiceSatisfaction( int is ) {
 	indiceSatisfaction_ = is;
-	// on notifie la modification aux observateurs
+	//on notifie la modification aux observateurs
 	notifierObs();
 }
 

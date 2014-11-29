@@ -47,10 +47,12 @@ Fermier::~Fermier() {}
  */
 int Fermier::recolter_Nourriture() {
     if ( villageois_.get_Energie() < 1 ){
-        cout << villageois_.get_Nom() << ", a beau etre un pro pour cultiver, il est trop fatigue..." << endl ;
+        //si son energie est insuffisante, le decorator ne recolte rien
+    	cout << villageois_.get_Nom() << ", a beau etre un pro pour cultiver, il est trop fatigue..." << endl ;
         return 0;
     } else {
         cout << villageois_.get_Nom() << " recolte avec talent !" << endl ;
+        //on decremente l'energie du villageois decoré et on renvoie sa recolte
         villageois_.change_Energie(-1);
         return 5;
     }

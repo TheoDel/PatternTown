@@ -19,6 +19,7 @@
 
 #include <unordered_map>
 #include <string>
+#include <vector>
 
 
 //--------------------------------------------------------
@@ -43,10 +44,10 @@ class Village {
 
 		static const int ration_hebdo_=2; /**< Quantité de nourriture consommée par habitant par jour */
 		static const int satisf_moy_pour_fete=30; /**< Satisfaction moyenne nécessaire pour déclencher l'état fête */
-		static const int proba_arrivee=50; /**< Pourcentage de chances d'arrivé d'un nouveau villageois dans l'état fête*/
+		static const int proba_nouveau_villageois=50; /**< Pourcentage de chances d'arrivé d'un nouveau villageois dans l'état fête*/
+        static std::vector<std::string> liste_noms; /** Liste de noms aéatoires possibles pour les nouveaux villageois (à définir dans le .cpp) */
 
 	public :
-
 		// Constructeurs/Destructeurs
 		Village( std::string nom );
 		~Village();
@@ -80,6 +81,8 @@ class Village {
 
 		void afficher_Villageois();
 		void afficher_Batiments();
+
+		static std::string donner_un_nom();
 
 };
 

@@ -10,15 +10,17 @@
 
 #include "etats/EtatVillage.h"
 #include "../villageois/Villageois.h"
+#include "../villageois/VillageoisConcret.h"
 #include "../batiments/Batiment.h"
 #include "Ressource.h"
 #include <iostream>
 #include <vector>
 #include <cstdlib>
+#include <time.h>
 
 using namespace std;
-
-
+std::vector<std::string> Village::liste_noms(0);
+std::string liste_raw = "Amelia;Bobby;Caroline;Denis;Eloise;Fred;Georgie;Hubert;Inigo;Janet;Klervi;Laurent;Mariette;Nadine;Olivier;Patric;Quentin;Robert;Suzon;Yvonne;";
 
 //--------------------------------------------------------
 /**
@@ -31,6 +33,7 @@ Village::Village( string nom ) {
 	etatVillageFamine_ = new EtatVillageFamine(this);
 	EtatVillageFete_ = new EtatVillageFete(this);
 	etatVillage_ = etatVillageNormal_;
+	srand(time(NULL));
 }
 
 
@@ -324,7 +327,7 @@ void Village::faire_Construire( Batiment* b, int idVillageois ) {
 void Village::jour_Suivant() {
 
 	//Prélèvement de la nourriture
-	cout << "\n...Prélèvement de la nourriture... ";
+	cout << "\n...Prelevement de la nourriture... ";
 	int nourritureNecessaire = get_Population()*ration_hebdo_;
 
 	// Si elle est insuffisante...
@@ -337,14 +340,14 @@ void Village::jour_Suivant() {
 		for ( auto v : villageois_ ) {
 			v.second->change_Satisfaction(-1);
 			if ( v.second->get_Satisfaction() <= 0 ) {
-				cout << "Las, "<< v.second->get_Nom() << " a quitté le village...";
+				cout << "Las, "<< v.second->get_Nom() << " a quitte le village...";
 				remove_Villageois( v.second->get_id() );
 			}
 		}
 	}
 
 	else {
-		cout << nourritureNecessaire << " rations de nourriture prélevées !";
+		cout << nourritureNecessaire << " rations de nourriture prelevees !";
 		ressources_.change_Ressource(2,-nourritureNecessaire);
 		etatVillage_ = etatVillageNormal_;
 
@@ -355,12 +358,18 @@ void Village::jour_Suivant() {
 			}
 		if ((somme_satisf/get_Population())>= satisf_moy_pour_fete){
 			etatVillage_ = EtatVillageFete_;
-			cout << "On dirait que les villageois sont très contents, c'est la fête !";
+			cout << "On dirait que les villageois sont tres contents, c'est la fete !";
 
 			//Ajoute aléatoirement ou pas un nouveau villageois
 			int aleat = rand() % 100 + 1;
-			//TODO avec proba_arrivee
 
+            if (aleat<=proba_nouveau_villageois) {
+                std::string nomNouveau = donner_un_nom();
+
+                Villageois* v = new VillageoisConcret( nomNouveau, "villageois nouveau" );
+                add_Villageois(v);
+                cout << "Un nouveau villageois ! "<< nomNouveau << " vient de s'installer à " << nom_;
+            }
 			//Décrémente la satisfaction pour éviter une fête infinie
 			for ( auto v : villageois_ ) {
 				if ( v.second->get_Satisfaction() >= satisf_moy_pour_fete ) {
@@ -398,3 +407,32 @@ void Village::afficher_Batiments() {
 		b.second->afficher();
 	}
 }
+
+
+//--------------------------------------------------------
+/**
+ *@brief Méthode tirant aléatoirement un nom de villageois dans une liste définie
+ */
+std::string Village::donner_un_nom() {
+    if (liste_noms.size()==0){
+        std::size_t pos_suivante = liste_raw.find_first_of(";");
+        int gardefou=0;
+        while((pos_suivante != std::string::npos) || gardefou>=50)
+        {
+            liste_noms.push_back(liste_raw.substr(0,pos_suivante));
+            //cout << liste_raw.substr(0,pos_suivante);
+            liste_raw = liste_raw.substr(pos_suivante+1,liste_raw.length());
+            gardefou++;
+            pos_suivante = liste_raw.find_first_of(";");
+        }
+    }
+
+    if (liste_noms.size()==0){
+        return "Toto";
+    }
+
+    int aleat = rand() % (liste_noms.size()-1) + 0;
+
+    return liste_noms.at(aleat);
+}
+

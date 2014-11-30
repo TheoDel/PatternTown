@@ -1,13 +1,13 @@
 /**
- *@file Observable.h
+ *@file Observable.hpp
  *@brief Fichier contenant la definition de l'interface Observable
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef OBSERVABLE_H
-#define OBSERVABLE_H
+#ifndef OBSERVABLE_HPP
+#define OBSERVABLE_HPP
 
 class Observer;
 
@@ -31,4 +31,4 @@ class Observable {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* OBSERVABLE_HPP */

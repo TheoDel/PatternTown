@@ -1,15 +1,15 @@
 /**
- *@file Fermier.h
+ *@file Fermier.hpp
  *@brief Fichier contenant la definition de la classe Fermier
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef FERMIER_H
-#define FERMIER_H
+#ifndef FERMIER_HPP
+#define FERMIER_HPP
 
-#include "Competence.h"
+#include "Competence.hpp"
 
 
 //--------------------------------------------------------
@@ -32,4 +32,4 @@ class Fermier : public Competence {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* FERMIER_HPP */

@@ -6,7 +6,7 @@
  *@date 27 novembre 2014
  */
 
-#include "Competence.h"
+#include "Competence.hpp"
 
 #include <iostream>
 

@@ -6,10 +6,10 @@
  *@date 27 novembre 2014
  */
 
-#include "Maison.h"
+#include "Maison.hpp"
 
-#include "Batiment.h"
-#include "Observable.h"
+#include "Batiment.hpp"
+#include "Observable.hpp"
 
 using namespace std;
 

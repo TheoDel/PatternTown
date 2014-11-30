@@ -1,15 +1,15 @@
 /**
- *@file EtatVillageFete.h
+ *@file EtatVillageFete.hpp
  *@brief Fichier contenant la definition de la classe EtatVillageFete
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef ETATVILLAGEFETE_H_
-#define ETATVILLAGEFETE_H_
+#ifndef ETATVILLAGEFETE_HPP
+#define ETATVILLAGEFETE_HPP
 
-#include "EtatVillage.h"
+#include "EtatVillage.hpp"
 
 
 //--------------------------------------------------------
@@ -38,4 +38,4 @@ class EtatVillageFete : public EtatVillage {
 };
 
 //--------------------------------------------------------
-#endif /* ETATVILLAGEFETE_H_ */
+#endif /* ETATVILLAGEFETE_HPP */

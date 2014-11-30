@@ -1,15 +1,15 @@
 /**
- *@file EtatVillageFamine.h
+ *@file EtatVillageFamine.hpp
  *@brief Fichier contenant la definition de la classe EtatVillageFamine
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef ETATVILLAGEFAMINE_H_
-#define ETATVILLAGEFAMINE_H_
+#ifndef ETATVILLAGEFAMINE_HPP
+#define ETATVILLAGEFAMINE_HPP
 
-#include "EtatVillage.h"
+#include "EtatVillage.hpp"
 
 
 //--------------------------------------------------------
@@ -33,4 +33,4 @@ class EtatVillageFamine : public EtatVillage {
 };
 
 //--------------------------------------------------------
-#endif /* ETATVILLAGEFAMINE_H_ */
+#endif /* ETATVILLAGEFAMINE_HPP */

@@ -6,13 +6,12 @@
  *@date 27 novembre 2014
  */
 
-#include "Batiment.h"
-#include "../villageois/Observer.h"
+#include "Batiment.hpp"
 
 #include <iostream>
-#include <unordered_map>
 
 using namespace std;
+
 int Batiment::NEXTID_ = 1;
 
 
@@ -125,7 +124,7 @@ std::unordered_map<int,Observer*> Batiment::get_Observers() {
  */
 void Batiment::set_indiceSatisfaction( int is ) {
 	indiceSatisfaction_ = is;
-	// on notifie la modification aux observateurs
+	//on notifie la modification aux observateurs
 	notifierObs();
 }
 

@@ -6,19 +6,20 @@
  *@date 27 novembre 2014
  */
 
-#include "SystemeJeu.h"
-#include "village/Village.h"
-#include "villageois/Observer.h"
-#include "villageois/Villageois.h"
-#include "villageois/VillageoisConcret.h"
-#include "villageois/decorations/Competence.h"
-#include "villageois/decorations/Bucheron.h"
-#include "villageois/decorations/Fermier.h"
-#include "villageois/decorations/Ouvrier.h"
-#include "batiments/Observable.h"
-#include "batiments/Batiment.h"
-#include "batiments/Maison.h"
-#include "village/Ressource.h"
+#include "SystemeJeu.hpp"
+
+#include "village/Village.hpp"
+#include "villageois/Observer.hpp"
+#include "villageois/Villageois.hpp"
+#include "villageois/VillageoisConcret.hpp"
+#include "villageois/decorations/Competence.hpp"
+#include "villageois/decorations/Bucheron.hpp"
+#include "villageois/decorations/Fermier.hpp"
+#include "villageois/decorations/Ouvrier.hpp"
+#include "batiments/Observable.hpp"
+#include "batiments/Batiment.hpp"
+#include "batiments/Maison.hpp"
+#include "village/Ressource.hpp"
 
 #include <iostream>
 #include <string>
@@ -59,8 +60,8 @@ void SystemeJeu::lancerJeu() {
 	village_.get_Ressources()->change_Ressource(1,5);
 	village_.get_Ressources()->change_Ressource(2,20);
 	village_.add_Batiment( new Maison ( "Maison_1", "taudis" ) );
-	village_.add_Villageois( new VillageoisConcret( "Toto", "villageois content" ) );
-	village_.add_Villageois( new VillageoisConcret( "Raoul", "villageois chiant" ) );
+	village_.add_Villageois( new VillageoisConcret( Village::donner_un_nom(), "vieux villageois" ) );
+	village_.add_Villageois( new VillageoisConcret( Village::donner_un_nom(), "villageois ennuyeux" ) );
 
 	//Lance 3 tours de jeu
 	for (int i = 1; i<=3; i++){
@@ -78,19 +79,19 @@ void SystemeJeu::lancerJeu() {
  *@brief Lance un tour de jeu correspondant a une journee, permettant au joueur d'effectuer differentes actions
  */
 void SystemeJeu::lancerTour() {
-	
+
 	//On crédite le nombre de promotions disponibles pour ce tour
 	promotions_disponibles = 1;
 
 	//Affichage du menu
-	cout << "\n\n*** Bienvenue à " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
+	cout << "\n\n*** Bienvenue a " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
 	<< "1> Voir la liste des villageois \n"
 	<< "2> Donner un ordre a un villageois \n"
 	<< "3> Promouvoir un villageois \n"
-	<< "4> Voir la quantité de ressources \n"
+	<< "4> Voir la quantite de ressources \n"
 	<< "5> Voir la liste des batiments \n"
 	<< "6> Passer au jour suivant \n";
-	
+
 	//Selection
 	string entreeUtilisateur("");
 	bool sortieBoucleInstruction(false);
@@ -125,7 +126,7 @@ void SystemeJeu::donnerOrdre() {
 
 	//Attente de la saisie d'un nombre
 	//Tant que l'on ne saisie pas un nombre seul, on boucle
-	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) { 
+	while ( ! ( cin >> villageoischoisi and cin.get() == '\n' ) ) {
 		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
 		cout << " >";
 	}
@@ -152,7 +153,7 @@ void SystemeJeu::donnerOrdre() {
     	else { cout << "  2> Recolter de la nourriture" << endl; }
 
     	cout << "  3> Construire un batiment" << endl;
-	
+
     //Selection de l'action à effectuer
     string entreeUtilisateur("");
     bool sortieBoucleInstruction(false);

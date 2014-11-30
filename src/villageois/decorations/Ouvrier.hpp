@@ -1,15 +1,15 @@
 /**
- *@file Ouvrier.h
+ *@file Ouvrier.hpp
  *@brief Fichier contenant la definition de la classe Ouvrier
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef OUVRIER_H
-#define OUVRIER_H
+#ifndef OUVRIER_HPP
+#define OUVRIER_HPP
 
-#include "Competence.h"
+#include "Competence.hpp"
 
 
 //--------------------------------------------------------
@@ -32,4 +32,4 @@ class Ouvrier : public Competence {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* OUVRIER_HPP */

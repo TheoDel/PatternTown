@@ -6,7 +6,7 @@
  *@date 27 novembre 2014
  */
 
-#include "Ressource.h"
+#include "Ressource.hpp"
 
 #include <iostream>
 

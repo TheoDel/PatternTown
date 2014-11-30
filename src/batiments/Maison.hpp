@@ -1,16 +1,16 @@
 /**
- *@file Maison.h
+ *@file Maison.hpp
  *@brief Fichier contenant la definition de la classe Maison
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef MAISON_H
-#define MAISON_H
+#ifndef MAISON_HPP
+#define MAISON_HPP
 
-#include "Observable.h"
-#include "Batiment.h"
+#include "Batiment.hpp"
+#include "Observable.hpp"
 #include <string>
 
 
@@ -30,4 +30,4 @@ class Maison : public Batiment {
 };
 
 //--------------------------------------------------------
-#endif
+#endif /* MAISON_HPP */

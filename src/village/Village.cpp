@@ -6,15 +6,9 @@
  *@date 27 novembre 2014
  */
 
-#include "Village.h"
+#include "Village.hpp"
 
-#include "etats/EtatVillage.h"
-#include "../villageois/Villageois.h"
-#include "../villageois/VillageoisConcret.h"
-#include "../batiments/Batiment.h"
-#include "Ressource.h"
 #include <iostream>
-#include <vector>
 #include <cstdlib>
 #include <time.h>
 
@@ -138,7 +132,7 @@ Batiment* Village::get_Batiment( int id ) {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode retournant une ressource
+ *@brief Méthode retournant une ressource particulière
  *@param id Identifiant de la ressource
  *@return La quantité de la ressource
  */
@@ -191,7 +185,7 @@ int Village::get_Constructions() {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode ajoutant (sous condition) un villageois
+ *@brief Méthode ajoutant un villageois
  *@param v Pointeur vers le villageois à ajouter
  */
 void Village::add_Villageois( Villageois* v ) {
@@ -206,7 +200,7 @@ void Village::add_Villageois( Villageois* v ) {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode modifiant un villageois, c'est-à-dire lui ajoutant une competence
+ *@brief Méthode modifiant un villageois, c'est-à-dire lui ajoutant une competence/decoration
  *@param nv Pointeur vers le villageois à décorer
  */
 void Village::change_Villageois( Villageois* nv ) {
@@ -219,7 +213,7 @@ void Village::change_Villageois( Villageois* nv ) {
 
 //--------------------------------------------------------
 /**
- *@brief Méthode ajoutant (sous condition) un batiment
+ *@brief Méthode ajoutant un batiment
  *@param b Pointeur vers le batiment à ajouter
  */
 void Village::add_Batiment( Batiment* b ) {
@@ -239,9 +233,8 @@ void Village::add_Batiment( Batiment* b ) {
  */
 void Village::remove_Villageois( int id ) {
 	if ( villageois_.find(id) != villageois_.end() ) {
-		//si ce villageois observe un batiment (sujet)
 		if ( villageois_[id]->get_Observable() != nullptr ) {
-			//on supprime ce villageois de la liste des observateurs de ce batiment
+			//si ce villageois observe un sujet, on le supprime de la liste des observateurs de ce sujet
 			villageois_[id]->get_Observable()->supprimerObs( villageois_[id] );
 		}
 		delete villageois_[id];
@@ -260,9 +253,8 @@ void Village::remove_Villageois( int id ) {
  */
 void Village::remove_Batiment( int id ) {
 	if ( batiments_.find(id) != batiments_.end() ) {
-		//pour chaque observateur de ce batiment
 		for ( auto o : batiments_[id]->get_Observers() ) {
-			//on lui supprime ce batiment
+			//pour chaque observateur de ce batiment/sujet, on supprime ce sujet
 			o.second->set_Observable( nullptr );
 		}
 		delete batiments_[id];
@@ -352,7 +344,7 @@ void Village::jour_Suivant() {
 		etatVillage_ = etatVillageNormal_;
 
 		// Test s'il faut passer dans l'état fête en calculant la satisfaction moyenne (on peut penser à un observateur à l'avenir pour éviter ceci)
-		int somme_satisf=0;
+		int somme_satisf = 0;
 		for ( auto v : villageois_ ) {
 					somme_satisf += v.second->get_Satisfaction();
 			}

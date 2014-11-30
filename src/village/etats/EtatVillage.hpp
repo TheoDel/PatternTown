@@ -1,13 +1,13 @@
 /**
- *@file EtatVillage.h
+ *@file EtatVillage.hpp
  *@brief Fichier contenant la definition de la classe EtatVillage
  *@author Thomas Chevrel
  *@author Theo Delalande
  *@date 27 novembre 2014
  */
 
-#ifndef ETATVILLAGE_H_
-#define ETATVILLAGE_H_
+#ifndef ETATVILLAGE_HPP
+#define ETATVILLAGE_HPP
 
 class Village;
 class Batiment;
@@ -39,4 +39,4 @@ class EtatVillage {
 };
 
 //--------------------------------------------------------
-#endif /* ETATVILLAGE_H_ */
+#endif /* ETATVILLAGE_HPP */

@@ -77,6 +77,7 @@ class Villageois : public Observer {
 		virtual int recolter_Bois();
 		virtual int recolter_Nourriture();
 		virtual Batiment* construire_Batiment( Batiment* b );
+		virtual bool ameliorer_Batiment( Batiment* b );
 
 
 		void afficher();

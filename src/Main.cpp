@@ -180,7 +180,7 @@ int main() {
 
 	//Tests SystemeJeu
 
-	SystemeJeu s("NYC");
+	SystemeJeu s("Trifouilly les trois oies");
 	s.lancerJeu();
 
 

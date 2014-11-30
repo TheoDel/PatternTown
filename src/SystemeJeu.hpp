@@ -16,7 +16,7 @@
 /**
  *@class SystemeJeu
  *@brief Classe représentant l'environnement de jeu
- */ 
+ */
 
 class SystemeJeu {
 
@@ -31,6 +31,7 @@ class SystemeJeu {
         void donnerOrdre();
 		void promouvoir();
 		void construire( int id );
+		void ameliorerBatiment( int id );
 
 
     public :

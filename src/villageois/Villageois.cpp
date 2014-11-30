@@ -296,6 +296,27 @@ Batiment* Villageois::construire_Batiment( Batiment* b ) {
 
 
 
+//--------------------------------------------------------
+/**
+ *@brief Méthode faisant améliorer un batiment au villageois
+ *@details Le cas écheant, l'energie du villageois est modifiée
+ *@return Un booléen indiquant si l'action a pu être faite
+ */
+bool Villageois::ameliorer_Batiment( Batiment* b ) {
+	if ( get_Energie() < 1 ) {
+        //si son energie est insuffisante, le villageois ne peut rien faire
+		cout << get_Nom() << " est trop fatigué pour ameliorer le batiment !" << endl;
+		return false;
+	} else {
+        //on decremente l'energie du villageois decoré et on ameliore la batiment en question
+		change_Energie(-1);
+		b->set_indiceSatisfaction(1+(b->get_indiceSatisfaction()));
+		cout << get_Nom() << " a ameliore le batiment ! Celui-ci est desormais de niveau " << b->get_indiceSatisfaction() << endl;
+		return true;
+	}
+}
+
+
 
 //--------------------------------------------------------
 /**

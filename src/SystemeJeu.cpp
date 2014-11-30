@@ -85,12 +85,13 @@ void SystemeJeu::lancerTour() {
 
 	//Affichage du menu
 	cout << "\n\n*** Bienvenue a " << village_.get_Nom() << " ***\nNous sommes le jour " << jour_ << endl
-	<< "1> Voir la liste des villageois \n"
-	<< "2> Donner un ordre a un villageois \n"
-	<< "3> Promouvoir un villageois \n"
-	<< "4> Voir la quantite de ressources \n"
-	<< "5> Voir la liste des batiments \n"
-	<< "6> Passer au jour suivant \n";
+	<< "1> Voir la liste des villageois"<<endl
+	<< "2> Donner un ordre a un villageois"<<endl
+	<< "3> Promouvoir un villageois"<<endl
+	<< "4> Voir la quantite de ressources"<<endl
+	<< "5> Voir la liste des batiments"<<endl
+	<< "6> Attribuer une maison a un villageois"<<endl////////////////////TODO
+	<< "7> Passer au jour suivant"<<endl;
 
 	//Selection
 	string entreeUtilisateur("");
@@ -103,7 +104,8 @@ void SystemeJeu::lancerTour() {
 		else if (entreeUtilisateur == "3")	{	promouvoir(); }
         else if (entreeUtilisateur == "4")	{  	village_.get_Ressources()->afficher_Ressources(); }
         else if (entreeUtilisateur == "5")	{	village_.afficher_Batiments(); }
-        else if (entreeUtilisateur == "6")	{	sortieBoucleInstruction = true; }
+        else if (entreeUtilisateur == "6")	{	 }
+        else if (entreeUtilisateur == "7")	{	sortieBoucleInstruction = true; }
     }
 
 	//En fin de tour, le village effectue ses actions
@@ -154,6 +156,8 @@ void SystemeJeu::donnerOrdre() {
 
     	cout << "  3> Construire un batiment" << endl;
 
+    	cout << "  4> Ameliorer un batiment" << endl;
+
     //Selection de l'action à effectuer
     string entreeUtilisateur("");
     bool sortieBoucleInstruction(false);
@@ -169,6 +173,9 @@ void SystemeJeu::donnerOrdre() {
     	} else if (entreeUtilisateur == "3") {
     		construire( villageoischoisi );
     		sortieBoucleInstruction =true;
+    	} else if (entreeUtilisateur == "4") {
+            ameliorerBatiment( villageoischoisi );
+            sortieBoucleInstruction =true;
     	}
     }
 }
@@ -236,11 +243,10 @@ void SystemeJeu::promouvoir() {
 
 
 
-
-
 //--------------------------------------------------------
 /**
  *@brief Interface pour construire (sous conditions) un batiment
+ *@param id du villageois affecté à la tache
  */
 void SystemeJeu::construire( int id ) {
 
@@ -269,6 +275,38 @@ void SystemeJeu::construire( int id ) {
 	if (entreeUtilisateur == "1")	{ village_.faire_Construire( new Maison(nom,description), id );	}
 }
 
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Interface pour ameliorer (sous conditions) un batiment
+ *@param id du villageois affecté à la tache
+ */
+void SystemeJeu::ameliorerBatiment( int id ) {
+
+	cout << "   Choisissez le batiment a ameliorer" << endl << "  >";
+
+	//Selection du batiment
+	int idbatimentchoisi(0);
+
+	//Attente de la saisie d'un nombre
+	//Tant que l'on ne saisie pas un nombre seul, on boucle
+	while ( ! ( cin >> idbatimentchoisi and cin.get() == '\n' ) ) {
+		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
+		cout << "  >";
+	}
+
+	//Verification de l'existence du batiment
+    if ( !village_.existe_Batiment( idbatimentchoisi ) ) {
+    	cout << "   Ce batiment n'existe pas."<< endl << "  ";
+    	return;
+    }
+
+    Villageois* v = village_.get_Villageois( id );
+    Batiment* b = village_.get_Batiment( idbatimentchoisi );
+    v->ameliorer_Batiment( b );
+}
 
 
 

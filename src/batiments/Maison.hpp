@@ -29,8 +29,9 @@ class Maison : public Batiment {
 
 		unsigned get_HabitantsMax();
 
+
 	private:
-		static const unsigned habitants_max_=1; /**< Nombre d'observeurs (villageois) maximum pour une maison*/
+		static const unsigned habitants_max_=3; /**< Nombre d'observeurs (villageois) maximum pour une maison*/
 
 };
 

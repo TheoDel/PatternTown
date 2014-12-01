@@ -33,13 +33,11 @@ vpath %.cpp $(SRCDIR)
 ##############################################
 # Compilation complète
 
-gcc: clean
 gcc: CXX=g++
 gcc: LINKER=g++ -o
 gcc: CXXFLAGS += -DNDEBUG
 gcc: $(EXEC)
 
-gcc-debug: clean
 gcc-debug: CXX=g++
 gcc-debug: LINKER=g++ -o
 gcc-debug: CXXFLAGS += -g
@@ -57,7 +55,7 @@ $(OBJDIR)/%.o: %.cpp
 ##############################################
 # Règles PHONY
 
-.PHONY: gcc gcc-debug begin clean doc
+.PHONY: gcc gcc-debug begin clean mrproper doc
 
 
 
@@ -65,8 +63,7 @@ $(OBJDIR)/%.o: %.cpp
 # Création des repertoires
 
 begin:
-	@rm -rf PatternTown	
-	@rm -rf obj
+	@rm -rf PatternTown	obj
 	@mkdir obj
 
 
@@ -74,11 +71,13 @@ begin:
 ##############################################
 # Nettoyage des dossiers
 
-SOURCESTILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*.cpp~))
-INCLUDESTILDE=$(foreach idir, $(IDIR), $(wildcard $(idir)/*.hpp~))
+TILDE=$(foreach sdir, $(SRCDIR), $(wildcard $(sdir)/*~))
 
 clean:
-	@rm -rf core *~ $(OBJECTS) $(EXEC) $(SOURCESTILDE) $(INCLUDESTILDE)
+	@rm -rf core *~ $(OBJECTS) $(TILDE)
+
+mrproper: clean
+	@rm -rf $(EXEC)
 
 
 
@@ -86,5 +85,5 @@ clean:
 # Generation de la documentation Doxygen
 
 doc:
-	@rm -rf doc
+	@rm -rf doc/html doc/latex
 	@doxygen Doxyfile

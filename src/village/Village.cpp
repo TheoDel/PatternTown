@@ -13,8 +13,10 @@
 #include <time.h>
 
 using namespace std;
-std::vector<std::string> Village::liste_noms(0);
-std::string liste_raw = "Amelia;Bobby;Caroline;Denis;Eloise;Fred;Georgie;Hubert;Inigo;Janet;Klervi;Laurent;Mariette;Nadine;Olivier;Patric;Quentin;Robert;Suzon;Yvonne;";
+
+std::vector<std::string> Village::liste_noms { "Amelia", "Bobby", "Caroline", "Denis", "Eloise", "Fred", "Georgie", "Hubert", "Inigo", "Janet", "Klervi", "Laurent", "Mariette", "Nadine", "Olivier", "Patric", "Quentin", "Robert", "Suzon", "Yvonne" };
+
+
 
 //--------------------------------------------------------
 /**
@@ -313,8 +315,6 @@ void Village::faire_Construire( Batiment* b, int idVillageois ) {
 //--------------------------------------------------------
 /**
  *@brief Méthode effectuant toutes les actions suivant le fin d'un tour
- *@param b Pointeur vers le batiment à construire
- *@param idVillageois Identifiant du villageois construisant
  */
 void Village::jour_Suivant() {
 
@@ -406,25 +406,7 @@ void Village::afficher_Batiments() {
  *@brief Méthode tirant aléatoirement un nom de villageois dans une liste définie
  */
 std::string Village::donner_un_nom() {
-    if (liste_noms.size()==0){
-        std::size_t pos_suivante = liste_raw.find_first_of(";");
-        int gardefou=0;
-        while((pos_suivante != std::string::npos) || gardefou>=50)
-        {
-            liste_noms.push_back(liste_raw.substr(0,pos_suivante));
-            //cout << liste_raw.substr(0,pos_suivante);
-            liste_raw = liste_raw.substr(pos_suivante+1,liste_raw.length());
-            gardefou++;
-            pos_suivante = liste_raw.find_first_of(";");
-        }
-    }
-
-    if (liste_noms.size()==0){
-        return "Toto";
-    }
-
     int aleat = rand() % (liste_noms.size()-1) + 0;
-
     return liste_noms.at(aleat);
 }
 

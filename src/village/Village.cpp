@@ -272,7 +272,7 @@ void Village::remove_Batiment( int id ) {
 /**
  *@brief Méthode modifiant la quantité d'une ressource
  *@param id Identifiant de la ressource à modifier
- *@param quantité Quantité à ajouter/retirer à la ressource
+ *@param quantite Quantité à ajouter/retirer à la ressource
  */
 void Village::change_Ressource(int id, int quantite) {
 	ressources_.change_Ressource(id, quantite);

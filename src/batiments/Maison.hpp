@@ -27,6 +27,11 @@ class Maison : public Batiment {
 		Maison( std::string nom, std::string description );
 		~Maison();
 
+		unsigned get_HabitantsMax();
+
+	private:
+		static const unsigned habitants_max_=1; /**< Nombre d'observeurs (villageois) maximum pour une maison*/
+
 };
 
 //--------------------------------------------------------

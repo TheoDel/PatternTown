@@ -138,9 +138,14 @@ void Batiment::set_indiceSatisfaction( int is ) {
  *@param observer Observateur à ajouter
  */
 void Batiment::enregistrerObs( Observer* observer ) {
+	if (observers_.size()< get_HabitantsMax() ){
 	observers_.emplace( observer->get_id(), observer );
 	//on transmet l'indice de satisfaction à tous les observateurs
 	observers_[ observer->get_id() ]->actualiser(indiceSatisfaction_);
+	}
+	else {
+		cout << "Ce batiment est plein !" << endl;
+	}
 }
 
 

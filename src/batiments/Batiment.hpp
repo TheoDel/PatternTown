@@ -29,7 +29,6 @@ class Batiment : public Observable {
 		// pour l'attribution automatique de l'identifiant
 		static int NEXTID_; /**< Identifiant du prochain batiment créé */
 
-
 	protected :
 
 		int id_; /**< Identifiant du batiment */
@@ -50,6 +49,7 @@ class Batiment : public Observable {
 		int get_id();
 		std::string get_Nom();
 		std::string get_Description();
+		virtual unsigned get_HabitantsMax() = 0;
 
 		//Setters
 		void set_Description( std::string d );

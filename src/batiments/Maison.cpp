@@ -13,8 +13,6 @@
 
 using namespace std;
 
-
-
 //--------------------------------------------------------
 /**
  *@brief Constructeur de base
@@ -32,3 +30,11 @@ Maison::Maison( string nom, string description ) : Batiment( nom, description ) 
  *@brief Destructeur
  */
 Maison::~Maison() {}
+
+//--------------------------------------------------------
+/**
+ *@brief Obtenir le nombre d'observeurs (habitants) maximum pour cette maison
+ */
+unsigned Maison::get_HabitantsMax() {
+	return habitants_max_;
+}

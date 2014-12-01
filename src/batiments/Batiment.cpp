@@ -183,5 +183,9 @@ void Batiment::notifierObs() {
  *@brief Méthode affichant le nom, l'identifiant et la description du batiment
  */
 void Batiment::afficher() {
-	 cout << "(ID:" << get_id() << ") (Indice Sat:" << get_indiceSatisfaction() << ")" << get_Nom() << " : " << get_Description() << endl;
+	std::string listeObs = ". Habité par  ";
+		for( auto o : observers_ ) {
+			listeObs += o.second->get_Nom() + ", ";
+		}
+	 cout << "(ID:" << get_id() << ") (Indice Sat:" << get_indiceSatisfaction() << ")" << get_Nom() << " : " << get_Description() << listeObs << endl;
 }

@@ -56,7 +56,7 @@ Village::~Village() {
  *@return Un booleen vrai si le villageois est present, faux sinon
  */
 bool Village::existe_Batiment( int id ) {
-	if ( villageois_.find(id) == villageois_.end() ) {
+	if ( batiments_.find(id) == batiments_.end() ) {
 			return false;
 		}
 	return true;
@@ -73,7 +73,7 @@ bool Village::existe_Batiment( int id ) {
  *@return Un booleen vrai si le batiment existe, faux sinon
  */
 bool Village::existe_Villageois( int id ) {
-	if ( batiments_.find(id) == batiments_.end() ) {
+	if ( villageois_.find(id) == villageois_.end() ) {
 		return false;
 	}
 	return true;
@@ -350,7 +350,7 @@ void Village::jour_Suivant() {
 			}
 		if ((somme_satisf/get_Population())>= satisf_moy_pour_fete){
 			etatVillage_ = EtatVillageFete_;
-			cout << "On dirait que les villageois sont tres contents, c'est la fete !";
+			cout << "On dirait que les villageois sont tres contents, c'est la fete !"<<endl;
 
 			//Ajoute aléatoirement ou pas un nouveau villageois
 			int aleat = rand() % 100 + 1;
@@ -360,7 +360,7 @@ void Village::jour_Suivant() {
 
                 Villageois* v = new VillageoisConcret( nomNouveau, "villageois nouveau" );
                 add_Villageois(v);
-                cout << "Un nouveau villageois ! "<< nomNouveau << " vient de s'installer à " << nom_;
+                cout << "Un nouveau villageois ! "<< nomNouveau << " vient de s'installer à " << nom_ <<endl;
             }
 			//Décrémente la satisfaction pour éviter une fête infinie
 			for ( auto v : villageois_ ) {

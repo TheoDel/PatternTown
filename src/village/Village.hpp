@@ -44,7 +44,7 @@ class Village {
 		EtatVillageFete* EtatVillageFete_; /**< Etat fête */
 
 		static const int ration_hebdo_=2; /**< Quantité de nourriture consommée par habitant par jour */
-		static const int satisf_moy_pour_fete=30; /**< Satisfaction moyenne nécessaire pour déclencher l'état fête */
+		static const int satisf_moy_pour_fete=7; /**< Satisfaction moyenne nécessaire pour déclencher l'état fête */
 		static const int proba_nouveau_villageois=50; /**< Pourcentage de chances d'arrivé d'un nouveau villageois dans l'état fête*/
         static std::vector<std::string> liste_noms; /** Liste de noms aéatoires possibles pour les nouveaux villageois (à définir dans le .cpp) */
 

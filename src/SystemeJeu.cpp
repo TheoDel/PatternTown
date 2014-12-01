@@ -64,10 +64,11 @@ void SystemeJeu::lancerJeu() {
 	village_.add_Villageois( new VillageoisConcret( Village::donner_un_nom(), "villageois ennuyeux" ) );
 
 	//Lance 3 tours de jeu
-	for (int i = 1; i<=3; i++){
+	while (village_.get_Population()!=0){
 		lancerTour();
 		++jour_;
 	}
+	cout << endl << "Fin de partie...";
 }
 
 
@@ -104,7 +105,7 @@ void SystemeJeu::lancerTour() {
 		else if (entreeUtilisateur == "3")	{	promouvoir(); }
         else if (entreeUtilisateur == "4")	{  	village_.get_Ressources()->afficher_Ressources(); }
         else if (entreeUtilisateur == "5")	{	village_.afficher_Batiments(); }
-        else if (entreeUtilisateur == "6")	{	 }
+        else if (entreeUtilisateur == "6")	{	attribuerBatiment(); }
         else if (entreeUtilisateur == "7")	{	sortieBoucleInstruction = true; }
     }
 
@@ -306,6 +307,50 @@ void SystemeJeu::ameliorerBatiment( int id ) {
     Villageois* v = village_.get_Villageois( id );
     Batiment* b = village_.get_Batiment( idbatimentchoisi );
     v->ameliorer_Batiment( b );
+}
+
+
+
+//--------------------------------------------------------
+/**
+ *@brief Interface pour attribuer une maison à un villageois
+ */
+void SystemeJeu::attribuerBatiment() {
+
+	cout << "   Choisissez le batiment a attribuer" << endl << "  >";
+
+	//Selection du batiment
+	int idbatimentchoisi(0);
+	//Attente de la saisie d'un nombre
+	//Tant que l'on ne saisie pas un nombre seul, on boucle
+	while ( ! ( cin >> idbatimentchoisi and cin.get() == '\n' ) ) {
+		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
+		cout << "  >";
+	}
+	//Verification de l'existence du batiment
+    if ( !village_.existe_Batiment( idbatimentchoisi )) {
+    	cout << "   Ce batiment n'existe pas."<< endl;
+    	return;
+    }
+
+    cout << "   Choisissez le villageois" << endl << "  >";
+    //Selection du villageois
+    	int idvillageoischoisi(0);
+    	//Attente de la saisie d'un nombre
+    	//Tant que l'on ne saisie pas un nombre seul, on boucle
+    	while ( ! ( cin >> idvillageoischoisi and cin.get() == '\n' ) ) {
+    		cin.clear(); cin.ignore( numeric_limits<streamsize>::max(), '\n' );
+    		cout << "  >";
+    	}
+    	//Verification de l'existence du batiment
+        if ( !village_.existe_Villageois( idvillageoischoisi )) {
+        	cout << "   Ce villageois n'existe pas."<< endl;
+        	return;
+        }
+
+    Villageois* v = village_.get_Villageois( idvillageoischoisi );
+    Batiment* b = village_.get_Batiment( idbatimentchoisi );
+    v -> set_Observable(b);
 }
 
 

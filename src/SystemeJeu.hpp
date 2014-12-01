@@ -32,6 +32,7 @@ class SystemeJeu {
 		void promouvoir();
 		void construire( int id );
 		void ameliorerBatiment( int id );
+		void attribuerBatiment();
 
 
     public :

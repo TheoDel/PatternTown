@@ -27,6 +27,7 @@ class Observer {
 		virtual ~Observer() {};
 
 		virtual int get_id() = 0;	//requis pour Villageois !!
+		virtual std::string get_Nom() = 0;
 		virtual void set_Observable( Observable* obs ) = 0;
 		virtual void actualiser( int newIndice ) = 0;
 

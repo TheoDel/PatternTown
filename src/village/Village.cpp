@@ -317,6 +317,10 @@ void Village::faire_Construire( Batiment* b, int idVillageois ) {
  *@brief Méthode effectuant toutes les actions suivant le fin d'un tour
  */
 void Village::jour_Suivant() {
+	//Retablissement d'energie
+	for ( auto v : villageois_ ) {
+		v.second->set_Energie(1);
+	}
 
 	//Prélèvement de la nourriture
 	cout << "\n...Prelevement de la nourriture... ";

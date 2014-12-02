@@ -142,6 +142,16 @@ void Villageois::set_Description( string d ){
 
 
 
+//--------------------------------------------------------
+/**
+ *@brief Setter du niveau d'energie du villageois
+ *@param val Energie à affecter au villageois
+ */
+void Villageois::set_Energie( int val ) {
+	energie_ = val;
+}
+
+
 
 
 //--------------------------------------------------------

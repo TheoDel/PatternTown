@@ -62,6 +62,7 @@ class Villageois : public Observer {
 
 		// Setters
 		virtual void set_Description( std::string d );
+		virtual void set_Energie( int val );
 		virtual void change_Energie( int val );
 		virtual void change_Satisfaction( int val );
 

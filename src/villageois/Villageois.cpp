@@ -47,9 +47,7 @@ Villageois::Villageois( std::string nom, std::string description ) :
 /**
  *@brief Destructeur
  */
-Villageois::~Villageois() {
-	observable_->supprimerObs(this);
-}
+Villageois::~Villageois() {}
 
 
 

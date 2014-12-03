@@ -261,7 +261,7 @@ void Village::remove_Batiment( int id ) {
 		}
 		delete batiments_[id];
 		batiments_.erase(id);
-		}
+	}
 }
 
 
@@ -317,6 +317,7 @@ void Village::faire_Construire( Batiment* b, int idVillageois ) {
  *@brief Méthode effectuant toutes les actions suivant le fin d'un tour
  */
 void Village::jour_Suivant() {
+
 	//Retablissement d'energie
 	for ( auto v : villageois_ ) {
 		v.second->set_Energie(1);
@@ -405,6 +406,9 @@ void Village::afficher_Batiments() {
 }
 
 
+
+
+
 //--------------------------------------------------------
 /**
  *@brief Méthode tirant aléatoirement un nom de villageois dans une liste définie
@@ -413,4 +417,3 @@ std::string Village::donner_un_nom() {
     int aleat = rand() % (liste_noms.size()-1) + 0;
     return liste_noms.at(aleat);
 }
-

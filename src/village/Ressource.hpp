@@ -21,7 +21,7 @@ class Ressource {
 	private :
 
 		int stock_Bois_; /**< Quantité de bois en stock */
-		int stock_Nourriture_; /*< Quantité de nourriture en stock  */
+		int stock_Nourriture_; /**< Quantité de nourriture en stock  */
 
 
 	public :

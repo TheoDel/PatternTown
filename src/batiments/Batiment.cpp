@@ -139,12 +139,12 @@ void Batiment::set_indiceSatisfaction( int is ) {
  */
 void Batiment::enregistrerObs( Observer* observer ) {
 	if (observers_.size()< get_HabitantsMax() ){
-	observers_.emplace( observer->get_id(), observer );
-	//on transmet l'indice de satisfaction à tous les observateurs
-	observers_[ observer->get_id() ]->actualiser(indiceSatisfaction_);
-	}
-	else {
+		observers_.emplace( observer->get_id(), observer );
+		//on transmet l'indice de satisfaction à tous les observateurs
+		observers_[ observer->get_id() ]->actualiser(indiceSatisfaction_);
+	} else {
 		cout << "Ce batiment est plein !" << endl;
+		observer->set_Observable(nullptr);
 	}
 }
 
@@ -188,9 +188,9 @@ void Batiment::notifierObs() {
  *@brief Méthode affichant le nom, l'identifiant et la description du batiment
  */
 void Batiment::afficher() {
-	std::string listeObs = ". Habité par  ";
-		for( auto o : observers_ ) {
-			listeObs += o.second->get_Nom() + ", ";
-		}
-	 cout << "(ID:" << get_id() << ") (Indice Sat:" << get_indiceSatisfaction() << ")" << get_Nom() << " : " << get_Description() << listeObs << endl;
+	string listeObs = ". Habité par  ";
+	for( auto o : observers_ ) {
+		listeObs += o.second->get_Nom() + ", ";
+	}
+	cout << "(ID:" << get_id() << ") (Indice Sat:" << get_indiceSatisfaction() << ")" << get_Nom() << " : " << get_Description() << listeObs << endl;
 }
